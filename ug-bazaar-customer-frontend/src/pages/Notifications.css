@@ -1,0 +1,414 @@
+.notifications-page-container {
+  --orange:#F47820; --blue:#1A5FB4; --blue-dark:#0D3A6E;
+  --blue-light:#3A82D4; --gold:#E8A020; --off-white:#F4F6FB;
+  --gray:#6B7280; --gray-light:#F3F4F6; --text:#1A1A2E;
+  --text-soft:#4B5563; --border:#E2E8F0;
+  --success:#16A34A; --success-bg:#F0FDF4;
+  --error:#DC2626; --warn:#D97706; --warn-bg:#FFFBEB;
+  --radius:14px;
+
+  font-family: 'Baloo 2', sans-serif;
+  background: var(--off-white);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.notifications-page-container * {
+  box-sizing: border-box;
+}
+
+/* TOPBAR */
+.notifications-page-container .topbar {
+  background: var(--blue-dark);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  padding: 0.4rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.notifications-page-container .topbar a {
+  color: #FFD580;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* HERO */
+.notifications-page-container .hero {
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+  padding: 2rem 2rem 1.5rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.notifications-page-container .hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%);
+  background-size: 20px 20px;
+}
+.notifications-page-container .hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.notifications-page-container .hero-left h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+}
+.notifications-page-container .hero-left p {
+  opacity: 0.75;
+  font-size: 0.88rem;
+  margin-top: 0.2rem;
+}
+.notifications-page-container .hero-right {
+  display: flex;
+  gap: 0.7rem;
+}
+.notifications-page-container .hero-btn {
+  padding: 0.5rem 1.1rem;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Baloo 2', sans-serif;
+  transition: all 0.2s;
+}
+.notifications-page-container .hero-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.5);
+}
+.notifications-page-container .hero-btn.danger {
+  border-color: rgba(255,100,100,0.4);
+  background: rgba(255,100,100,0.15);
+}
+.notifications-page-container .hero-btn.danger:hover {
+  background: rgba(255,100,100,0.25);
+}
+
+/* UNREAD BANNER */
+.notifications-page-container .unread-banner {
+  background: rgba(244,120,32,0.08);
+  border-bottom: 1px solid rgba(244,120,32,0.2);
+  padding: 0.6rem 2rem;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.notifications-page-container .unread-banner span {
+  background: var(--orange);
+  color: #fff;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+}
+
+/* MAIN */
+.notifications-page-container .main {
+  max-width: 760px;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem 4rem;
+}
+
+/* FILTER TABS */
+.notifications-page-container .filter-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.notifications-page-container .ftab {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Baloo 2', sans-serif;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.notifications-page-container .ftab.active, 
+.notifications-page-container .ftab:hover {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+.notifications-page-container .ftab-count {
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+.notifications-page-container .ftab.active .ftab-count {
+  background: rgba(255,255,255,0.3);
+}
+
+/* DATE GROUP */
+.notifications-page-container .date-group {
+  margin-bottom: 1.5rem;
+}
+.notifications-page-container .date-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--gray);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  padding: 0 0.2rem;
+}
+
+/* NOTIFICATION CARD */
+.notifications-page-container .notif-card {
+  background: #fff;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.notifications-page-container .notif-card.unread {
+  border-left: 3px solid var(--orange);
+  background: #FFFDF9;
+}
+.notifications-page-container .notif-card.unread::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+}
+.notifications-page-container .notif-card:hover {
+  border-color: var(--blue-light);
+  box-shadow: 0 4px 16px rgba(26,95,180,0.08);
+  transform: translateY(-1px);
+}
+.notifications-page-container .notif-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.notifications-page-container .ni-order { background: rgba(26,95,180,0.1); }
+.notifications-page-container .ni-offer { background: rgba(244,120,32,0.12); }
+.notifications-page-container .ni-delivery { background: rgba(22,163,74,0.1); }
+.notifications-page-container .ni-payment { background: rgba(232,160,32,0.12); }
+.notifications-page-container .ni-system { background: rgba(107,114,128,0.1); }
+.notifications-page-container .ni-warn { background: rgba(217,119,6,0.12); }
+
+.notifications-page-container .notif-content {
+  flex: 1;
+}
+.notifications-page-container .notif-title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+.notifications-page-container .notif-card.unread .notif-title {
+  color: var(--blue-dark);
+}
+.notifications-page-container .notif-body {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
+}
+.notifications-page-container .notif-marathi {
+  font-size: 0.75rem;
+  color: var(--gray);
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  margin-bottom: 0.4rem;
+}
+.notifications-page-container .notif-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.notifications-page-container .notif-time {
+  font-size: 0.7rem;
+  color: var(--gray);
+  font-weight: 600;
+}
+.notifications-page-container .notif-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+.notifications-page-container .nt-order { background: rgba(26,95,180,0.08); color: var(--blue); }
+.notifications-page-container .nt-offer { background: rgba(244,120,32,0.1); color: var(--orange); }
+.notifications-page-container .nt-delivery { background: var(--success-bg); color: var(--success); }
+.notifications-page-container .nt-payment { background: rgba(232,160,32,0.12); color: #7A5200; }
+.notifications-page-container .nt-system { background: var(--gray-light); color: var(--gray); }
+.notifications-page-container .nt-warn { background: var(--warn-bg); color: var(--warn); }
+
+.notifications-page-container .notif-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.notifications-page-container .notif-action-btn {
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  color: var(--text-soft);
+  font-family: 'Baloo 2', sans-serif;
+  transition: all 0.2s;
+}
+.notifications-page-container .notif-action-btn.primary {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+}
+.notifications-page-container .notif-action-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.notifications-page-container .notif-action-btn.primary:hover {
+  background: #D4620F;
+  border-color: #D4620F;
+  color: #fff;
+}
+
+/* WHATSAPP + SMS STRIP */
+.notifications-page-container .channel-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.notifications-page-container .channel-card {
+  background: #fff;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.notifications-page-container .channel-icon {
+  font-size: 1.5rem;
+}
+.notifications-page-container .channel-info {
+  flex: 1;
+}
+.notifications-page-container .channel-name {
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+.notifications-page-container .channel-sub {
+  font-size: 0.72rem;
+  color: var(--gray);
+}
+.notifications-page-container .toggle {
+  width: 42px;
+  height: 23px;
+  background: var(--border);
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+.notifications-page-container .toggle.on {
+  background: var(--success);
+}
+.notifications-page-container .toggle-knob {
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.notifications-page-container .toggle.on .toggle-knob {
+  transform: translateX(19px);
+}
+
+/* EMPTY STATE */
+.notifications-page-container .empty-state {
+  text-align: center;
+  padding: 3.5rem 1rem;
+}
+.notifications-page-container .empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+.notifications-page-container .empty-state h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+.notifications-page-container .empty-state p {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
+/* TOAST */
+.notifications-page-container .toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.8rem 1.4rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  z-index: 999;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+@media(max-width: 600px) {
+  .notifications-page-container .channel-strip {
+    grid-template-columns: 1fr;
+  }
+  .notifications-page-container .hero-inner {
+    flex-direction: column;
+  }
+}

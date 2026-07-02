@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply text-brand-dark bg-brand-light font-sans antialiased;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-dark {
+  background: rgba(28, 28, 28, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Shimmer Loading Skeleton */
+.skeleton-pulse {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Sleek Buttons and Hover effects */
+.btn-primary {
+  @apply bg-brand-green text-white font-semibold py-2.5 px-5 rounded-xl hover:bg-brand-green/90 active:scale-95 transition-all shadow-md shadow-brand-green/20 duration-150 flex items-center justify-center gap-2;
+}
+
+.btn-secondary {
+  @apply bg-white border border-brand-border text-brand-dark font-semibold py-2.5 px-5 rounded-xl hover:bg-brand-light active:scale-95 transition-all duration-150 flex items-center justify-center gap-2;
+}
+
+.btn-accent {
+  @apply bg-brand-yellow text-brand-dark font-semibold py-2.5 px-5 rounded-xl hover:bg-brand-yellow/90 active:scale-95 transition-all shadow-md shadow-brand-yellow/10 duration-150 flex items-center justify-center gap-2;
+}
+
+.card-hover {
+  @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-out border border-brand-border/60 rounded-2xl bg-white overflow-hidden;
+}

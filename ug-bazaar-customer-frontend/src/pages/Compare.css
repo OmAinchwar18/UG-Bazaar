@@ -1,0 +1,20 @@
+.compare-table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+.compare-table th, 
+.compare-table td {
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.compare-table th:first-child,
+.compare-table td:first-child {
+  border-left: none;
+}
+
+.compare-table th:last-child,
+.compare-table td:last-child {
+  border-right: none;
+}

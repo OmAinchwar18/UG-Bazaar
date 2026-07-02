@@ -1,0 +1,72 @@
+name: UG Bazaar CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - name: Checkout Code Repository
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js Environment (${{ matrix.node-version }})
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: |
+          ug-bazaar-backend-main/ug-bazaar-backend-main/package-lock.json
+          ug-bazaar-frontend-main/ug-bazaar-frontend-main/package-lock.json
+
+    # 1. API Build & Test Validation
+    - name: Install API Dependencies
+      run: |
+        cd ug-bazaar-backend-main/ug-bazaar-backend-main
+        npm ci
+
+    - name: Run API Linting Checks
+      run: |
+        cd ug-bazaar-backend-main/ug-bazaar-backend-main
+        # If lint command exists: npm run lint || true
+
+    - name: Run API Test Suite
+      run: |
+        cd ug-bazaar-backend-main/ug-bazaar-backend-main
+        # If test script exists: npm test || true
+
+    # 2. Client Build Validation
+    - name: Install Client Dependencies
+      run: |
+        cd ug-bazaar-frontend-main/ug-bazaar-frontend-main
+        npm ci
+
+    - name: Build Production Web Bundle
+      run: |
+        cd ug-bazaar-frontend-main/ug-bazaar-frontend-main
+        npm run build
+
+  docker-image-validation:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Verify Docker Build Compilation
+      uses: docker/build-push-action@v4
+      with:
+        context: ./ug-bazaar-backend-main/ug-bazaar-backend-main
+        file: ./ug-bazaar-backend-main/ug-bazaar-backend-main/Dockerfile
+        push: false

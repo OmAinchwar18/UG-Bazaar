@@ -1,0 +1,19 @@
+{
+  "name": "ug-bazaar-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/shared",
+    "ug-bazaar-customer-frontend",
+    "ug-bazaar-admin-frontend"
+  ],
+  "scripts": {
+    "dev:customer": "npm run dev --workspace=ug-bazaar-customer-frontend",
+    "dev:admin": "npm run dev --workspace=ug-bazaar-admin-frontend",
+    "build:customer": "npm run build --workspace=ug-bazaar-customer-frontend",
+    "build:admin": "npm run build --workspace=ug-bazaar-admin-frontend",
+    "dev:backend": "npm run dev --prefix ug-bazaar-backend-main/ug-bazaar-backend-main",
+    "start:backend": "npm start --prefix ug-bazaar-backend-main/ug-bazaar-backend-main",
+    "install:backend": "npm install --prefix ug-bazaar-backend-main/ug-bazaar-backend-main",
+    "install:all": "npm install && npm run install:backend"
+  }
+}

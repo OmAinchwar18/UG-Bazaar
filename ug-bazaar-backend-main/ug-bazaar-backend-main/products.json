@@ -1,0 +1,6602 @@
+[
+  {
+    "name": "Aashirvaad Chakki Atta 5kg",
+    "brand": "Aashirvaad",
+    "dept": "Grocery",
+    "price": 260,
+    "mrp": 306,
+    "stock": 62,
+    "emoji": "🍎",
+    "badge": "Popular",
+    "tags": [
+      "grocery",
+      "aashirvaad",
+      "aashirvaad"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 74
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/126906_8-aashirvaad-atta-whole-wheat.jpg"
+    ],
+    "description": "100% stone-ground whole wheat flour. Soft rotis and rich in dietary fibers.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-623"
+      }
+    ]
+  },
+  {
+    "name": "Tata Salt Iodised 1kg",
+    "brand": "Tata",
+    "dept": "Grocery",
+    "price": 28,
+    "mrp": 31,
+    "stock": 162,
+    "emoji": "🍎",
+    "badge": "Popular",
+    "tags": [
+      "grocery",
+      "tata",
+      "tata"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 73
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40155574_9-tata-salt-iodized.jpg"
+    ],
+    "description": "Iodised vacuum evaporated salt. Essential dietary mineral for daily health.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-812"
+      }
+    ]
+  },
+  {
+    "name": "Fortune Refined Mustard Oil 1L",
+    "brand": "Fortune",
+    "dept": "Grocery",
+    "price": 175,
+    "mrp": 199,
+    "stock": 85,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "fortune",
+      "fortune"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 69
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/413495_13-fortune-mustard-oil.jpg"
+    ],
+    "description": "Cold-pressed pure mustard oil. High pungency, rich aroma, and natural antioxidants.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-568"
+      }
+    ]
+  },
+  {
+    "name": "Amul Pure Cow Ghee 1L Tin",
+    "brand": "Amul",
+    "dept": "Grocery",
+    "price": 680,
+    "mrp": 739,
+    "stock": 38,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "amul",
+      "amul"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 79
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40212356_3-amul-cow-ghee.jpg"
+    ],
+    "description": "Pure cow ghee prepared from fresh milk. Granular texture and authentic rich aroma.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-526"
+      }
+    ]
+  },
+  {
+    "name": "Nestle Maggi Masala Noodles 280g",
+    "brand": "Nestle",
+    "dept": "Grocery",
+    "price": 95,
+    "mrp": 100,
+    "stock": 149,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "nestle",
+      "nestle"
+    ],
+    "ratings": {
+      "average": 5,
+      "count": 17
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/1200180_4-maggi-2-minute-instant-noodles-masala.jpg"
+    ],
+    "description": "Instant wheat noodles with 12 secret spices tastemaker pouch. Classic childhood snack.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 5,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-715"
+      }
+    ]
+  },
+  {
+    "name": "Tata Tea Gold Premium 500g",
+    "brand": "Tata",
+    "dept": "Grocery",
+    "price": 320,
+    "mrp": 376,
+    "stock": 161,
+    "emoji": "🍎",
+    "badge": "Popular",
+    "tags": [
+      "grocery",
+      "tata",
+      "tata"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 76
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40118314_3-tata-tea-gold.jpg"
+    ],
+    "description": "Assam tea blend with 15% long leaves. Rich taste and irresistible aroma.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-534"
+      }
+    ]
+  },
+  {
+    "name": "Parle-G Gold Biscuits 1kg",
+    "brand": "Parle-G",
+    "dept": "Grocery",
+    "price": 120,
+    "mrp": 133,
+    "stock": 59,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "parle-g",
+      "parle-g"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 75
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/102102_4-parle-g-biscuits.jpg"
+    ],
+    "description": "Parle-G Gold biscuit containing goodness of milk and wheat. Perfect tea partner.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-245"
+      }
+    ]
+  },
+  {
+    "name": "Sunfeast Dark Fantasy Choco Fills 75g",
+    "brand": "Sunfeast",
+    "dept": "Grocery",
+    "price": 40,
+    "mrp": 44,
+    "stock": 168,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "sunfeast",
+      "sunfeast"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 57
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40018532_6-sunfeast-dark-fantasy-choco-fills.jpg"
+    ],
+    "description": "Dark baked cookies with luxurious molten choco creme filling inside.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-712"
+      }
+    ]
+  },
+  {
+    "name": "Cadbury Dairy Milk Chocolate 150g",
+    "brand": "Cadbury",
+    "dept": "Grocery",
+    "price": 150,
+    "mrp": 170,
+    "stock": 94,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "cadbury",
+      "cadbury"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 62
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/20002773_2-cadbury-dairy-milk.jpg"
+    ],
+    "description": "Smooth and creamy milk chocolate. Delicious treat for celebrations.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-444"
+      }
+    ]
+  },
+  {
+    "name": "Haldiram's Bhujia Sev 350g",
+    "brand": "Haldiram's",
+    "dept": "Grocery",
+    "price": 110,
+    "mrp": 125,
+    "stock": 83,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "haldiram's",
+      "haldiram's"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 36
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40018596_1-haldirams-bhujia-sev.jpg"
+    ],
+    "description": "Crispy and spicy gram flour noodle snack. Classic Indian savory treat.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-680"
+      }
+    ]
+  },
+  {
+    "name": "Catch Turmeric Powder 200g",
+    "brand": "Catch",
+    "dept": "Grocery",
+    "price": 48,
+    "mrp": 56,
+    "stock": 151,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "catch",
+      "catch"
+    ],
+    "ratings": {
+      "average": 5,
+      "count": 36
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/10000097_19-catch-turmeric-powder.jpg"
+    ],
+    "description": "Pure ground turmeric powder. Adds vibrant yellow color and antiseptic value to dishes.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 5,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-286"
+      }
+    ]
+  },
+  {
+    "name": "Catch Coriander Powder 200g",
+    "brand": "Catch",
+    "dept": "Grocery",
+    "price": 52,
+    "mrp": 58,
+    "stock": 99,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "catch",
+      "catch"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 49
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/10000093_17-catch-coriander-powder.jpg"
+    ],
+    "description": "Aromatic ground coriander powder. Freshly milled from selected dried seeds.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-852"
+      }
+    ]
+  },
+  {
+    "name": "Fortune Toor Dal 1kg",
+    "brand": "Fortune",
+    "dept": "Grocery",
+    "price": 185,
+    "mrp": 206,
+    "stock": 131,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "fortune",
+      "fortune"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 69
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40000291_9-fortune-arhar-toor-dal.jpg"
+    ],
+    "description": "Split pigeon peas dal. High protein content, unpolished natural grains.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-143"
+      }
+    ]
+  },
+  {
+    "name": "Fortune Chana Dal 1kg",
+    "brand": "Fortune",
+    "dept": "Grocery",
+    "price": 95,
+    "mrp": 108,
+    "stock": 95,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "fortune",
+      "fortune"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 67
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40000292_5-fortune-chana-dal.jpg"
+    ],
+    "description": "Split desi bengal gram dal. Milled using hygienic procedures, rich in fiber.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-684"
+      }
+    ]
+  },
+  {
+    "name": "Fortune Moong Dal 1kg",
+    "brand": "Fortune",
+    "dept": "Grocery",
+    "price": 145,
+    "mrp": 171,
+    "stock": 162,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "fortune",
+      "fortune"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 73
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/10000431_18-fortune-moong-dal.jpg"
+    ],
+    "description": "Split skinless yellow mung beans. Fast cooking, light on stomach, high nutrition.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-104"
+      }
+    ]
+  },
+  {
+    "name": "Tata Sampann Premium Almonds 200g",
+    "brand": "Tata Sampann",
+    "dept": "Grocery",
+    "price": 240,
+    "mrp": 293,
+    "stock": 86,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "tata sampann",
+      "tata"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 61
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40118803_1-tata-sampann-almonds.jpg"
+    ],
+    "description": "Premium whole almonds. High in vitamin E, dietary fibers, and healthy fats.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-946"
+      }
+    ]
+  },
+  {
+    "name": "Tata Sampann Kabuli Chana 500g",
+    "brand": "Tata Sampann",
+    "dept": "Grocery",
+    "price": 95,
+    "mrp": 112,
+    "stock": 20,
+    "emoji": "🍎",
+    "badge": "Popular",
+    "tags": [
+      "grocery",
+      "tata sampann",
+      "tata"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 48
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40101565_1-tata-sampann-unpolished-kabuli-chana.jpg"
+    ],
+    "description": "Large size Kabuli chickpeas. Ideal for chole masala recipes, rich in protein.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-734"
+      }
+    ]
+  },
+  {
+    "name": "Amul Pasteurised Butter 500g",
+    "brand": "Amul",
+    "dept": "Grocery",
+    "price": 275,
+    "mrp": 289,
+    "stock": 20,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "amul",
+      "amul"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 32
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/104864_8-amul-butter-pasteurised.jpg"
+    ],
+    "description": "Classic salted cream butter. Creamy texture, perfect spread for breads and parathas.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-810"
+      }
+    ]
+  },
+  {
+    "name": "Surf Excel Easy Wash 1kg",
+    "brand": "Surf Excel",
+    "dept": "Grocery",
+    "price": 140,
+    "mrp": 156,
+    "stock": 99,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "surf excel",
+      "surf"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 42
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40075537_5-surf-excel-easy-wash-detergent-powder.jpg"
+    ],
+    "description": "High-quality detergent powder. Fast stain removal in bucket wash.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-495"
+      }
+    ]
+  },
+  {
+    "name": "Vim Dishwash Bar 300g",
+    "brand": "Vim",
+    "dept": "Grocery",
+    "price": 30,
+    "mrp": 33,
+    "stock": 98,
+    "emoji": "🍎",
+    "badge": "",
+    "tags": [
+      "grocery",
+      "vim",
+      "vim"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 29
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/306168_2-vim-dishwash-bar.jpg"
+    ],
+    "description": "Lemon power dishwash bar. Cuts tough grease stains quickly and leaves clean shine.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-678"
+      }
+    ]
+  },
+  {
+    "name": "TrustBasket Organic Vermicompost 5kg",
+    "brand": "TrustBasket",
+    "dept": "Agriculture",
+    "price": 350,
+    "mrp": 412,
+    "stock": 162,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "trustbasket",
+      "trustbasket"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 21
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40311748_1-trustbasket-organic-vermicompost-fertilisermanure-for-plants-5-kg.jpg"
+    ],
+    "description": "Premium organic vermicompost manure. Rich in nitrogen, phosphorus, and potassium to promote active growth.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-434"
+      }
+    ]
+  },
+  {
+    "name": "TrustBasket Cow Manure 5kg",
+    "brand": "TrustBasket",
+    "dept": "Agriculture",
+    "price": 290,
+    "mrp": 322,
+    "stock": 94,
+    "emoji": "🌱",
+    "badge": "Popular",
+    "tags": [
+      "agriculture",
+      "trustbasket",
+      "trustbasket"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 81
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40311750_1-trustbasket-cow-manure-for-plants-5-kg.jpg"
+    ],
+    "description": "Decomposed organic cow manure for home gardening. Restores soil quality and microbial activity.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-162"
+      }
+    ]
+  },
+  {
+    "name": "TrustBasket Bone Meal 450g",
+    "brand": "TrustBasket",
+    "dept": "Agriculture",
+    "price": 120,
+    "mrp": 141,
+    "stock": 63,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "trustbasket",
+      "trustbasket"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 69
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40311767_1-trustbasket-bone-meal-fertiliser-for-plants-450-g.jpg"
+    ],
+    "description": "Phosphorus-rich organic bone meal powder. Excellent root developer for flowering and fruiting plants.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-701"
+      }
+    ]
+  },
+  {
+    "name": "IFFCO Urban Gardens Green Diet 500ml",
+    "brand": "IFFCO",
+    "dept": "Agriculture",
+    "price": 210,
+    "mrp": 233,
+    "stock": 85,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "iffco",
+      "iffco"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 59
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40198958_1-iffco-urban-gardens-green-diet-instant-plant-food-500-ml.jpg"
+    ],
+    "description": "Instant liquid plant food. Multi-nutrient formula for healthy foliage and green shine.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-839"
+      }
+    ]
+  },
+  {
+    "name": "IFFCO Urban Gardens Green Diet Spray 200ml",
+    "brand": "IFFCO",
+    "dept": "Agriculture",
+    "price": 125,
+    "mrp": 142,
+    "stock": 63,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "iffco",
+      "iffco"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 39
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40269203_1-iffco-urban-gardens-green-diet-all-purpose-organic-plant-food-spray-provides-nourishment-200-ml.jpg"
+    ],
+    "description": "Ready-to-use plant nutrient spray. Feeds foliage directly for rapid growth and vibrant blooms.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-550"
+      }
+    ]
+  },
+  {
+    "name": "IFFCO Urban Gardens Sea Secret Granules 500g",
+    "brand": "IFFCO",
+    "dept": "Agriculture",
+    "price": 180,
+    "mrp": 212,
+    "stock": 57,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "iffco",
+      "iffco"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 25
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40198957_1.jpg"
+    ],
+    "description": "Seaweed extract bio-stimulant granules. Boosts nutrient uptake, flower counts, and stress tolerance.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-302"
+      }
+    ]
+  },
+  {
+    "name": "IFFCO Urban Gardens Magic Potting Soil 2kg",
+    "brand": "IFFCO",
+    "dept": "Agriculture",
+    "price": 195,
+    "mrp": 222,
+    "stock": 99,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "iffco",
+      "iffco"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 83
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40206000_1.jpg"
+    ],
+    "description": "Ready-to-use premium potting soil mix. Enriched with organic nutrients and aerated minerals.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-855"
+      }
+    ]
+  },
+  {
+    "name": "IFFCO Urban Gardens Horti-Perlite 400g",
+    "brand": "IFFCO",
+    "dept": "Agriculture",
+    "price": 145,
+    "mrp": 161,
+    "stock": 99,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "iffco",
+      "iffco"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 89
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40206002_1-iffco-urban-gardens-horti-perlite-400-g.jpg"
+    ],
+    "description": "Volcanic mineral horti-perlite. Essential soil conditioner for high porosity and root zone drainage.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-452"
+      }
+    ]
+  },
+  {
+    "name": "IFFCO Urban Gardens Dr Neem Repellant 50ml",
+    "brand": "IFFCO",
+    "dept": "Agriculture",
+    "price": 99,
+    "mrp": 116,
+    "stock": 133,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "iffco",
+      "iffco"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 55
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40243584_1-iffco-urban-gardens-dr-neem-organic-pest-repellant-protects-plants-from-fungus-bacteria-50-ml.jpg"
+    ],
+    "description": "Organic pest repellent concentrate. Keeps plants safe from fungus, mold, and insect attacks.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-238"
+      }
+    ]
+  },
+  {
+    "name": "TrustBasket Neem Cake Powder 450g",
+    "brand": "TrustBasket",
+    "dept": "Agriculture",
+    "price": 110,
+    "mrp": 125,
+    "stock": 167,
+    "emoji": "🌱",
+    "badge": "Popular",
+    "tags": [
+      "agriculture",
+      "trustbasket",
+      "trustbasket"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 15
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40311758_1-trustbasket-neem-cake-powder-organic-fertiliser-pest-repellent-for-plants-450-g.jpg"
+    ],
+    "description": "Cold-pressed neem cake powder. Dual action organic fertilizer and natural soil insecticide.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-930"
+      }
+    ]
+  },
+  {
+    "name": "TrustBasket Cocopeat Block 5kg",
+    "brand": "TrustBasket",
+    "dept": "Agriculture",
+    "price": 320,
+    "mrp": 376,
+    "stock": 156,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "trustbasket",
+      "trustbasket"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 28
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40311751_1-trustbasket-cocopeat-block-expands-to-75-litres-of-cocopeat-powder-5-kg.jpg"
+    ],
+    "description": "Organic coconut coir peat block. Expands to 75L of moisture-retaining potting medium.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-517"
+      }
+    ]
+  },
+  {
+    "name": "TrustBasket Garden Watering Can Sprayer 5L",
+    "brand": "TrustBasket",
+    "dept": "Agriculture",
+    "price": 380,
+    "mrp": 422,
+    "stock": 166,
+    "emoji": "🌱",
+    "badge": "Popular",
+    "tags": [
+      "agriculture",
+      "trustbasket",
+      "trustbasket"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 18
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40311760_2-trustbasket-garden-watering-can-sprayer-for-indoor-outdoor-plants-green-5-l.jpg"
+    ],
+    "description": "Heavy-duty 5L watering can with dual mode sprayer rose. Ideal for uniform crop watering.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-809"
+      }
+    ]
+  },
+  {
+    "name": "Kraft Seeds Hanging Planter Balcony Blue 1pc",
+    "brand": "Kraft Seeds",
+    "dept": "Agriculture",
+    "price": 190,
+    "mrp": 224,
+    "stock": 43,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "kraft seeds",
+      "kraft"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 65
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40281802_1-kraft-seeds-plastic-single-hook-hanging-planter-for-balcony-blue-bpa-free-1-pc.jpg"
+    ],
+    "description": "BPA-free plastic hanging pot with single hook. Perfect space-saving gardening planter.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-458"
+      }
+    ]
+  },
+  {
+    "name": "Kraft Seeds Tomato Seeds Packet",
+    "brand": "Kraft",
+    "dept": "Agriculture",
+    "price": 50,
+    "mrp": 56,
+    "stock": 97,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "kraft",
+      "kraft"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 68
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40209707_1-natures-plus-kraft-seeds-tomato-set-of-1.jpg"
+    ],
+    "description": "High-germination tomato seeds for home kitchen garden. Yields juicy, firm red tomatoes.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-239"
+      }
+    ]
+  },
+  {
+    "name": "Kraft Seeds Carrot Seeds Packet",
+    "brand": "Kraft",
+    "dept": "Agriculture",
+    "price": 55,
+    "mrp": 61,
+    "stock": 44,
+    "emoji": "🌱",
+    "badge": "Popular",
+    "tags": [
+      "agriculture",
+      "kraft",
+      "kraft"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 84
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40209709_1-natures-plus-kraft-seeds-carrot-set-of-1.jpg"
+    ],
+    "description": "Premium carrot seeds. Fast growing, high yield, produces sweet and crunchy orange carrots.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-120"
+      }
+    ]
+  },
+  {
+    "name": "Kraft Seeds Chilli Seeds Packet",
+    "brand": "Kraft",
+    "dept": "Agriculture",
+    "price": 50,
+    "mrp": 56,
+    "stock": 84,
+    "emoji": "🌱",
+    "badge": "Popular",
+    "tags": [
+      "agriculture",
+      "kraft",
+      "kraft"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 75
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40192804_2-natures-plus-chilli-plant-seeds-for-home-garden-set-of-1.jpg"
+    ],
+    "description": "Hot green chilli plant seeds. High heat variety, excellent disease tolerance.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-427"
+      }
+    ]
+  },
+  {
+    "name": "Kraft Seeds Coriander Seeds Packet",
+    "brand": "Kraft",
+    "dept": "Agriculture",
+    "price": 45,
+    "mrp": 50,
+    "stock": 165,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "kraft",
+      "kraft"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 22
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40209705_1-natures-plus-kraft-seeds-coriander-set-of-1.jpg"
+    ],
+    "description": "Broad-leaf coriander seeds. Matures into aromatic, fresh cilantro herbs.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-410"
+      }
+    ]
+  },
+  {
+    "name": "Kraft Seeds Spinach Seeds Packet",
+    "brand": "Kraft",
+    "dept": "Agriculture",
+    "price": 60,
+    "mrp": 68,
+    "stock": 78,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "kraft",
+      "kraft"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 62
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40209703_1-natures-plus-kraft-seeds-sipnach-set-of-1.jpg"
+    ],
+    "description": "Spinach (Palak) hybrid seeds. Rich in iron, fast growing leafy green crop.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-637"
+      }
+    ]
+  },
+  {
+    "name": "Kraft Seeds Okra Seeds Packet",
+    "brand": "Kraft",
+    "dept": "Agriculture",
+    "price": 50,
+    "mrp": 56,
+    "stock": 61,
+    "emoji": "🌱",
+    "badge": "Popular",
+    "tags": [
+      "agriculture",
+      "kraft",
+      "kraft"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 66
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40250625_1-natures-plus-lady-finger-plant-seeds-for-home-garden-set-of-1.jpg"
+    ],
+    "description": "Bhindi/Lady Finger seeds. Yields tender, dark-green nutritious pods.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-947"
+      }
+    ]
+  },
+  {
+    "name": "Kraft Seeds Cucumber Seeds Packet",
+    "brand": "Kraft",
+    "dept": "Agriculture",
+    "price": 55,
+    "mrp": 61,
+    "stock": 160,
+    "emoji": "🌱",
+    "badge": "",
+    "tags": [
+      "agriculture",
+      "kraft",
+      "kraft"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 19
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40209718_1-natures-plus-kraft-seeds-cucumber-green-set-of-1.jpg"
+    ],
+    "description": "Hybrid green cucumber seeds. High yielding crop, crisp and cooling cucumber pods.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-945"
+      }
+    ]
+  },
+  {
+    "name": "UltraTech Premium Portland Cement 50kg Bag",
+    "brand": "UltraTech",
+    "dept": "Building Materials",
+    "price": 420,
+    "mrp": 467,
+    "stock": 136,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "ultratech",
+      "ultratech"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 45
+    },
+    "images": [
+      "https://5.imimg.com/data5/ZV/IV/SM/SELLER-79364225/50kg-ultratech-cement-1000x1000.jpg"
+    ],
+    "description": "OPC 53 grade concrete construction cement. Ultra-high compressive strength and durability.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-704"
+      }
+    ]
+  },
+  {
+    "name": "Ambuja Kawach Waterproof Cement 50kg Bag",
+    "brand": "Ambuja",
+    "dept": "Building Materials",
+    "price": 450,
+    "mrp": 500,
+    "stock": 86,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "ambuja",
+      "ambuja"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 30
+    },
+    "images": [
+      "https://5.imimg.com/data5/GLADMIN/Default/2022/7/VR/VA/XS/86648/ambuja-cement-500x500.jpg"
+    ],
+    "description": "Specially formulated waterproof cement. Restricts moisture path and delays corrosion.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-598"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Fixit New Coat 603 Waterproofing 20L",
+    "brand": "Dr. Fixit",
+    "dept": "Building Materials",
+    "price": 4200,
+    "mrp": 4773,
+    "stock": 126,
+    "emoji": "🧱",
+    "badge": "Popular",
+    "tags": [
+      "building materials",
+      "dr. fixit",
+      "dr."
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 66
+    },
+    "images": [
+      "https://cdn.moglix.com/p/JcQ8HFa02pgo7-xxlarge.jpg"
+    ],
+    "description": "Micro-fiber reinforced elastomeric liquid waterproofing membrane for roof coatings.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-167"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Fixit Pidiproof LW+ Liquid 1L",
+    "brand": "Dr. Fixit",
+    "dept": "Building Materials",
+    "price": 165,
+    "mrp": 183,
+    "stock": 108,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "dr. fixit",
+      "dr."
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 62
+    },
+    "images": [
+      "https://cdn.moglix.com/p/adq7DA4U70nIO-xxlarge.jpg"
+    ],
+    "description": "Specially formulated liquid waterproofing compound for concrete and mortar plastering.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-971"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Fixit Super Latex 302 SBR Polymer 20kg",
+    "brand": "Dr. Fixit",
+    "dept": "Building Materials",
+    "price": 3100,
+    "mrp": 3647,
+    "stock": 27,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "dr. fixit",
+      "dr."
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 78
+    },
+    "images": [
+      "https://cdn.moglix.com/p/iNg976yPd1nIE-xxlarge.jpg"
+    ],
+    "description": "Styrene butadiene copolymer latex for waterproofing, bonding, and structural repair.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-110"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Fixit Super Latex 302 SBR Polymer 1kg",
+    "brand": "Dr. Fixit",
+    "dept": "Building Materials",
+    "price": 220,
+    "mrp": 244,
+    "stock": 61,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "dr. fixit",
+      "dr."
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 37
+    },
+    "images": [
+      "https://cdn.moglix.com/p/IvmAZZIvvlTGR-xxlarge.jpg"
+    ],
+    "description": "High performance bonding agent for repair of concrete columns, beams, and slabs.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-865"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Fixit New Coat Ezee Waterproofing 20L",
+    "brand": "Dr. Fixit",
+    "dept": "Building Materials",
+    "price": 4350,
+    "mrp": 4943,
+    "stock": 100,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "dr. fixit",
+      "dr."
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 46
+    },
+    "images": [
+      "https://cdn.moglix.com/p/DINDz2jyi5edb-xxlarge.jpg"
+    ],
+    "description": "High build elastomeric waterproofing coating for exterior terrace roofs and walls.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-599"
+      }
+    ]
+  },
+  {
+    "name": "Birla White Wall Care Putty 40kg Bag",
+    "brand": "Birla White",
+    "dept": "Building Materials",
+    "price": 950,
+    "mrp": 1056,
+    "stock": 160,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "birla white",
+      "birla"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 85
+    },
+    "images": [
+      "https://cdn.moglix.com/p/YPjvV3ROdMLa3-xxlarge.jpg"
+    ],
+    "description": "White cement-based wall putty. Smooth velvety finish and moisture-proof primer coat.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-867"
+      }
+    ]
+  },
+  {
+    "name": "Fevicol SH Synthetic Resin Adhesive 5kg",
+    "brand": "Fevicol",
+    "dept": "Building Materials",
+    "price": 1150,
+    "mrp": 1278,
+    "stock": 165,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "fevicol",
+      "fevicol"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 15
+    },
+    "images": [
+      "https://cdn.moglix.com/p/LpPQxDzqfdkxQ-xxlarge.jpg"
+    ],
+    "description": "Synthetic wood resin adhesive. Strong wood bonding, standard carpenter choice.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-160"
+      }
+    ]
+  },
+  {
+    "name": "Asian Paints TruCare Interior Wall Primer 20L",
+    "brand": "Asian Paints",
+    "dept": "Building Materials",
+    "price": 2450,
+    "mrp": 2882,
+    "stock": 145,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "asian paints",
+      "asian"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 25
+    },
+    "images": [
+      "https://cdn.moglix.com/p/z69RqEFxqB4FI-xxlarge.jpg"
+    ],
+    "description": "Acrylic interior water-based primer paint. Solid base coat adhesion for wall paint colors.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-456"
+      }
+    ]
+  },
+  {
+    "name": "Asian Paints TruCare Exterior Wall Primer 20L",
+    "brand": "Asian Paints",
+    "dept": "Building Materials",
+    "price": 2650,
+    "mrp": 3118,
+    "stock": 56,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "asian paints",
+      "asian"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 15
+    },
+    "images": [
+      "https://cdn.moglix.com/p/j7Ed8XYBhdfAE-xxlarge.jpg"
+    ],
+    "description": "High performance exterior wall primer. Excellent alkali resistance and adhesion.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-547"
+      }
+    ]
+  },
+  {
+    "name": "Saint-Gobain Gyproc Gypsum Plaster 25kg Bag",
+    "brand": "Saint-Gobain",
+    "dept": "Building Materials",
+    "price": 380,
+    "mrp": 432,
+    "stock": 162,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "saint-gobain",
+      "saint-gobain"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 16
+    },
+    "images": [
+      "https://5.imimg.com/data5/GLADMIN/Default/2022/6/EI/PE/VE/92368/gypsum-plaster-500x500.jpg"
+    ],
+    "description": "Superior quality gypsum plaster. Gives a smooth matte finish directly on brick walls.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-173"
+      }
+    ]
+  },
+  {
+    "name": "Red Clay Bricks (Stack of 500 Bricks)",
+    "brand": "Local",
+    "dept": "Building Materials",
+    "price": 3500,
+    "mrp": 3889,
+    "stock": 145,
+    "emoji": "🧱",
+    "badge": "Popular",
+    "tags": [
+      "building materials",
+      "local",
+      "red"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 86
+    },
+    "images": [
+      "https://5.imimg.com/data5/MC/VP/FI/ANDROID-49034449/1577500480900-jpg-500x500.jpg"
+    ],
+    "description": "Kiln-burnt standard structural red clay bricks. Durable strength, perfect for load-bearing walls.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-388"
+      }
+    ]
+  },
+  {
+    "name": "8x8 Interlocking Concrete Paver Blocks (Set of 100)",
+    "brand": "Local",
+    "dept": "Building Materials",
+    "price": 1800,
+    "mrp": 2000,
+    "stock": 20,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "local",
+      "8x8"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 70
+    },
+    "images": [
+      "https://5.imimg.com/data5/SELLER/Default/2024/6/429111129/HB/QW/GD/6094428/8x8-paver-block-500x500.jpg"
+    ],
+    "description": "High strength concrete interlocking paver blocks for driveways and walkways.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-341"
+      }
+    ]
+  },
+  {
+    "name": "Tata Tiscon Fe 550D TMT Steel Rebar Rods",
+    "brand": "Tata Tiscon",
+    "dept": "Building Materials",
+    "price": 64000,
+    "mrp": 72727,
+    "stock": 36,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "tata tiscon",
+      "tata"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 45
+    },
+    "images": [
+      "https://5.imimg.com/data5/SELLER/Default/2023/3/294818906/KJ/CE/JE/14294560/tata-tiscon-tata-tmt-rod-for-construction-500x500.jpg"
+    ],
+    "description": "Fe 550D grade steel TMT reinforcing bars. High ductility and earthquake resistant. Price per Ton.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-789"
+      }
+    ]
+  },
+  {
+    "name": "Ultratech AAC Blocks (Size 4x8x24, Set of 50)",
+    "brand": "UltraTech",
+    "dept": "Building Materials",
+    "price": 2800,
+    "mrp": 3294,
+    "stock": 154,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "ultratech",
+      "ultratech"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 80
+    },
+    "images": [
+      "https://5.imimg.com/data5/GLADMIN/Default/2022/6/WU/EP/AW/91623/aac-block-500x500.jpg"
+    ],
+    "description": "Autoclaved Aerated Concrete blocks. Lightweight, high heat insulation, fast construction.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-516"
+      }
+    ]
+  },
+  {
+    "name": "Asian Paints Tractor Emulsion White Paint 10L",
+    "brand": "Asian Paints",
+    "dept": "Building Materials",
+    "price": 850,
+    "mrp": 944,
+    "stock": 96,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "asian paints",
+      "asian"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 54
+    },
+    "images": [
+      "https://cdn.moglix.com/p/J/8/H/d/MINJ8H2H5DME1-xxlarge.jpg"
+    ],
+    "description": "Beautiful matte finish interior wall paint. Smooth finish, long durability, high coverage.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-764"
+      }
+    ]
+  },
+  {
+    "name": "Asian Paints Tractor Emulsion White Paint 15L",
+    "brand": "Asian Paints",
+    "dept": "Building Materials",
+    "price": 1250,
+    "mrp": 1389,
+    "stock": 44,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "asian paints",
+      "asian"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 46
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/W/2/d/MINIW2L95DME1-xxlarge.jpg"
+    ],
+    "description": "Acrylic emulsion paint for interior walls. Water-based paint, washable formulation.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-906"
+      }
+    ]
+  },
+  {
+    "name": "UltraTech Ready Mix Concrete M20 Grade (1 Cubic Meter)",
+    "brand": "UltraTech",
+    "dept": "Building Materials",
+    "price": 4500,
+    "mrp": 5000,
+    "stock": 75,
+    "emoji": "🧱",
+    "badge": "Popular",
+    "tags": [
+      "building materials",
+      "ultratech",
+      "ultratech"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 69
+    },
+    "images": [
+      "https://5.imimg.com/data5/GLADMIN/Default/2022/6/KZ/CQ/QE/92368/ready-mixed-concrete-500x500.jpg"
+    ],
+    "description": "Centralized batching plant concrete mix. High uniformity, durability, and standard setting.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-609"
+      }
+    ]
+  },
+  {
+    "name": "Natural River Sand for Construction (1 Brass)",
+    "brand": "Local",
+    "dept": "Building Materials",
+    "price": 5500,
+    "mrp": 5789,
+    "stock": 132,
+    "emoji": "🧱",
+    "badge": "",
+    "tags": [
+      "building materials",
+      "local",
+      "natural"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 61
+    },
+    "images": [
+      "https://5.imimg.com/data5/GLADMIN/Default/2022/6/RH/YP/UN/91623/river-sand-500x500.jpg"
+    ],
+    "description": "Coarse river sand. Screened and washed, perfect for cement concrete mixing and plastering.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-581"
+      }
+    ]
+  },
+  {
+    "name": "Stanley Steel Claw Hammer 16oz",
+    "brand": "Stanley",
+    "dept": "Hardware Tools",
+    "price": 450,
+    "mrp": 529,
+    "stock": 66,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "stanley",
+      "stanley"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 74
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/E/I/d/MINIEINY5DME1-xxlarge.jpg"
+    ],
+    "description": "High-carbon polished steel claw hammer. Tough fiberglass handle, vibration absorption grip.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-134"
+      }
+    ]
+  },
+  {
+    "name": "Taparia Ball Pein Hammer with Wooden Handle",
+    "brand": "Taparia",
+    "dept": "Hardware Tools",
+    "price": 280,
+    "mrp": 311,
+    "stock": 33,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "taparia",
+      "taparia"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 77
+    },
+    "images": [
+      "https://cdn.moglix.com/p/bg0wA1VTxsGTq-xxlarge.jpg"
+    ],
+    "description": "Drop forged steel ball pein hammer. Seasoned wooden handle, classic blacksmith tool.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-794"
+      }
+    ]
+  },
+  {
+    "name": "Taparia Pipe Wrench Heavy Duty 14 Inch",
+    "brand": "Taparia",
+    "dept": "Hardware Tools",
+    "price": 790,
+    "mrp": 878,
+    "stock": 148,
+    "emoji": "🔧",
+    "badge": "Popular",
+    "tags": [
+      "hardware tools",
+      "taparia",
+      "taparia"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 33
+    },
+    "images": [
+      "https://cdn.moglix.com/p/4qJNILLnhPp1F-xxlarge.jpg"
+    ],
+    "description": "Drop forged steel jaws, heavy duty handle pipe wrench. Perfect grip tool for steel pipes.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-277"
+      }
+    ]
+  },
+  {
+    "name": "Stanley Adjustable Spanner Wrench 10 Inch",
+    "brand": "Stanley",
+    "dept": "Hardware Tools",
+    "price": 650,
+    "mrp": 765,
+    "stock": 97,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "stanley",
+      "stanley"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 36
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/3/4/d/MINI34YH5DRWO-xxlarge.jpg"
+    ],
+    "description": "Chrome finish steel adjustable jaw spanner wrench. Precision worm wheel adjustment scale.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-663"
+      }
+    ]
+  },
+  {
+    "name": "Taparia Combination Spanner Set (Set of 12)",
+    "brand": "Taparia",
+    "dept": "Hardware Tools",
+    "price": 720,
+    "mrp": 818,
+    "stock": 106,
+    "emoji": "🔧",
+    "badge": "Popular",
+    "tags": [
+      "hardware tools",
+      "taparia",
+      "taparia"
+    ],
+    "ratings": {
+      "average": 5,
+      "count": 33
+    },
+    "images": [
+      "https://cdn.moglix.com/p/FzDIMBYgkCHcY-xxlarge.jpg"
+    ],
+    "description": "Set of 12 double-ended chrome vanadium ring and open spanners. Sizes 6mm to 32mm.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 5,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-248"
+      }
+    ]
+  },
+  {
+    "name": "Taparia 7 Pcs 1/2 inch Square Drive Socket Set",
+    "brand": "Taparia",
+    "dept": "Hardware Tools",
+    "price": 950,
+    "mrp": 1118,
+    "stock": 71,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "taparia",
+      "taparia"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 51
+    },
+    "images": [
+      "https://cdn.moglix.com/p/8ESP8AwiORsMq-xxlarge.jpg"
+    ],
+    "description": "Bi-hexagonal square drive sockets set. Made of high grade steel for heavy duty fastener works.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-892"
+      }
+    ]
+  },
+  {
+    "name": "Taparia Screwdriver Toolkit Set (8 Pieces)",
+    "brand": "Taparia",
+    "dept": "Hardware Tools",
+    "price": 380,
+    "mrp": 422,
+    "stock": 31,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "taparia",
+      "taparia"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 24
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/E/I/d/MINIEI645DF23-xxlarge.jpg"
+    ],
+    "description": "Screwdriver tool set with neon bulb tester. Hardened alloy steel blades, plastic case.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-595"
+      }
+    ]
+  },
+  {
+    "name": "Bosch GBM 350 Professional 350W Rotary Drill Machine",
+    "brand": "Bosch",
+    "dept": "Hardware Tools",
+    "price": 2999,
+    "mrp": 3749,
+    "stock": 125,
+    "emoji": "🔧",
+    "badge": "Popular",
+    "tags": [
+      "hardware tools",
+      "bosch",
+      "bosch"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 22
+    },
+    "images": [
+      "https://cdn.moglix.com/p/0OpqJC038wi89-xxlarge.jpg"
+    ],
+    "description": "Professional 350W rotary drill machine. Compact and slim design for easy handling.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-782"
+      }
+    ]
+  },
+  {
+    "name": "Bosch GWS 600 Professional Angle Grinder",
+    "brand": "Bosch",
+    "dept": "Hardware Tools",
+    "price": 2450,
+    "mrp": 2882,
+    "stock": 95,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "bosch",
+      "bosch"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 29
+    },
+    "images": [
+      "https://cdn.moglix.com/p/ILO979GuJQ5DG-xxlarge.jpg"
+    ],
+    "description": "670W robust corded angle grinder. Handheld tool for grinding and cutting stone or steel.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-592"
+      }
+    ]
+  },
+  {
+    "name": "Stanley Tylon Short Measurement Tape 5m",
+    "brand": "Stanley",
+    "dept": "Hardware Tools",
+    "price": 290,
+    "mrp": 341,
+    "stock": 44,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "stanley",
+      "stanley"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 86
+    },
+    "images": [
+      "https://cdn.moglix.com/p/lbJTdFBZGe0gd-xxlarge.jpg"
+    ],
+    "description": "Impact-resistant case, steel measuring scale with Mylar polymer coating for long print life.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-169"
+      }
+    ]
+  },
+  {
+    "name": "Stanley BI Heavy Duty Hand Saw 15 Inch",
+    "brand": "Stanley",
+    "dept": "Hardware Tools",
+    "price": 520,
+    "mrp": 591,
+    "stock": 156,
+    "emoji": "🔧",
+    "badge": "Popular",
+    "tags": [
+      "hardware tools",
+      "stanley",
+      "stanley"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 43
+    },
+    "images": [
+      "https://cdn.moglix.com/p/SFUcJi8bG1M3G-xxlarge.jpg"
+    ],
+    "description": "Bi-material handle hand saw with induction-hardened teeth. Smooth and fast cutting performance.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-200"
+      }
+    ]
+  },
+  {
+    "name": "Taparia Combination Cutting Pliers 8 Inch",
+    "brand": "Taparia",
+    "dept": "Hardware Tools",
+    "price": 320,
+    "mrp": 356,
+    "stock": 116,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "taparia",
+      "taparia"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 57
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/3/4/d/MINI34YH5DME1-xxlarge.jpg"
+    ],
+    "description": "Drop forged chrome-vanadium steel combination wire cutting pliers. Thick insulated rubber handle.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-570"
+      }
+    ]
+  },
+  {
+    "name": "Taparia Long Nose Pliers 8 Inch",
+    "brand": "Taparia",
+    "dept": "Hardware Tools",
+    "price": 290,
+    "mrp": 322,
+    "stock": 95,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "taparia",
+      "taparia"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 28
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/T/A/d/MINITABK5DF81-xxlarge.jpg"
+    ],
+    "description": "Long nose pliers designed for gripping, holding, bending, and cutting wires in tight spots.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-957"
+      }
+    ]
+  },
+  {
+    "name": "Swati Cast Iron Bench Vice Swivel Base 4 Inch",
+    "brand": "Swati",
+    "dept": "Hardware Tools",
+    "price": 1450,
+    "mrp": 1706,
+    "stock": 168,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "swati",
+      "swati"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 44
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/Q/T/d/MINIQTHBIGGC1-xxlarge.jpg"
+    ],
+    "description": "Swivel base heavy duty bench vice. Made of high grade cast iron for solid gripping and clamping.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-229"
+      }
+    ]
+  },
+  {
+    "name": "Taparia Allen Key Wrench Set (9 Pieces)",
+    "brand": "Taparia",
+    "dept": "Hardware Tools",
+    "price": 260,
+    "mrp": 289,
+    "stock": 68,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "taparia",
+      "taparia"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 26
+    },
+    "images": [
+      "https://cdn.moglix.com/p/Jn56BYddoNgVC-xxlarge.jpg"
+    ],
+    "description": "Hexagonal Allen keys L-wrench set. Durable steel construction, pocket compact organizer.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-669"
+      }
+    ]
+  },
+  {
+    "name": "Taparia Ratchet Type Torque Wrench 1/2 Inch",
+    "brand": "Taparia",
+    "dept": "Hardware Tools",
+    "price": 3200,
+    "mrp": 3556,
+    "stock": 103,
+    "emoji": "🔧",
+    "badge": "Popular",
+    "tags": [
+      "hardware tools",
+      "taparia",
+      "taparia"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 36
+    },
+    "images": [
+      "https://cdn.moglix.com/p/0aAeYZPfAAt2Y-xxlarge.JPG"
+    ],
+    "description": "Ratchet type square drive adjustable torque wrench. Precision fastening for automotive repair.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-752"
+      }
+    ]
+  },
+  {
+    "name": "Stanley hacksaw Frame with Blade 12 Inch",
+    "brand": "Stanley",
+    "dept": "Hardware Tools",
+    "price": 480,
+    "mrp": 558,
+    "stock": 136,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "stanley",
+      "stanley"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 29
+    },
+    "images": [
+      "https://cdn.moglix.com/p/pRvdWebzhU3pv-xxlarge.jpg"
+    ],
+    "description": "Adjustable heavy-duty tubular steel hacksaw frame. Includes high speed steel blade.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-792"
+      }
+    ]
+  },
+  {
+    "name": "Jon Bhandari Wood Chisel Set (3 Pieces)",
+    "brand": "Jon Bhandari",
+    "dept": "Hardware Tools",
+    "price": 420,
+    "mrp": 477,
+    "stock": 151,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "jon bhandari",
+      "jon"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 35
+    },
+    "images": [
+      "https://cdn.moglix.com/p/xamtAveuJL2VO-xxlarge.jpg"
+    ],
+    "description": "Chrome vanadium steel woodworking chisels. Features PVC impact resistant grip handles.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-245"
+      }
+    ]
+  },
+  {
+    "name": "Stanley Metal Latched Tool Box Organiser 16 Inch",
+    "brand": "Stanley",
+    "dept": "Hardware Tools",
+    "price": 850,
+    "mrp": 1000,
+    "stock": 144,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "stanley",
+      "stanley"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 20
+    },
+    "images": [
+      "https://cdn.moglix.com/p/7pyz8f6sUfrxD-xxlarge.jpg"
+    ],
+    "description": "Portable plastic tool storage organizer box. Heavy-duty metal latches for secure latching.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-899"
+      }
+    ]
+  },
+  {
+    "name": "Swati Alloy Steel Welding Chipping Hammer",
+    "brand": "Swati",
+    "dept": "Hardware Tools",
+    "price": 380,
+    "mrp": 422,
+    "stock": 107,
+    "emoji": "🔧",
+    "badge": "",
+    "tags": [
+      "hardware tools",
+      "swati",
+      "swati"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 84
+    },
+    "images": [
+      "https://cdn.moglix.com/p/bcllIChFpwN7H-xxlarge.jpg"
+    ],
+    "description": "Alloy steel welding slag chipping hammer with spring wire spiral handle. Shock absorption design.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-803"
+      }
+    ]
+  },
+  {
+    "name": "Astral PVC SWR Pipe 10ft Length 110mm",
+    "brand": "Astral",
+    "dept": "Plumbing",
+    "price": 650,
+    "mrp": 722,
+    "stock": 46,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "astral",
+      "astral"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 50
+    },
+    "images": [
+      "https://5.imimg.com/data5/SELLER/Default/2020/9/KD/CO/FW/3744426/110mm-astral-pvc-pipe-1000x1000.jpg"
+    ],
+    "description": "110mm outer diameter PVC pipe. Durable SWR drainage plumbing system application.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-766"
+      }
+    ]
+  },
+  {
+    "name": "Supreme CPVC Pipes 10ft Length 1 Inch",
+    "brand": "Supreme",
+    "dept": "Plumbing",
+    "price": 780,
+    "mrp": 886,
+    "stock": 63,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "supreme",
+      "supreme"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 26
+    },
+    "images": [
+      "https://cdn.moglix.com/p/s4kNfDyxjo0vk-xxlarge.jpg"
+    ],
+    "description": "1 inch CPVC pipe. Suitable for hot and cold water transmission, high pressure grade.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-444"
+      }
+    ]
+  },
+  {
+    "name": "Astral Aquarius UPVC Pipe Sch 40 3m",
+    "brand": "Astral",
+    "dept": "Plumbing",
+    "price": 420,
+    "mrp": 467,
+    "stock": 166,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "astral",
+      "astral"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 69
+    },
+    "images": [
+      "https://5.imimg.com/data5/JR/KH/XB/SELLER-25008036/astral-aquarius-sch-40-3-meter-upvc-pipe-1000x1000.jpg"
+    ],
+    "description": "High quality Sch 40 UPVC pipe, corrosion-resistant, ideal for cold water distribution systems.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-578"
+      }
+    ]
+  },
+  {
+    "name": "Supreme PVC Elbow Connector 90 Degree 110mm",
+    "brand": "Supreme",
+    "dept": "Plumbing",
+    "price": 140,
+    "mrp": 159,
+    "stock": 43,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "supreme",
+      "supreme"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 37
+    },
+    "images": [
+      "https://cdn.moglix.com/p/6vvdknFij2vBq-xxlarge.jpg"
+    ],
+    "description": "SWR grade PVC elbow pipe joint connector. Standard 90-degree angle sleeve reducer.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-584"
+      }
+    ]
+  },
+  {
+    "name": "Supreme PVC Tee Connector 110mm",
+    "brand": "Supreme",
+    "dept": "Plumbing",
+    "price": 165,
+    "mrp": 183,
+    "stock": 77,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "supreme",
+      "supreme"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 27
+    },
+    "images": [
+      "https://cdn.moglix.com/p/9pOiEaMEBiR7y-xxlarge.jpg"
+    ],
+    "description": "SWR PVC T-joint pipe connector. Strong structure, easy solvent socket welding.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-204"
+      }
+    ]
+  },
+  {
+    "name": "Supreme PVC Socket Connector 110mm",
+    "brand": "Supreme",
+    "dept": "Plumbing",
+    "price": 95,
+    "mrp": 108,
+    "stock": 99,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "supreme",
+      "supreme"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 71
+    },
+    "images": [
+      "https://cdn.moglix.com/p/9GxhsoqQ0QVJ1-xxlarge.jpg"
+    ],
+    "description": "PVC socket connector. Durable plumbing adapter joint for SWR piping systems.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-207"
+      }
+    ]
+  },
+  {
+    "name": "Supreme PVC Coupler Pipe Connector 110mm",
+    "brand": "Supreme",
+    "dept": "Plumbing",
+    "price": 110,
+    "mrp": 122,
+    "stock": 56,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "supreme",
+      "supreme"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 62
+    },
+    "images": [
+      "https://cdn.moglix.com/p/Hy0vNCPXxoscS-xxlarge.jpg"
+    ],
+    "description": "PVC coupler joint. Straight pipe connection sleeve adaptor for SWR plumbing setup.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-564"
+      }
+    ]
+  },
+  {
+    "name": "Zoloto Bronze Ball Valve with Strainer 25mm",
+    "brand": "Zoloto",
+    "dept": "Plumbing",
+    "price": 1250,
+    "mrp": 1471,
+    "stock": 90,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "zoloto",
+      "zoloto"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 86
+    },
+    "images": [
+      "https://cdn.moglix.com/p/FRaxcOnfuQszf-xxlarge.jpg"
+    ],
+    "description": "25mm bronze ball valve with integral screwed strainer. Designed for flow control and debris filtration.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-927"
+      }
+    ]
+  },
+  {
+    "name": "Zoloto Bronze Gate Valve Peg Type 1 Inch",
+    "brand": "Zoloto",
+    "dept": "Plumbing",
+    "price": 1150,
+    "mrp": 1353,
+    "stock": 57,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "zoloto",
+      "zoloto"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 35
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/O/H/d/MINIOHOG5DF81-xxlarge.jpg"
+    ],
+    "description": "Forged bronze gate valve. Threaded inlet/outlet plumbing flow controller valve.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-967"
+      }
+    ]
+  },
+  {
+    "name": "Cera Topaz Quarter Turn Pillar Faucet Water Tap",
+    "brand": "Cera",
+    "dept": "Plumbing",
+    "price": 850,
+    "mrp": 966,
+    "stock": 39,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "cera",
+      "cera"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 27
+    },
+    "images": [
+      "https://cdn.moglix.com/p/J/H/5/d/MINJH5IOI4XCF-xxlarge.jpg"
+    ],
+    "description": "Quarter turn pillar faucet water tap. Anti-rust brass core, smooth water flow.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-155"
+      }
+    ]
+  },
+  {
+    "name": "ZAP Brass Chrome Plated Bib Cock",
+    "brand": "ZAP",
+    "dept": "Plumbing",
+    "price": 420,
+    "mrp": 467,
+    "stock": 111,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "zap",
+      "zap"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 52
+    },
+    "images": [
+      "https://cdn.moglix.com/p/DDcevQnN0sNbJ-xxlarge.jpg"
+    ],
+    "description": "Chrome plated brass body bib cock tap. Heavy duty design for bathroom and kitchen use.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-899"
+      }
+    ]
+  },
+  {
+    "name": "Jaquar Florentine Brass Angle Valve",
+    "brand": "Jaquar",
+    "dept": "Plumbing",
+    "price": 650,
+    "mrp": 765,
+    "stock": 61,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "jaquar",
+      "jaquar"
+    ],
+    "ratings": {
+      "average": 5,
+      "count": 29
+    },
+    "images": [
+      "https://cdn.moglix.com/p/6kxubbZhyp9mj-xxlarge.jpeg"
+    ],
+    "description": "Brass chrome finish angle valve with wall flange. Durable flow regulation valve.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 5,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-901"
+      }
+    ]
+  },
+  {
+    "name": "Jaquar Solo Pillar Faucet Wash Basin Tap",
+    "brand": "Jaquar",
+    "dept": "Plumbing",
+    "price": 1850,
+    "mrp": 2176,
+    "stock": 126,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "jaquar",
+      "jaquar"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 70
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/9/V/d/MINI9VN7IZP77-xxlarge.jpg"
+    ],
+    "description": "Solo pillar faucet long neck tap. Elegant deck-mounted chrome wash basin tap.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-104"
+      }
+    ]
+  },
+  {
+    "name": "IRIS Stainless Steel Golden Kitchen Sink Tap",
+    "brand": "IRIS",
+    "dept": "Plumbing",
+    "price": 3400,
+    "mrp": 4000,
+    "stock": 26,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "iris",
+      "iris"
+    ],
+    "ratings": {
+      "average": 5,
+      "count": 51
+    },
+    "images": [
+      "https://cdn.moglix.com/p/Bmk5IW0V1y9a9-xxlarge.jpg"
+    ],
+    "description": "Premium stainless steel golden kitchen sink tap with pull-down dual-flow sprayer.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 5,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-148"
+      }
+    ]
+  },
+  {
+    "name": "Jaquar Rain Overhead Shower Chrome Finish",
+    "brand": "Jaquar",
+    "dept": "Plumbing",
+    "price": 2450,
+    "mrp": 2882,
+    "stock": 56,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "jaquar",
+      "jaquar"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 45
+    },
+    "images": [
+      "https://cdn.moglix.com/p/S3mmUlrJ41LSp-xxlarge.jpg"
+    ],
+    "description": "Overhead shower set with chrome finish. Multi-flow rain spray nozzles.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-553"
+      }
+    ]
+  },
+  {
+    "name": "Jaquar Allied Braided Flexible Hose Pipe",
+    "brand": "Jaquar",
+    "dept": "Plumbing",
+    "price": 290,
+    "mrp": 322,
+    "stock": 117,
+    "emoji": "🚰",
+    "badge": "Popular",
+    "tags": [
+      "plumbing",
+      "jaquar",
+      "jaquar"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 20
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/E/H/d/MINIEHNHI0LEF-xxlarge.jpg"
+    ],
+    "description": "450mm chrome-braided flexible connection hose pipe for geysers and basin mixers.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-445"
+      }
+    ]
+  },
+  {
+    "name": "Supreme CPVC Water Tank Connector 1.5 Inch",
+    "brand": "Supreme",
+    "dept": "Plumbing",
+    "price": 195,
+    "mrp": 217,
+    "stock": 93,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "supreme",
+      "supreme"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 24
+    },
+    "images": [
+      "https://cdn.moglix.com/p/3ZB1HWXQCQZgJ-xxlarge.jpg"
+    ],
+    "description": "1.5 inch CPVC tank connector nipple. Leakproof outlet joint connection for water tanks.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-111"
+      }
+    ]
+  },
+  {
+    "name": "Astral Weld-on 705 PVC Solvent Cement 500ml",
+    "brand": "Astral",
+    "dept": "Plumbing",
+    "price": 320,
+    "mrp": 356,
+    "stock": 39,
+    "emoji": "🚰",
+    "badge": "Popular",
+    "tags": [
+      "plumbing",
+      "astral",
+      "astral"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 33
+    },
+    "images": [
+      "https://cdn.moglix.com/p/n7Rj8ZqaNvPw3-xxlarge.jpg"
+    ],
+    "description": "Medium-bodied industrial-grade PVC pipe solvent cement. Rapid setting, strong leakproof bond.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-799"
+      }
+    ]
+  },
+  {
+    "name": "Lovely Mild Steel Rubber Lined Pipe Clamp 150mm",
+    "brand": "Lovely",
+    "dept": "Plumbing",
+    "price": 180,
+    "mrp": 200,
+    "stock": 138,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "lovely",
+      "lovely"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 12
+    },
+    "images": [
+      "https://cdn.moglix.com/p/KcZF9O6COdG7t-xxlarge.jpg"
+    ],
+    "description": "150mm mild steel split support pipe clamp with PVC/EPDM rubber lining for vibration damping.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-176"
+      }
+    ]
+  },
+  {
+    "name": "Sintex Loft 1000L Water Tank",
+    "brand": "Sintex",
+    "dept": "Plumbing",
+    "price": 6800,
+    "mrp": 7727,
+    "stock": 138,
+    "emoji": "🚰",
+    "badge": "",
+    "tags": [
+      "plumbing",
+      "sintex",
+      "sintex"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 71
+    },
+    "images": [
+      "https://cdn.moglix.com/p/GKNYAuGHEUAuM-xxlarge.jpg"
+    ],
+    "description": "1000 Liters indoor/loft water storage tank. Food-grade plastic, hygienic structure.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-236"
+      }
+    ]
+  },
+  {
+    "name": "Syska 9W Bright LED Light Bulb B22",
+    "brand": "Syska",
+    "dept": "Electrical",
+    "price": 99,
+    "mrp": 124,
+    "stock": 92,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "syska",
+      "syska"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 67
+    },
+    "images": [
+      "https://cdn.moglix.com/p/oshKDo8Gv2fuC-xxlarge.jpg"
+    ],
+    "description": "Energy saving cool day light B22 LED bulb. Safe surge protection, long life.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-593"
+      }
+    ]
+  },
+  {
+    "name": "Syska 20W LED Slim Tube Light 4ft",
+    "brand": "Syska",
+    "dept": "Electrical",
+    "price": 249,
+    "mrp": 293,
+    "stock": 107,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "syska",
+      "syska"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 86
+    },
+    "images": [
+      "https://cdn.moglix.com/p/htJW9Vv0j2UuM-xxlarge.jpg"
+    ],
+    "description": "4 feet slim wall mounted LED tube light panel. Bright white light output.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-986"
+      }
+    ]
+  },
+  {
+    "name": "Havells 1200mm High Speed Ceiling Fan",
+    "brand": "Havells",
+    "dept": "Electrical",
+    "price": 2250,
+    "mrp": 2744,
+    "stock": 100,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "havells",
+      "havells"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 25
+    },
+    "images": [
+      "https://cdn.moglix.com/p/akg9iUttPestM-xxlarge.jpg"
+    ],
+    "description": "Double ball bearing high speed 1200mm ceiling fan. Broad blades for high air delivery.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-729"
+      }
+    ]
+  },
+  {
+    "name": "Havells Ventil Air DX 200mm Exhaust Fan",
+    "brand": "Havells",
+    "dept": "Electrical",
+    "price": 1150,
+    "mrp": 1307,
+    "stock": 155,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "havells",
+      "havells"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 32
+    },
+    "images": [
+      "https://cdn.moglix.com/p/ogMeDP3CPlNTS-medium.jpg"
+    ],
+    "description": "High performance exhaust fan. Ideal for kitchen and bathroom ventilation.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-998"
+      }
+    ]
+  },
+  {
+    "name": "Anchor Roma 6A 1-Way Switch White",
+    "brand": "Anchor",
+    "dept": "Electrical",
+    "price": 32,
+    "mrp": 36,
+    "stock": 66,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "anchor",
+      "anchor"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 89
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/W/2/d/MINIW21PIZ600-xxlarge.jpg"
+    ],
+    "description": "Standard 1-way wall switch. Smooth toggle clicking, fire-retardant poly-carbonate.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-762"
+      }
+    ]
+  },
+  {
+    "name": "Anchor Roma 5-Pin Electrical Socket 6A",
+    "brand": "Anchor",
+    "dept": "Electrical",
+    "price": 65,
+    "mrp": 72,
+    "stock": 135,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "anchor",
+      "anchor"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 53
+    },
+    "images": [
+      "https://cdn.moglix.com/p/wAcQ6D0eeOmsv-xxlarge.jpg"
+    ],
+    "description": "Roma modular 5-pin wall outlet plug socket. White color, child safety shutters.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-241"
+      }
+    ]
+  },
+  {
+    "name": "Havells MCB Single Pole C-Curve 16A",
+    "brand": "Havells",
+    "dept": "Electrical",
+    "price": 199,
+    "mrp": 226,
+    "stock": 169,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "havells",
+      "havells"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 34
+    },
+    "images": [
+      "https://cdn.moglix.com/p/xdRpQNYzrgmDJ-xxlarge.jpg"
+    ],
+    "description": "Miniature circuit breaker single pole C-curve. Protects house wiring from overloads.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-313"
+      }
+    ]
+  },
+  {
+    "name": "Havells 8-Way QVE Series Distribution Board",
+    "brand": "Havells",
+    "dept": "Electrical",
+    "price": 850,
+    "mrp": 1000,
+    "stock": 43,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "havells",
+      "havells"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 77
+    },
+    "images": [
+      "https://cdn.moglix.com/p/OPRmbMLdYYpGM-xxlarge.jpg"
+    ],
+    "description": "Flush mount sheet metal distribution board box. Elegant double door, holds up to 8 MCB switches.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-490"
+      }
+    ]
+  },
+  {
+    "name": "Finolex 1.5 Sqmm FR Copper Electrical Wire Coil 90m",
+    "brand": "Finolex",
+    "dept": "Electrical",
+    "price": 1450,
+    "mrp": 1706,
+    "stock": 97,
+    "emoji": "💡",
+    "badge": "Popular",
+    "tags": [
+      "electrical",
+      "finolex",
+      "finolex"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 24
+    },
+    "images": [
+      "https://cdn.moglix.com/p/SFFNWHFXWCu69-xxlarge.jpg"
+    ],
+    "description": "Flame retardant copper electrical wire roll. 90m length, green insulation casing.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-726"
+      }
+    ]
+  },
+  {
+    "name": "Goldmedal Curve Plus Logica 4x1 2m Spike Guard Extension Board",
+    "brand": "Goldmedal",
+    "dept": "Electrical",
+    "price": 538,
+    "mrp": 633,
+    "stock": 62,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "goldmedal",
+      "goldmedal"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 49
+    },
+    "images": [
+      "https://cdn.moglix.com/p/J/H/H/d/MINJHHHXIZ600-xxlarge.jpg"
+    ],
+    "description": "Multi-socket spike extension strip board. Built-in master switch, indicator and surge protector.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-478"
+      }
+    ]
+  },
+  {
+    "name": "Schneider Electric Harmony LED Pilot Indicator Light",
+    "brand": "Schneider",
+    "dept": "Electrical",
+    "price": 180,
+    "mrp": 200,
+    "stock": 84,
+    "emoji": "💡",
+    "badge": "Popular",
+    "tags": [
+      "electrical",
+      "schneider",
+      "schneider"
+    ],
+    "ratings": {
+      "average": 5,
+      "count": 15
+    },
+    "images": [
+      "https://cdn.moglix.com/p/pJiwcNkyQjmW8-xxlarge.jpg"
+    ],
+    "description": "220V integrated LED pilot indicator signal light for control panels.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 5,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-930"
+      }
+    ]
+  },
+  {
+    "name": "Fybros Bella Ding Dong Door Bell",
+    "brand": "Fybros",
+    "dept": "Electrical",
+    "price": 240,
+    "mrp": 267,
+    "stock": 38,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "fybros",
+      "fybros"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 47
+    },
+    "images": [
+      "https://cdn.moglix.com/p/2ym3yhHK1Z0Kj-xxlarge.jpg"
+    ],
+    "description": "Electronic Ding Dong door bell. High quality digital sound output.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-528"
+      }
+    ]
+  },
+  {
+    "name": "Polycab PVC Electrical Conduit Pipe 25mm 10ft",
+    "brand": "Polycab",
+    "dept": "Electrical",
+    "price": 110,
+    "mrp": 129,
+    "stock": 56,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "polycab",
+      "polycab"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 85
+    },
+    "images": [
+      "https://5.imimg.com/data5/AR/YF/MY-47933282/white-pvc-electrical-conduit-pipe-1000x1000.jpg"
+    ],
+    "description": "Rigid PVC electrical wire conduit casing pipe. Heavy duty, fire retardant.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-778"
+      }
+    ]
+  },
+  {
+    "name": "Cona PVC 4-Way Conduit Junction Box",
+    "brand": "Cona",
+    "dept": "Electrical",
+    "price": 75,
+    "mrp": 83,
+    "stock": 50,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "cona",
+      "cona"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 58
+    },
+    "images": [
+      "https://cdn.moglix.com/p/n9qdwHe946qyv-xxlarge.jpg"
+    ],
+    "description": "PVC electrical conduit junction box. Safe wire routing and distribution enclosure.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-225"
+      }
+    ]
+  },
+  {
+    "name": "Steelgrip PVC Electrical Insulating Tape Roll 6m",
+    "brand": "Steelgrip",
+    "dept": "Electrical",
+    "price": 15,
+    "mrp": 17,
+    "stock": 108,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "steelgrip",
+      "steelgrip"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 15
+    },
+    "images": [
+      "https://cdn.moglix.com/p/Y1L2GujXold33-xxlarge.jpg"
+    ],
+    "description": "Self-adhesive PVC insulating tape roll. Heat resistant, safe wire splicing.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-185"
+      }
+    ]
+  },
+  {
+    "name": "Anchor Roma 6-Module Switch board Cover Plate",
+    "brand": "Anchor",
+    "dept": "Electrical",
+    "price": 120,
+    "mrp": 136,
+    "stock": 43,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "anchor",
+      "anchor"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 74
+    },
+    "images": [
+      "https://cdn.moglix.com/p/w75P0EMOHLq5a-xxlarge.jpg"
+    ],
+    "description": "Modular switchboard base plate. White color, fits up to 6 switch modules.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-321"
+      }
+    ]
+  },
+  {
+    "name": "Philips LED Downlight Panel Ceiling Light 15W",
+    "brand": "Philips",
+    "dept": "Electrical",
+    "price": 699,
+    "mrp": 822,
+    "stock": 41,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "philips",
+      "philips"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 27
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/O/H/d/MINIOHGGIU71O-xxlarge.jpg"
+    ],
+    "description": "Round flush ceiling panel downlight LED lamp. Energy efficient, bright warm light.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-767"
+      }
+    ]
+  },
+  {
+    "name": "Havells Jeta Valour LED Outdoor Flood Light 50W",
+    "brand": "Havells",
+    "dept": "Electrical",
+    "price": 2900,
+    "mrp": 3295,
+    "stock": 149,
+    "emoji": "💡",
+    "badge": "Popular",
+    "tags": [
+      "electrical",
+      "havells",
+      "havells"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 65
+    },
+    "images": [
+      "https://cdn.moglix.com/p/QnblQEzet8Sd7-xxlarge.jpg"
+    ],
+    "description": "50W outdoor LED flood light. IP66 waterproof rating, robust aluminium body.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-331"
+      }
+    ]
+  },
+  {
+    "name": "Havells Double Pole RCCB 63A 30mA Circuit Breaker",
+    "brand": "Havells",
+    "dept": "Electrical",
+    "price": 2250,
+    "mrp": 2647,
+    "stock": 139,
+    "emoji": "💡",
+    "badge": "Popular",
+    "tags": [
+      "electrical",
+      "havells",
+      "havells"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 33
+    },
+    "images": [
+      "https://cdn.moglix.com/p/pEmLhBPNlNM5d-xxlarge.jpg"
+    ],
+    "description": "Residual current circuit breaker. High sensitivity shock protection.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-719"
+      }
+    ]
+  },
+  {
+    "name": "Anchor 6A 3-Pin White Plug Top",
+    "brand": "Anchor",
+    "dept": "Electrical",
+    "price": 45,
+    "mrp": 50,
+    "stock": 29,
+    "emoji": "💡",
+    "badge": "",
+    "tags": [
+      "electrical",
+      "anchor",
+      "anchor"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 73
+    },
+    "images": [
+      "https://cdn.moglix.com/p/cMaNfpE3HOXX2-xxlarge.jpg"
+    ],
+    "description": "Standard 3-pin plug top. Heavy duty brass terminals, white poly-carbonate casing.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-601"
+      }
+    ]
+  },
+  {
+    "name": "Supreme Plastic Chair Web-Mesh Heavy Duty",
+    "brand": "Supreme",
+    "dept": "Furniture",
+    "price": 750,
+    "mrp": 882,
+    "stock": 109,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "supreme",
+      "supreme"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 55
+    },
+    "images": [
+      "https://cdn.moglix.com/p/Jy47u2je2xazT-xxlarge.jpg"
+    ],
+    "description": "Web-mesh design stackable heavy duty plastic chair. Durable brown plastic armchair.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-906"
+      }
+    ]
+  },
+  {
+    "name": "Nilkamal Engineered Wood Wardrobe 2-Door",
+    "brand": "Nilkamal",
+    "dept": "Furniture",
+    "price": 8499,
+    "mrp": 10624,
+    "stock": 89,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "nilkamal",
+      "nilkamal"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 79
+    },
+    "images": [
+      "https://5.imimg.com/data5/SELLER/Default/2026/1/572781292/FX/CP/ZC/183380190/engineered-wood-wardrobe-1000x1000.jpeg"
+    ],
+    "description": "Engineered wood double door wardrobe cabinet. Hanging rods and deep drawers storage.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-383"
+      }
+    ]
+  },
+  {
+    "name": "Wakefit 3-Seater Velvet Fabric Sofa Set",
+    "brand": "Wakefit",
+    "dept": "Furniture",
+    "price": 12499,
+    "mrp": 14705,
+    "stock": 133,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "wakefit",
+      "wakefit"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 71
+    },
+    "images": [
+      "https://cdn.moglix.com/p/w9fw007Lsx1j3-xxlarge.jpg"
+    ],
+    "description": "Premium upholstered fabric sofa couch. Soft density foam seat cushions.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-256"
+      }
+    ]
+  },
+  {
+    "name": "Nilkamal Solid Wood 4-Seater Dining Table",
+    "brand": "Nilkamal",
+    "dept": "Furniture",
+    "price": 9999,
+    "mrp": 11764,
+    "stock": 159,
+    "emoji": "🛋️",
+    "badge": "Popular",
+    "tags": [
+      "furniture",
+      "nilkamal",
+      "nilkamal"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 43
+    },
+    "images": [
+      "https://cdn.moglix.com/p/AhGkmJlxaB3kc-xxlarge.jpg"
+    ],
+    "description": "Polished wood 4-seater dining table. Classic square family dining table.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-694"
+      }
+    ]
+  },
+  {
+    "name": "Sleepwell Dual Comfort Queen Size Mattress",
+    "brand": "Sleepwell",
+    "dept": "Furniture",
+    "price": 7200,
+    "mrp": 8780,
+    "stock": 67,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "sleepwell",
+      "sleepwell"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 50
+    },
+    "images": [
+      "https://5.imimg.com/data5/MW/GN/GLADMIN-66285049/sleepwell-elegance-mattress-1000x1000.jpg"
+    ],
+    "description": "Dual feel medium-soft and firm foam mattress. Breathable quilted fabric cover.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-976"
+      }
+    ]
+  },
+  {
+    "name": "Wakefit Wooden Bedside Nightstand Table",
+    "brand": "Wakefit",
+    "dept": "Furniture",
+    "price": 1450,
+    "mrp": 1611,
+    "stock": 120,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "wakefit",
+      "wakefit"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 23
+    },
+    "images": [
+      "https://5.imimg.com/data5/PC/MC/HT/SELLER-105073984/img-0958-jpg-1000x1000.jpg"
+    ],
+    "description": "Sheesham wood bedside nightstand table drawer unit. Compact bedroom organizer drawer.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-419"
+      }
+    ]
+  },
+  {
+    "name": "Nilkamal Plastic Dining Table 4-Seater",
+    "brand": "Nilkamal",
+    "dept": "Furniture",
+    "price": 2800,
+    "mrp": 3111,
+    "stock": 119,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "nilkamal",
+      "nilkamal"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 32
+    },
+    "images": [
+      "https://5.imimg.com/data5/TK/NQ/GLADMIN-2/nilkamal-dining-table-500x500.jpg"
+    ],
+    "description": "Rectangular brown blow molded plastic dining table. Tough legs, easy wipe cleaning.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-930"
+      }
+    ]
+  },
+  {
+    "name": "Supreme Plastic Stool Medium Comfort",
+    "brand": "Supreme",
+    "dept": "Furniture",
+    "price": 250,
+    "mrp": 278,
+    "stock": 159,
+    "emoji": "🛋️",
+    "badge": "Popular",
+    "tags": [
+      "furniture",
+      "supreme",
+      "supreme"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 42
+    },
+    "images": [
+      "https://cdn.moglix.com/p/d1ooaLHCHMH89-xxlarge.jpg"
+    ],
+    "description": "Round plastic stackable utility stepper stool. Anti slip rubber base shoes.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-694"
+      }
+    ]
+  },
+  {
+    "name": "Wakefit King Size Storage Wood Bed Frame",
+    "brand": "Wakefit",
+    "dept": "Furniture",
+    "price": 16500,
+    "mrp": 19412,
+    "stock": 66,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "wakefit",
+      "wakefit"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 67
+    },
+    "images": [
+      "https://5.imimg.com/data5/SELLER/Default/2023/9/341682378/RY/CD/JT/197130466/wakefit-bed-double-bed-queen-size-bed-1000x1000.jpg"
+    ],
+    "description": "Solid wood king bed frame with under bed box storage compartments.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-390"
+      }
+    ]
+  },
+  {
+    "name": "Sleepwell Orthopaedic Memory Foam Pillow",
+    "brand": "Sleepwell",
+    "dept": "Furniture",
+    "price": 799,
+    "mrp": 908,
+    "stock": 68,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "sleepwell",
+      "sleepwell"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 26
+    },
+    "images": [
+      "https://4.imimg.com/data4/TH/AC/GLADMIN-184151/sleepwell-pillows-500x500.jpg"
+    ],
+    "description": "Ergonomic support memory foam pillow. Relieves neck stiffness and supports sleep.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-157"
+      }
+    ]
+  },
+  {
+    "name": "Nilkamal Metal Foldable Clothes Drying Stand",
+    "brand": "Nilkamal",
+    "dept": "Furniture",
+    "price": 1450,
+    "mrp": 1706,
+    "stock": 132,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "nilkamal",
+      "nilkamal"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 58
+    },
+    "images": [
+      "https://5.imimg.com/data5/SELLER/Default/2024/2/393314535/BU/UZ/NW/9406499/nilkamal-zeal-cloth-dryer-silver-1000x1000.png"
+    ],
+    "description": "Stainless steel folding clothes dry rack stand. Multi rails for laundry drying.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-854"
+      }
+    ]
+  },
+  {
+    "name": "Wakefit Ergonomic Office High Back Chair",
+    "brand": "Wakefit",
+    "dept": "Furniture",
+    "price": 5400,
+    "mrp": 6353,
+    "stock": 90,
+    "emoji": "🛋️",
+    "badge": "Popular",
+    "tags": [
+      "furniture",
+      "wakefit",
+      "wakefit"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 77
+    },
+    "images": [
+      "https://cdn.moglix.com/p/aKUgl1mDAhAFg-xxlarge.jpg"
+    ],
+    "description": "Mesh office chair. High back headrest, adjustable armrests, rolling wheels base.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-297"
+      }
+    ]
+  },
+  {
+    "name": "Nilkamal Plastic Shoe Storage Rack 4-Tier",
+    "brand": "Nilkamal",
+    "dept": "Furniture",
+    "price": 890,
+    "mrp": 1011,
+    "stock": 97,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "nilkamal",
+      "nilkamal"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 66
+    },
+    "images": [
+      "https://cdn.moglix.com/p/UktAuWLfAL8nR-xxlarge.jpg"
+    ],
+    "description": "4-tier plastic shoe rack organizer shelf cabinet. Sandy brown color.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-904"
+      }
+    ]
+  },
+  {
+    "name": "Supreme Plastic Foldable Utility Center Table",
+    "brand": "Supreme",
+    "dept": "Furniture",
+    "price": 1850,
+    "mrp": 2056,
+    "stock": 104,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "supreme",
+      "supreme"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 49
+    },
+    "images": [
+      "https://cdn.moglix.com/p/QMOdj4LGMiENW-xxlarge.jpg"
+    ],
+    "description": "Lightweight portable utility folding table. Perfect for study, picnic, or garden.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-703"
+      }
+    ]
+  },
+  {
+    "name": "Wakefit Fabric Pouffe Ottoman footrest Stool",
+    "brand": "Wakefit",
+    "dept": "Furniture",
+    "price": 1250,
+    "mrp": 1389,
+    "stock": 147,
+    "emoji": "🛋️",
+    "badge": "Popular",
+    "tags": [
+      "furniture",
+      "wakefit",
+      "wakefit"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 42
+    },
+    "images": [
+      "https://5.imimg.com/data5/SELLER/Default/2021/5/YV/JR/YM/57491891/wakefit-napper-ottoman-1000x1000.jpg"
+    ],
+    "description": "Upholstered fabric pouffe ottoman footrest stool. Stylish round footrest seat.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-862"
+      }
+    ]
+  },
+  {
+    "name": "Sleepwell Premium Comforter Blanket Double Bed",
+    "brand": "Sleepwell",
+    "dept": "Furniture",
+    "price": 1890,
+    "mrp": 2224,
+    "stock": 123,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "sleepwell",
+      "sleepwell"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 88
+    },
+    "images": [
+      "https://5.imimg.com/data5/SELLER/Default/2023/12/366609986/AG/IB/OD/133920743/sleepwell-double-bed-comforter-1000x1000.jpg"
+    ],
+    "description": "Quilted microfibre double bed blanket comforter. Warm, soft, and hypoallergenic.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-354"
+      }
+    ]
+  },
+  {
+    "name": "Nilkamal Steel Almirah Wardrobe Locker Safe",
+    "brand": "Nilkamal",
+    "dept": "Furniture",
+    "price": 11500,
+    "mrp": 13529,
+    "stock": 143,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "nilkamal",
+      "nilkamal"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 37
+    },
+    "images": [
+      "https://5.imimg.com/data5/GLADMIN/Default/2021/7/NY/FS/TV/86068/nilkamal-almirahs-500x500.jpg"
+    ],
+    "description": "Heavy-duty steel wardrobe cabinet storage closet. Integrated locker and keys.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-944"
+      }
+    ]
+  },
+  {
+    "name": "Wakefit Metal Laptop Desk Bed Tray Stand",
+    "brand": "Wakefit",
+    "dept": "Furniture",
+    "price": 680,
+    "mrp": 773,
+    "stock": 149,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "wakefit",
+      "wakefit"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 43
+    },
+    "images": [
+      "https://cdn.moglix.com/p/WFy0s0GBCsAKj-xxlarge.jpg"
+    ],
+    "description": "Wooden bed tray table. Folding steel legs, mobile slot, laptop lap desk.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-793"
+      }
+    ]
+  },
+  {
+    "name": "Supreme Plastic Armless Stackable Cafe Chair",
+    "brand": "Supreme",
+    "dept": "Furniture",
+    "price": 550,
+    "mrp": 611,
+    "stock": 85,
+    "emoji": "🛋️",
+    "badge": "Popular",
+    "tags": [
+      "furniture",
+      "supreme",
+      "supreme"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 67
+    },
+    "images": [
+      "https://cdn.moglix.com/p/iLp5SW9ZmVtn6-xxlarge.jpg"
+    ],
+    "description": "Armless stackable molded plastic cafe chair. Lightweight seating cafeteria chair.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-257"
+      }
+    ]
+  },
+  {
+    "name": "Sleepwell Coir Fiber Mattress Single Bed",
+    "brand": "Sleepwell",
+    "dept": "Furniture",
+    "price": 4200,
+    "mrp": 4667,
+    "stock": 108,
+    "emoji": "🛋️",
+    "badge": "",
+    "tags": [
+      "furniture",
+      "sleepwell",
+      "sleepwell"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 24
+    },
+    "images": [
+      "https://4.imimg.com/data4/DM/KC/MY-3181745/sleepwell-mattress-1000x1000.png"
+    ],
+    "description": "Single bed firm coir fiber mattress. Natural rubberized coir for back support.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-275"
+      }
+    ]
+  },
+  {
+    "name": "Panasonic 193L Single Door Refrigerator",
+    "brand": "Panasonic",
+    "dept": "Home Appliances",
+    "price": 14990,
+    "mrp": 17635,
+    "stock": 118,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "panasonic",
+      "panasonic"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 80
+    },
+    "images": [
+      "https://cdn.moglix.com/p/8U3qdpmb2PmfL-xxlarge.jpg"
+    ],
+    "description": "Direct Cool single door refrigerator with intelligent inverter compressor and quick ice making.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-615"
+      }
+    ]
+  },
+  {
+    "name": "Toshiba 7kg Fully Automatic Front Load Washing Machine",
+    "brand": "Toshiba",
+    "dept": "Home Appliances",
+    "price": 26990,
+    "mrp": 33738,
+    "stock": 35,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "toshiba",
+      "toshiba"
+    ],
+    "ratings": {
+      "average": 5,
+      "count": 87
+    },
+    "images": [
+      "https://cdn.moglix.com/p/nrrbIa6U7d5tF-xxlarge.jpg"
+    ],
+    "description": "Fully automatic front loading washing machine with GreatWaves technology and durable inverter motor.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 5,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-203"
+      }
+    ]
+  },
+  {
+    "name": "Bajaj 20L Solo Microwave Oven",
+    "brand": "Bajaj",
+    "dept": "Home Appliances",
+    "price": 5499,
+    "mrp": 6110,
+    "stock": 87,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "bajaj",
+      "bajaj"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 72
+    },
+    "images": [
+      "https://cdn.moglix.com/p/wuRUV4DoiE7wF-xxlarge.jpg"
+    ],
+    "description": "Solo microwave oven with mechanical control knobs and multi-stage defrosting options.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-664"
+      }
+    ]
+  },
+  {
+    "name": "Kent Ultra Storage RO Water Purifier",
+    "brand": "Kent",
+    "dept": "Home Appliances",
+    "price": 12500,
+    "mrp": 14706,
+    "stock": 80,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "kent",
+      "kent"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 83
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/T/8/d/MINIT8G7IID7S-xxlarge.jpg"
+    ],
+    "description": "Wall-mountable RO water purifier with multi-stage filtration and large storage tank.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-157"
+      }
+    ]
+  },
+  {
+    "name": "Sujata Dynamix 900W Mixer Grinder",
+    "brand": "Sujata",
+    "dept": "Home Appliances",
+    "price": 5499,
+    "mrp": 6249,
+    "stock": 169,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "sujata",
+      "sujata"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 49
+    },
+    "images": [
+      "https://cdn.moglix.com/p/lz0uGa92foWQx-xxlarge.jpg"
+    ],
+    "description": "Heavy duty 900W motor mixer grinder with 3 stainless steel jars for dry and wet grinding.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-259"
+      }
+    ]
+  },
+  {
+    "name": "Preethi Blue Leaf 600W Juicer Mixer Grinder",
+    "brand": "Preethi",
+    "dept": "Home Appliances",
+    "price": 3899,
+    "mrp": 4587,
+    "stock": 162,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "preethi",
+      "preethi"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 54
+    },
+    "images": [
+      "https://cdn.moglix.com/p/kauWepIKo4kZD-medium.jpg"
+    ],
+    "description": "600W high performance motor juicer mixer grinder with leakproof stainless steel jars.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-156"
+      }
+    ]
+  },
+  {
+    "name": "Bajaj 1.5L Stainless Steel Electric Kettle",
+    "brand": "Bajaj",
+    "dept": "Home Appliances",
+    "price": 999,
+    "mrp": 1175,
+    "stock": 74,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "bajaj",
+      "bajaj"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 70
+    },
+    "images": [
+      "https://cdn.moglix.com/p/FWfRHDEgQyQWJ-medium.jpg"
+    ],
+    "description": "1500W rapid boil electric water kettle. Cordless steel base, auto shut-off safety protection.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-593"
+      }
+    ]
+  },
+  {
+    "name": "Prestige Induction Cooktop G3 Glass Top",
+    "brand": "Prestige",
+    "dept": "Home Appliances",
+    "price": 1850,
+    "mrp": 2176,
+    "stock": 126,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "prestige",
+      "prestige"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 53
+    },
+    "images": [
+      "https://cdn.moglix.com/p/yK3ZHY5XuO91d-xxlarge.jpg"
+    ],
+    "description": "Glass induction cooktop panel. Anti magnetic wall cooktop, auto power saver.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-195"
+      }
+    ]
+  },
+  {
+    "name": "Prestige Electric Rice Cooker 1.8L Double Pot",
+    "brand": "Prestige",
+    "dept": "Home Appliances",
+    "price": 2100,
+    "mrp": 2333,
+    "stock": 155,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "prestige",
+      "prestige"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 28
+    },
+    "images": [
+      "https://cdn.moglix.com/p/qX9VfP3ZZoUI7-xxlarge.jpg"
+    ],
+    "description": "1.8L kitchen electric rice cooker. Double pot, keep warm automatic control.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-615"
+      }
+    ]
+  },
+  {
+    "name": "Prestige Sandwich Maker Toast Grill 800W",
+    "brand": "Prestige",
+    "dept": "Home Appliances",
+    "price": 1150,
+    "mrp": 1278,
+    "stock": 169,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "prestige",
+      "prestige"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 60
+    },
+    "images": [
+      "https://cdn.moglix.com/p/NNeIJ3nZs6hNM-medium.jpg"
+    ],
+    "description": "Non-stick coating toast sandwich maker press. Floating hinge grill plate.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-203"
+      }
+    ]
+  },
+  {
+    "name": "Havells 2-Slice Pop-Up Toaster 800W",
+    "brand": "Havells",
+    "dept": "Home Appliances",
+    "price": 1450,
+    "mrp": 1648,
+    "stock": 86,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "havells",
+      "havells"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 33
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/N/E/d/MININE4VIGL3O-xxlarge.jpg"
+    ],
+    "description": "2-slice pop-up toaster with electronic browning control and integrated bun warmer.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-607"
+      }
+    ]
+  },
+  {
+    "name": "Eureka Forbes Wet & Dry Vacuum Cleaner 1200W",
+    "brand": "Eureka Forbes",
+    "dept": "Home Appliances",
+    "price": 6800,
+    "mrp": 8293,
+    "stock": 26,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "eureka forbes",
+      "eureka"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 87
+    },
+    "images": [
+      "https://cdn.moglix.com/p/zVavg5dbkco3B-xxlarge.jpg"
+    ],
+    "description": "High suction power wet and dry vacuum cleaner with blower function and accessories.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-757"
+      }
+    ]
+  },
+  {
+    "name": "Symphony Personal Tower Air Cooler 30L",
+    "brand": "Symphony",
+    "dept": "Home Appliances",
+    "price": 6499,
+    "mrp": 7646,
+    "stock": 117,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "symphony",
+      "symphony"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 10
+    },
+    "images": [
+      "https://cdn.moglix.com/p/CLxXg1TevbwMb-xxlarge.png"
+    ],
+    "description": "Sleek personal tower air cooler with honeycomb pads and multi-stage air purification.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-869"
+      }
+    ]
+  },
+  {
+    "name": "Bajaj Majesty Fan Heater Room Warmer 2000W",
+    "brand": "Bajaj",
+    "dept": "Home Appliances",
+    "price": 2200,
+    "mrp": 2444,
+    "stock": 133,
+    "emoji": "🍳",
+    "badge": "Popular",
+    "tags": [
+      "home appliances",
+      "bajaj",
+      "bajaj"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 76
+    },
+    "images": [
+      "https://cdn.moglix.com/p/1XUPcNOcjqQV5-medium.jpg"
+    ],
+    "description": "Dual heat setting fan heater room warmer with built-in safety thermal cut-off.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-104"
+      }
+    ]
+  },
+  {
+    "name": "Bajaj Splendora 3L Instant Water Geyser",
+    "brand": "Bajaj",
+    "dept": "Home Appliances",
+    "price": 2900,
+    "mrp": 3295,
+    "stock": 87,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "bajaj",
+      "bajaj"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 29
+    },
+    "images": [
+      "https://cdn.moglix.com/p/lxEUQr1mpwkds-xxlarge.jpeg"
+    ],
+    "description": "3L instant water geyser heater. ABS shockproof body, copper heating element.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-822"
+      }
+    ]
+  },
+  {
+    "name": "Glen Curved Glass Kitchen Chimney 60cm",
+    "brand": "Glen",
+    "dept": "Home Appliances",
+    "price": 9500,
+    "mrp": 11875,
+    "stock": 51,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "glen",
+      "glen"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 54
+    },
+    "images": [
+      "https://cdn.moglix.com/p/K1Y6wfKJvwXVe-xxlarge.jpeg"
+    ],
+    "description": "Auto clean curved glass kitchen chimney with powerful suction motor and baffle filters.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-701"
+      }
+    ]
+  },
+  {
+    "name": "Orient Summer Cool 1400mm Ceiling Fan",
+    "brand": "Orient",
+    "dept": "Home Appliances",
+    "price": 2150,
+    "mrp": 2389,
+    "stock": 63,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "orient",
+      "orient"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 21
+    },
+    "images": [
+      "https://cdn.moglix.com/p/J/H/Z/d/MINJHZVFIJHTW-xxlarge.jpg"
+    ],
+    "description": "Orient sweep 1400mm high speed ceiling fan. Durable body and high air delivery.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-480"
+      }
+    ]
+  },
+  {
+    "name": "Bajaj Table Fan 400mm Sweep High Speed",
+    "brand": "Bajaj",
+    "dept": "Home Appliances",
+    "price": 1850,
+    "mrp": 2102,
+    "stock": 128,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "bajaj",
+      "bajaj"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 70
+    },
+    "images": [
+      "https://cdn.moglix.com/p/JOrZl8G72NnOo-xxlarge.jpg"
+    ],
+    "description": "High speed oscillating table fan with silent motor operation and thermal protection.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-436"
+      }
+    ]
+  },
+  {
+    "name": "McCoy Venus 750W Dry Iron",
+    "brand": "McCoy",
+    "dept": "Home Appliances",
+    "price": 690,
+    "mrp": 767,
+    "stock": 26,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "mccoy",
+      "mccoy"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 52
+    },
+    "images": [
+      "https://cdn.moglix.com/p/zPUszvVcNC1A7-xxlarge.jpg"
+    ],
+    "description": "Lightweight dry clothing iron. Teflon non-stick soleplate, adjustable temperature control.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-839"
+      }
+    ]
+  },
+  {
+    "name": "Havells Compact Hair Dryer 1200W",
+    "brand": "Havells",
+    "dept": "Home Appliances",
+    "price": 950,
+    "mrp": 1118,
+    "stock": 70,
+    "emoji": "🍳",
+    "badge": "",
+    "tags": [
+      "home appliances",
+      "havells",
+      "havells"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 63
+    },
+    "images": [
+      "https://cdn.moglix.com/p/9lKeIwKBp30cv-xxlarge.jpg"
+    ],
+    "description": "1200W compact hair blow dryer. 2 heat settings, silent performance, foldable handle.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-606"
+      }
+    ]
+  },
+  {
+    "name": "Logitech K230 Wireless Keyboard",
+    "brand": "Logitech",
+    "dept": "Electronics",
+    "price": 999,
+    "mrp": 1175,
+    "stock": 40,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "logitech",
+      "logitech"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 41
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/Q/L/d/MINIQLSOIU8QO-xxlarge.jpg"
+    ],
+    "description": "Compact wireless keyboard with 2-year battery life, auto-sleep feature, and whisper-quiet keys.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-700"
+      }
+    ]
+  },
+  {
+    "name": "Logitech M170 Black Wireless Optical Mouse",
+    "brand": "Logitech",
+    "dept": "Electronics",
+    "price": 699,
+    "mrp": 777,
+    "stock": 133,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "logitech",
+      "logitech"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 69
+    },
+    "images": [
+      "https://cdn.moglix.com/p/I/9/1/d/MINI91D2IBAH3-xxlarge.jpg"
+    ],
+    "description": "Reliable 2.4GHz wireless connection, 12-month battery life, ambidextrous design optical mouse.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-228"
+      }
+    ]
+  },
+  {
+    "name": "Cosmic Byte Hydra RGB Black Wired Optical Gaming Mouse",
+    "brand": "Cosmic Byte",
+    "dept": "Electronics",
+    "price": 890,
+    "mrp": 1011,
+    "stock": 158,
+    "emoji": "💻",
+    "badge": "Popular",
+    "tags": [
+      "electronics",
+      "cosmic byte",
+      "cosmic"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 32
+    },
+    "images": [
+      "https://cdn.moglix.com/p/BCI3n1tx1qzS4-xxlarge.jpg"
+    ],
+    "description": "Ergonomic gaming mouse with customizable RGB lighting profiles, high-precision optical sensor up to 7200 DPI.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-328"
+      }
+    ]
+  },
+  {
+    "name": "Zebronics Zeb-Thunder Sea Green Wireless Headphones",
+    "brand": "Zebronics",
+    "dept": "Electronics",
+    "price": 1199,
+    "mrp": 1411,
+    "stock": 158,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "zebronics",
+      "zebronics"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 37
+    },
+    "images": [
+      "https://cdn.moglix.com/p/zs0HLegjpNbQP-xxlarge.jpg"
+    ],
+    "description": "Over-ear wireless bluetooth headphones with comfortable earcups, micro SD card slot, and FM radio support.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-328"
+      }
+    ]
+  },
+  {
+    "name": "Poly Plantronics C3220 Black USB Wired Headset",
+    "brand": "Poly",
+    "dept": "Electronics",
+    "price": 2850,
+    "mrp": 3167,
+    "stock": 95,
+    "emoji": "💻",
+    "badge": "Popular",
+    "tags": [
+      "electronics",
+      "poly",
+      "poly"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 63
+    },
+    "images": [
+      "https://cdn.moglix.com/p/wxZrPyLYNZqWp-xxlarge.jpg"
+    ],
+    "description": "Comfortable USB wired stereo headset with noise-canceling microphone, dynamic EQ, and inline call control.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-612"
+      }
+    ]
+  },
+  {
+    "name": "JBL Flip 5 20W Stereo Waterproof Bluetooth Speaker",
+    "brand": "JBL",
+    "dept": "Electronics",
+    "price": 5999,
+    "mrp": 7499,
+    "stock": 98,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "jbl",
+      "jbl"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 14
+    },
+    "images": [
+      "https://cdn.moglix.com/p/Q8nyCcANfIRmc-xxlarge.jpeg"
+    ],
+    "description": "Portable IPX7 waterproof Bluetooth speaker with 12 hours of playtime, premium bass radiator design.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-408"
+      }
+    ]
+  },
+  {
+    "name": "Krisons Avarin 100W 2.1 Channel Black Bluetooth Soundbar Speaker",
+    "brand": "Krisons",
+    "dept": "Electronics",
+    "price": 4299,
+    "mrp": 5058,
+    "stock": 163,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "krisons",
+      "krisons"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 55
+    },
+    "images": [
+      "https://cdn.moglix.com/p/3OCmoMs0gcO0m-xxlarge.jpg"
+    ],
+    "description": "100W 2.1 channel soundbar system with external subwoofer, multi-connectivity support (USB, AUX, Coaxial, BT).",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-624"
+      }
+    ]
+  },
+  {
+    "name": "Logitech C270 HD Webcam",
+    "brand": "Logitech",
+    "dept": "Electronics",
+    "price": 1850,
+    "mrp": 2056,
+    "stock": 70,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "logitech",
+      "logitech"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 81
+    },
+    "images": [
+      "https://cdn.moglix.com/p/5Nb7q7zP7bc8S-xxlarge.jpg"
+    ],
+    "description": "Widescreen HD 720p video calling webcam with automatic light correction and built-in noise-reducing mic.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-413"
+      }
+    ]
+  },
+  {
+    "name": "Acer QG241Y 23.8 Inch FHD Black Gaming Monitor",
+    "brand": "Acer",
+    "dept": "Electronics",
+    "price": 7999,
+    "mrp": 9755,
+    "stock": 37,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "acer",
+      "acer"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 45
+    },
+    "images": [
+      "https://cdn.moglix.com/p/N0mcN1bwmS1JI-xxlarge.jpg"
+    ],
+    "description": "23.8-inch Full HD (1920x1080) gaming monitor with VA panel, 75Hz refresh rate, AMD FreeSync technology.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-214"
+      }
+    ]
+  },
+  {
+    "name": "Sandisk 1TB Type-C External SSD Drive",
+    "brand": "SanDisk",
+    "dept": "Electronics",
+    "price": 6499,
+    "mrp": 7646,
+    "stock": 138,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "sandisk",
+      "sandisk"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 25
+    },
+    "images": [
+      "https://cdn.moglix.com/p/UevEzKQyETRpZ-xxlarge.jpg"
+    ],
+    "description": "High-speed portable solid state drive with up to 520MB/s read speeds, USB 3.2 Gen 2 Type-C interface.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-298"
+      }
+    ]
+  },
+  {
+    "name": "SanDisk Ultra Flair 512GB Silver USB 3.0 Flash Drive",
+    "brand": "SanDisk",
+    "dept": "Electronics",
+    "price": 3499,
+    "mrp": 4116,
+    "stock": 79,
+    "emoji": "💻",
+    "badge": "Popular",
+    "tags": [
+      "electronics",
+      "sandisk",
+      "sandisk"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 13
+    },
+    "images": [
+      "https://cdn.moglix.com/p/RTQOTggD7IsCD-xxlarge.jpg"
+    ],
+    "description": "High-speed USB 3.0 flash drive with sleek, durable metal casing, transfers files up to 15 times faster than USB 2.0.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-342"
+      }
+    ]
+  },
+  {
+    "name": "Ambrane PP-125 10000mAh Black Li-Polymer Power Bank",
+    "brand": "Ambrane",
+    "dept": "Electronics",
+    "price": 999,
+    "mrp": 1110,
+    "stock": 115,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "ambrane",
+      "ambrane"
+    ],
+    "ratings": {
+      "average": 5,
+      "count": 54
+    },
+    "images": [
+      "https://cdn.moglix.com/p/94JGrshEEfeAU-xxlarge.jpg"
+    ],
+    "description": "10000mAh lithium-polymer power bank with dual USB output ports, 9 layers of chipset protection.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 5,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-263"
+      }
+    ]
+  },
+  {
+    "name": "Lenovo M8 (4th Gen, 2024) Arctic Grey 4G LTE/Wi-Fi Tablet",
+    "brand": "Lenovo",
+    "dept": "Electronics",
+    "price": 8999,
+    "mrp": 10587,
+    "stock": 43,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "lenovo",
+      "lenovo"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 29
+    },
+    "images": [
+      "https://cdn.moglix.com/p/Y2PCr18V1myPB-xxlarge.jpg"
+    ],
+    "description": "8-inch HD tablet with MediaTek processor, 4GB RAM, 64GB storage, 4G LTE calling, and Android 13.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-808"
+      }
+    ]
+  },
+  {
+    "name": "HP M126nw All-in-One Wireless Laser Printer",
+    "brand": "HP",
+    "dept": "Electronics",
+    "price": 14200,
+    "mrp": 16706,
+    "stock": 121,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "hp",
+      "hp"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 44
+    },
+    "images": [
+      "https://cdn.moglix.com/p/FqAblkcj5mMtS-xxlarge.jpg"
+    ],
+    "description": "Multifunction monochrome laser printer with wireless network printing, scanning, and copying capabilities.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-785"
+      }
+    ]
+  },
+  {
+    "name": "TP-Link TL-WR820N 300Mbps Wireless N Speed Router",
+    "brand": "TP-Link",
+    "dept": "Electronics",
+    "price": 999,
+    "mrp": 1135,
+    "stock": 125,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "tp-link",
+      "tp-link"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 25
+    },
+    "images": [
+      "https://cdn.moglix.com/p/NYF6szufp5Y1L-xxlarge.jpg"
+    ],
+    "description": "300Mbps wireless transmission rate ideal for basic internet tasks, guest network protection, IPv6 supported.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-457"
+      }
+    ]
+  },
+  {
+    "name": "CP Plus Guard+ 2.4MP Day & Night Color Indoor Dome CCTV Camera",
+    "brand": "CP Plus",
+    "dept": "Electronics",
+    "price": 1350,
+    "mrp": 1588,
+    "stock": 26,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "cp plus",
+      "cp"
+    ],
+    "ratings": {
+      "average": 4.6,
+      "count": 23
+    },
+    "images": [
+      "https://cdn.moglix.com/p/WTdtB70WHpTRB-xxlarge.jpg"
+    ],
+    "description": "2.4MP indoor dome CCTV camera with full-color night vision, built-in high sensitivity microphone.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-925"
+      }
+    ]
+  },
+  {
+    "name": "boAt Flash RTL 1.35 Inch Lightning Black Smart Watch",
+    "brand": "boAt",
+    "dept": "Electronics",
+    "price": 2499,
+    "mrp": 2777,
+    "stock": 76,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "boat",
+      "boat"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 58
+    },
+    "images": [
+      "https://cdn.moglix.com/p/OyYl64DwjfqNd-xxlarge.jpg"
+    ],
+    "description": "Smartwatch with 1.3\" circular display, blood oxygen monitoring, heart rate tracker, and 10 sports modes.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-979"
+      }
+    ]
+  },
+  {
+    "name": "Quantum QHM9800 Black Mechanical Keyboard",
+    "brand": "Quantum",
+    "dept": "Electronics",
+    "price": 1699,
+    "mrp": 1999,
+    "stock": 87,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "quantum",
+      "quantum"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 20
+    },
+    "images": [
+      "https://cdn.moglix.com/p/adc3jzGuEMlBf-xxlarge.jpg"
+    ],
+    "description": "Full-sized mechanical gaming keyboard with tactile blue switches, customizable RGB backlit modes.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-428"
+      }
+    ]
+  },
+  {
+    "name": "Zebronics Wonder Bar 2.0 10W Black Detachable Speaker with RGB Lights",
+    "brand": "Zebronics",
+    "dept": "Electronics",
+    "price": 999,
+    "mrp": 1135,
+    "stock": 94,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "zebronics",
+      "zebronics"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 21
+    },
+    "images": [
+      "https://cdn.moglix.com/p/LvCY9kd0rqXqP-xxlarge.jpg"
+    ],
+    "description": "Detachable 2.0 channel soundbar speaker with 10W output, RGB LED lighting, and 3.5mm AUX input.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-778"
+      }
+    ]
+  },
+  {
+    "name": "My Fav 25L Polyester Grey Laptop Backpack",
+    "brand": "My Fav",
+    "dept": "Electronics",
+    "price": 890,
+    "mrp": 1047,
+    "stock": 105,
+    "emoji": "💻",
+    "badge": "",
+    "tags": [
+      "electronics",
+      "my fav",
+      "my"
+    ],
+    "ratings": {
+      "average": 5,
+      "count": 15
+    },
+    "images": [
+      "https://cdn.moglix.com/p/KGPWm8afst8mf-xxlarge.jpg"
+    ],
+    "description": "Durable 25L water-resistant polyester laptop backpack with padded compartment fits up to 15.6\" laptops.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 5,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-271"
+      }
+    ]
+  },
+  {
+    "name": "Dettol Soap",
+    "brand": "Dettol",
+    "dept": "General Store",
+    "price": 45,
+    "mrp": 50,
+    "stock": 96,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "dettol",
+      "dettol"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 27
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/40325774_5-dettol-skincare-soap.jpg"
+    ],
+    "description": "Antiseptic skincare soap bar. Deeply cleanses and protects from germs.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-395"
+      }
+    ]
+  },
+  {
+    "name": "Lifebuoy Soap",
+    "brand": "Lifebuoy",
+    "dept": "General Store",
+    "price": 35,
+    "mrp": 39,
+    "stock": 167,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "lifebuoy",
+      "lifebuoy"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 10
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/307118_10-lifebuoy-soap-bar-care-germ-protection.jpg"
+    ],
+    "description": "Daily germ protection bath soap bar for advanced skin health and care.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-575"
+      }
+    ]
+  },
+  {
+    "name": "Lux Soap",
+    "brand": "Lux",
+    "dept": "General Store",
+    "price": 40,
+    "mrp": 44,
+    "stock": 65,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "lux",
+      "lux"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 33
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/100006721_4-lux-soap-soft-glow-rose-vitamin-e.jpg"
+    ],
+    "description": "Soft glow rose water and Vitamin E infused nourishing bath soap bar.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-972"
+      }
+    ]
+  },
+  {
+    "name": "Surf Excel Detergent",
+    "brand": "Surf Excel",
+    "dept": "General Store",
+    "price": 140,
+    "mrp": 156,
+    "stock": 162,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "surf excel",
+      "surf"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 79
+    },
+    "images": [
+      "https://www.bigbasket.com/media/uploads/p/l/40075537_6-surf-excel-easy-wash-detergent-powder.jpg"
+    ],
+    "description": "Washing machine and hand wash laundry detergent powder for superior stain removal.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-510"
+      }
+    ]
+  },
+  {
+    "name": "Ariel Detergent",
+    "brand": "Ariel",
+    "dept": "General Store",
+    "price": 160,
+    "mrp": 178,
+    "stock": 145,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "ariel",
+      "ariel"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 41
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/1216784_2-ariel-matic-top-load-detergent-washing-powder.jpg"
+    ],
+    "description": "Matic top load washing machine detergent powder. Tough stain removal in 1 wash.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-485"
+      }
+    ]
+  },
+  {
+    "name": "Vim Dishwash Bar",
+    "brand": "Vim",
+    "dept": "General Store",
+    "price": 30,
+    "mrp": 33,
+    "stock": 161,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "vim",
+      "vim"
+    ],
+    "ratings": {
+      "average": 4.9,
+      "count": 78
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/1225693_4-vim-dishwash-bar-lemon.jpg"
+    ],
+    "description": "Lemon dishwashing bar. Removes grease easily and leaves utensils sparkling clean.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-189"
+      }
+    ]
+  },
+  {
+    "name": "Harpic Toilet Cleaner",
+    "brand": "Harpic",
+    "dept": "General Store",
+    "price": 95,
+    "mrp": 106,
+    "stock": 168,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "harpic",
+      "harpic"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 46
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/263737_12-harpic-power-plus-disinfectant-toilet-cleaner-liquid-original.jpg"
+    ],
+    "description": "Power Plus disinfectant liquid toilet cleaner. Kills 99.9% of germs.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-961"
+      }
+    ]
+  },
+  {
+    "name": "Lizol Floor Cleaner",
+    "brand": "Lizol",
+    "dept": "General Store",
+    "price": 110,
+    "mrp": 122,
+    "stock": 57,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "lizol",
+      "lizol"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 62
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/1211469_3-lizol-disinfectant-surface-cleaner-citrus.jpg"
+    ],
+    "description": "Disinfectant surface and floor cleaner liquid with fresh citrus fragrance.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-834"
+      }
+    ]
+  },
+  {
+    "name": "Odonil Air Freshener",
+    "brand": "Odonil",
+    "dept": "General Store",
+    "price": 65,
+    "mrp": 72,
+    "stock": 108,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "odonil",
+      "odonil"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 35
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/40251025_2-odonil-air-freshener-mystic-rose-removes-odour-for-bathroom.jpg"
+    ],
+    "description": "Mystic Rose pocket air freshener. Removes odours and keeps spaces fresh.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-416"
+      }
+    ]
+  },
+  {
+    "name": "Good Knight Refill",
+    "brand": "Good Knight",
+    "dept": "General Store",
+    "price": 85,
+    "mrp": 94,
+    "stock": 35,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "good knight",
+      "good"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 53
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/199522_3-good-knight-power-activ-mosquito-repellent-refill.jpg"
+    ],
+    "description": "Power Activ liquid mosquito repellent vaporiser refill pack.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-587"
+      }
+    ]
+  },
+  {
+    "name": "Colgate Toothpaste",
+    "brand": "Colgate",
+    "dept": "General Store",
+    "price": 75,
+    "mrp": 83,
+    "stock": 157,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "colgate",
+      "colgate"
+    ],
+    "ratings": {
+      "average": 4.8,
+      "count": 88
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/144395_17-colgate-strong-teeth-anticavity-toothpaste-with-amino-shakti-formula-provides-fresher-breath.jpg"
+    ],
+    "description": "Strong Teeth anticavity toothpaste with Amino Shakti formula for fresh breath.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-927"
+      }
+    ]
+  },
+  {
+    "name": "Closeup Toothpaste",
+    "brand": "Closeup",
+    "dept": "General Store",
+    "price": 80,
+    "mrp": 89,
+    "stock": 96,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "closeup",
+      "closeup"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 68
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/266655_22-close-up-everfresh-anti-germ-gel-toothpaste-red-hot.jpg"
+    ],
+    "description": "Everfresh anti-germ gel toothpaste in Red Hot flavour for up to 12 hours of fresh breath.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-279"
+      }
+    ]
+  },
+  {
+    "name": "Toothbrush",
+    "brand": "Colgate",
+    "dept": "General Store",
+    "price": 30,
+    "mrp": 33,
+    "stock": 154,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "colgate",
+      "toothbrush"
+    ],
+    "ratings": {
+      "average": 4.1,
+      "count": 37
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/40000369_11-colgate-zigzag-medium-bristle-toothbrush.jpg"
+    ],
+    "description": "ZigZag medium bristle manual toothbrush for deep interdental cleaning.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-740"
+      }
+    ]
+  },
+  {
+    "name": "Coconut Oil",
+    "brand": "Parachute",
+    "dept": "General Store",
+    "price": 120,
+    "mrp": 133,
+    "stock": 45,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "parachute",
+      "coconut"
+    ],
+    "ratings": {
+      "average": 4.2,
+      "count": 13
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/248215_4-parachute-pure-coconut-oil.jpg"
+    ],
+    "description": "100% pure coconut oil made from naturally sun-dried coconuts.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-256"
+      }
+    ]
+  },
+  {
+    "name": "Clinic Plus Shampoo",
+    "brand": "Clinic Plus",
+    "dept": "General Store",
+    "price": 99,
+    "mrp": 110,
+    "stock": 27,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "clinic plus",
+      "clinic"
+    ],
+    "ratings": {
+      "average": 4.7,
+      "count": 80
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/100081530_10-clinic-plus-strong-long-health-shampoo.jpg"
+    ],
+    "description": "Strong and Long health shampoo with milk protein formula.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-705"
+      }
+    ]
+  },
+  {
+    "name": "Match Box",
+    "brand": "Home Lite",
+    "dept": "General Store",
+    "price": 10,
+    "mrp": 11,
+    "stock": 122,
+    "emoji": "🛍️",
+    "badge": "Popular",
+    "tags": [
+      "general store",
+      "home lite",
+      "match"
+    ],
+    "ratings": {
+      "average": 4.3,
+      "count": 12
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/40027412_1-home-lite-matchbox-big.jpg"
+    ],
+    "description": "Safety matchbox with long sticks for easy and safe lighting.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-522"
+      }
+    ]
+  },
+  {
+    "name": "Mosquito Coil",
+    "brand": "Mortein",
+    "dept": "General Store",
+    "price": 45,
+    "mrp": 50,
+    "stock": 38,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "mortein",
+      "mosquito"
+    ],
+    "ratings": {
+      "average": 4,
+      "count": 28
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/40073754_3-mortein-mosquito-repellent-pleasant-fragrance-100-protection-from-dengue.jpg"
+    ],
+    "description": "Mosquito repellent coils with pleasant fragrance. 100% protection from mosquitoes.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-966"
+      }
+    ]
+  },
+  {
+    "name": "Garbage Bags",
+    "brand": "BB Home",
+    "dept": "General Store",
+    "price": 95,
+    "mrp": 106,
+    "stock": 74,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "bb home",
+      "garbage"
+    ],
+    "ratings": {
+      "average": 4.5,
+      "count": 89
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/40170026_12-bb-home-oxo-biodegradable-garbage-bag-small-green.jpg"
+    ],
+    "description": "Oxo-biodegradable green garbage bags, small size, pack of 30.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-414"
+      }
+    ]
+  },
+  {
+    "name": "Tissue Paper",
+    "brand": "Premier",
+    "dept": "General Store",
+    "price": 60,
+    "mrp": 67,
+    "stock": 74,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "premier",
+      "tissue"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 88
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/100006283_3-premier-special-face-tissue.jpg"
+    ],
+    "description": "Premium soft facial tissues pack. Highly absorbent and gentle on skin.",
+    "isActive": true,
+    "isFeatured": true,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-117"
+      }
+    ]
+  },
+  {
+    "name": "Phenyl Cleaner",
+    "brand": "Gainda",
+    "dept": "General Store",
+    "price": 80,
+    "mrp": 89,
+    "stock": 134,
+    "emoji": "🛍️",
+    "badge": "",
+    "tags": [
+      "general store",
+      "gainda",
+      "phenyl"
+    ],
+    "ratings": {
+      "average": 4.4,
+      "count": 73
+    },
+    "images": [
+      "https://www.bbassets.com/media/uploads/p/l/40074799_1-gainda-floor-cleaner-white-disinfectant.jpg"
+    ],
+    "description": "Gainda white disinfectant phenyl cleaner. Deep cleans and leaves long-lasting freshness.",
+    "isActive": true,
+    "isFeatured": false,
+    "reviews": [
+      {
+        "rating": 4,
+        "title": "Very Good Quality",
+        "text": "Highly satisfied with the product performance and delivery.",
+        "userName": "Buyer-191"
+      }
+    ]
+  }
+]

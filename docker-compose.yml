@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: ugbazaar-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - ugbazaar-net
+
+  redis:
+    image: redis:7.0-alpine
+    container_name: ugbazaar-cache
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - ugbazaar-net
+
+  backend:
+    build:
+      context: ./ug-bazaar-backend-main/ug-bazaar-backend-main
+      dockerfile: Dockerfile
+    container_name: ugbazaar-api
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - PORT=5000
+      - MONGO_URI=mongodb://mongodb:27017/ugbazaar
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=ugbazaar_super_secret_key_2026
+      - JWT_EXPIRE=30d
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - ugbazaar-net
+
+  frontend:
+    build:
+      context: ./ug-bazaar-frontend-main/ug-bazaar-frontend-main
+      dockerfile: ../../ug-bazaar-backend-main/ug-bazaar-backend-main/Dockerfile # reuse node runner for dev, or simple override
+    container_name: ugbazaar-client
+    ports:
+      - "5173:5173"
+    command: npm run dev -- --host
+    volumes:
+      - ./ug-bazaar-frontend-main/ug-bazaar-frontend-main:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - ugbazaar-net
+
+volumes:
+  mongo-data:
+  redis-data:
+
+networks:
+  ugbazaar-net:
+    driver: bridge
