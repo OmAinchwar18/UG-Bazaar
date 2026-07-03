@@ -2,9 +2,9 @@ name: UG Bazaar CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   build-and-test:
@@ -12,81 +12,72 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [22.x]
 
     steps:
-    - name: Checkout Code Repository
-      uses: actions/checkout@v3
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js Environment (${{ matrix.node-version }})
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        cache-dependency-path: |
-          package-lock.json
-          ug-bazaar-backend-main/ug-bazaar-backend-main/package-lock.json
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            ug-bazaar-backend-main/ug-bazaar-backend-main/package-lock.json
 
-    # 1. API Build & Test Validation
-    - name: Install API Dependencies
-      run: |
-        cd ug-bazaar-backend-main/ug-bazaar-backend-main
-        npm ci
+      # Backend
+      - name: Install API Dependencies
+        working-directory: ug-bazaar-backend-main/ug-bazaar-backend-main
+        run: npm ci
 
-    - name: Run API Linting Checks
-      run: |
-        cd ug-bazaar-backend-main/ug-bazaar-backend-main
-        npm run lint --if-present
+      - name: Run API Linting Checks
+        working-directory: ug-bazaar-backend-main/ug-bazaar-backend-main
+        run: npm run lint --if-present
 
-    - name: Run API Test Suite
-      run: |
-        cd ug-bazaar-backend-main/ug-bazaar-backend-main
-        npm test --if-present
+      - name: Run API Test Suite
+        working-directory: ug-bazaar-backend-main/ug-bazaar-backend-main
+        run: npm test --if-present
 
-    # 2. Workspace Monorepo Dependencies
-    - name: Install Monorepo Dependencies
-      run: |
-        npm ci
+      # Root Workspace
+      - name: Install Monorepo Dependencies
+        run: npm ci
 
-    # 3. Customer Frontend Build & Test
-    - name: Run Customer Frontend Linting
-      run: |
-        npm run lint --workspace=ug-bazaar-customer-frontend --if-present
+      # Customer Frontend
+      - name: Run Customer Frontend Linting
+        run: npm run lint --workspace=ug-bazaar-customer-frontend --if-present
 
-    - name: Build Customer Frontend Bundle
-      run: |
-        npm run build --workspace=ug-bazaar-customer-frontend --if-present
+      - name: Build Customer Frontend Bundle
+        run: npm run build --workspace=ug-bazaar-customer-frontend --if-present
 
-    - name: Run Customer Frontend Tests
-      run: |
-        npm test --workspace=ug-bazaar-customer-frontend --if-present
+      - name: Run Customer Frontend Tests
+        run: npm test --workspace=ug-bazaar-customer-frontend --if-present
 
-    # 4. Admin Frontend Build & Test
-    - name: Run Admin Frontend Linting
-      run: |
-        npm run lint --workspace=ug-bazaar-admin-frontend --if-present
+      # Admin Frontend
+      - name: Run Admin Frontend Linting
+        run: npm run lint --workspace=ug-bazaar-admin-frontend --if-present
 
-    - name: Build Admin Frontend Bundle
-      run: |
-        npm run build --workspace=ug-bazaar-admin-frontend --if-present
+      - name: Build Admin Frontend Bundle
+        run: npm run build --workspace=ug-bazaar-admin-frontend --if-present
 
-    - name: Run Admin Frontend Tests
-      run: |
-        npm test --workspace=ug-bazaar-admin-frontend --if-present
+      - name: Run Admin Frontend Tests
+        run: npm test --workspace=ug-bazaar-admin-frontend --if-present
 
   docker-image-validation:
     needs: build-and-test
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
-      
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
 
-    - name: Verify Docker Build Compilation
-      uses: docker/build-push-action@v4
-      with:
-        context: ./ug-bazaar-backend-main/ug-bazaar-backend-main
-        file: ./ug-bazaar-backend-main/ug-bazaar-backend-main/Dockerfile
-        push: false
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Verify Docker Build Compilation
+        uses: docker/build-push-action@v5
+        with:
+          context: ./ug-bazaar-backend-main/ug-bazaar-backend-main
+          file: ./ug-bazaar-backend-main/ug-bazaar-backend-main/Dockerfile
+          push: false
