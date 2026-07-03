@@ -10,7 +10,9 @@ const logger = require('./utils/logger');
 const app = express();
 
 // 1. SECURITY MIDDLEWARE
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: 'cross-origin' }
+}));
 
 // Secure CORS configuration
 app.use(cors({

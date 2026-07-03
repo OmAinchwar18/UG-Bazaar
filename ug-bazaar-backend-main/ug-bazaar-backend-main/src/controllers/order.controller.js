@@ -31,11 +31,48 @@ exports.getOrderById = catchAsync(async (req, res, next) => {
 });
 
 exports.cancelOrder = catchAsync(async (req, res, next) => {
-  const order = await orderService.cancelOrder(req.params.id, req.user._id);
+  const { reason, comments } = req.body;
+  const order = await orderService.cancelOrder(req.params.id, req.user._id, reason, comments);
   res.status(200).json({
     success: true,
     message: 'Order cancelled successfully',
     order
+  });
+});
+
+exports.createReturnRequest = catchAsync(async (req, res, next) => {
+  const { reason, comments, images, products } = req.body;
+  const returnRequest = await orderService.createReturnRequest(req.params.id, req.user._id, { reason, comments, images, products });
+  res.status(201).json({
+    success: true,
+    message: 'Return request submitted successfully',
+    returnRequest
+  });
+});
+
+exports.adminGetReturnRequests = catchAsync(async (req, res, next) => {
+  const returns = await orderService.adminGetReturnRequests();
+  res.status(200).json({
+    success: true,
+    returns
+  });
+});
+
+exports.adminUpdateReturnStatus = catchAsync(async (req, res, next) => {
+  const { status, adminNotes, refundAmount, refundTransactionId, refundMethod, refundDate } = req.body;
+  const returnRequest = await orderService.adminUpdateReturnStatus(req.params.returnId, {
+    status,
+    adminNotes,
+    refundAmount,
+    refundTransactionId,
+    refundMethod,
+    refundDate,
+    adminId: req.user._id
+  });
+  res.status(200).json({
+    success: true,
+    message: `Return status updated to ${status}`,
+    returnRequest
   });
 });
 

@@ -90,4 +90,67 @@ router.post('/', protect, adminOnly, (req, res, next) => {
   });
 });
 
+const uploadForReturn = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
+  fileFilter
+}).array('files', 5);
+
+router.post('/return', protect, (req, res, next) => {
+  uploadForReturn(req, res, async (err) => {
+    if (err) {
+      if (err instanceof multer.MulterError) {
+        if (err.code === 'LIMIT_FILE_SIZE') {
+          return res.status(400).json({ success: false, message: 'File is too large. Maximum size allowed is 5 MB per image.' });
+        }
+        if (err.code === 'LIMIT_UNEXPECTED_FILE') {
+          return res.status(400).json({ success: false, message: 'Too many files. Maximum limit is 5 images per return request.' });
+        }
+        return res.status(400).json({ success: false, message: err.message });
+      }
+      return res.status(err.statusCode || 400).json({ success: false, message: err.message });
+    }
+
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ success: false, message: 'Please upload at least one image file.' });
+    }
+
+    try {
+      const urls = [];
+      if (isCloudinaryAvailable) {
+        for (const file of req.files) {
+          const uploadPromise = new Promise((resolve, reject) => {
+            const stream = cloudinary.uploader.upload_stream(
+              { folder: 'ugbazaar_returns' },
+              (error, result) => {
+                if (error) reject(error);
+                else resolve(result.secure_url);
+              }
+            );
+            stream.end(file.buffer);
+          });
+          const url = await uploadPromise;
+          urls.push(url);
+        }
+      } else {
+        const serverUrl = `${req.protocol}://${req.get('host')}`;
+        for (const file of req.files) {
+          const fileName = `return-${Date.now()}-${Math.round(Math.random() * 1e9)}${path.extname(file.originalname).toLowerCase()}`;
+          const filePath = path.join(localUploadsDir, fileName);
+          fs.writeFileSync(filePath, file.buffer);
+          urls.push(`${serverUrl}/uploads/${fileName}`);
+        }
+      }
+
+      res.status(200).json({
+        success: true,
+        urls
+      });
+    } catch (error) {
+      console.error('Upload Error:', error);
+      res.status(500).json({ success: false, message: 'Failed to upload return images. Please try again.' });
+    }
+  });
+});
+
 module.exports = router;

@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard';
 import Products from './pages/Products';
 import Inventory from './pages/Inventory';
 import Orders from './pages/Orders';
+import Returns from './pages/Returns';
 import Invoices from './pages/Invoices';
 import Customers from './pages/Customers';
 import Coupons from './pages/Coupons';
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="products" element={<Products />} />
         <Route path="inventory" element={<Inventory />} />
         <Route path="orders" element={<Orders />} />
+        <Route path="returns" element={<Returns />} />
         <Route path="invoices" element={<Invoices />} />
         <Route path="customers" element={<Customers />} />
         <Route path="coupons" element={<Coupons />} />

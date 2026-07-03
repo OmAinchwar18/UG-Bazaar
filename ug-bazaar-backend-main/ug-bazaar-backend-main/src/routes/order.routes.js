@@ -18,6 +18,9 @@ router.get('/:id/invoice/view', protect, invoiceController.viewInvoice);
 
 router.get('/:id', protect, orderController.getOrderById);
 router.put('/:id/cancel', protect, orderController.cancelOrder);
+router.post('/:id/return', protect, orderController.createReturnRequest);
+router.get('/admin/returns/all', protect, adminOnly, orderController.adminGetReturnRequests);
+router.put('/admin/returns/:returnId/status', protect, adminOnly, orderController.adminUpdateReturnStatus);
 router.put('/admin/:id/status', protect, adminOnly, orderController.adminUpdateStatus);
 
 module.exports = router;

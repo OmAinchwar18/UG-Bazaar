@@ -7,9 +7,23 @@ const orderSchema = new mongoose.Schema({
   deliveryCharge: { type: Number, default: 0 }, total: Number,
   type: { type: String, enum: ['delivery','pickup'], required: true },
   deliveryAddress: { name: String, mobile: String, line: String, village: String, taluka: String, district: String, pincode: String, landmark: String },
-  status: { type: String, enum: ['Placed','Confirmed','Packed','Shipped','Out For Delivery','Delivered','Cancelled','Returned'], default: 'Placed' },
+  status: { type: String, default: 'Placed' },
   statusHistory: [{ status: String, updatedAt: { type: Date, default: Date.now }, note: String }],
-  payment: { method: { type: String, enum: ['upi','card','netbanking','cod'], required: true }, status: { type: String, enum: ['pending','paid','failed','refunded'], default: 'pending' }, razorpayOrderId: String, razorpayPaymentId: String, paidAt: Date },
+  payment: { method: { type: String, enum: ['upi','card','netbanking','cod'], required: true }, status: { type: String, default: 'pending' }, razorpayOrderId: String, razorpayPaymentId: String, paidAt: Date },
+  cancellationReason: { type: String },
+  cancelledAt: { type: Date },
+  returnRequest: { type: mongoose.Schema.Types.ObjectId, ref: 'ReturnRequest' },
+  returnStatus: { type: String, default: 'None' },
+  refundStatus: { type: String, default: 'None' },
+  refundAmount: { type: Number, default: 0 },
+  refundDate: { type: Date },
+  refundTransactionId: { type: String },
+  refundMethod: { type: String },
+  orderTimeline: [{
+    status: String,
+    note: String,
+    updatedAt: { type: Date, default: Date.now }
+  }],
   adminNotes: String
 }, { timestamps: true });
 orderSchema.pre('save', async function(next) {

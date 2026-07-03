@@ -36,11 +36,28 @@ export function usePlaceOrder() {
 export function useCancelOrder() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (id: string) => apiClient<{ success: boolean; message: string }>(`/orders/${id}/cancel`, {
-      method: 'PUT'
-    }),
-    onSuccess: (_, id) => {
-      queryClient.invalidateQueries({ queryKey: ['order', id] });
+    mutationFn: ({ id, reason, comments }: { id: string; reason: string; comments?: string }) => 
+      apiClient<{ success: boolean; message: string }>(`/orders/${id}/cancel`, {
+        method: 'PUT',
+        body: JSON.stringify({ reason, comments })
+      }),
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: ['order', variables.id] });
+      queryClient.invalidateQueries({ queryKey: ['my-orders'] });
+    }
+  });
+}
+
+export function useReturnOrder() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, reason, comments, images }: { id: string; reason: string; comments?: string; images?: string[] }) => 
+      apiClient<{ success: boolean; message: string }>(`/orders/${id}/return`, {
+        method: 'POST',
+        body: JSON.stringify({ reason, comments, images })
+      }),
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: ['order', variables.id] });
       queryClient.invalidateQueries({ queryKey: ['my-orders'] });
     }
   });

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { apiClient } from '@ugbazaar/shared';
 import { 
   DollarSign, ShoppingBag, Users, Layers, AlertTriangle, 
-  TrendingUp, Activity, Sparkles 
+  TrendingUp, Activity, Sparkles, RotateCcw, XCircle, CheckCircle 
 } from 'lucide-react';
 
 interface Stats {
@@ -11,6 +11,11 @@ interface Stats {
   customers: number;
   products: number;
   lowStockCount: number;
+  totalReturns: number;
+  pendingReturns: number;
+  approvedReturns: number;
+  cancelledOrders: number;
+  refundsCompleted: number;
 }
 
 interface MonthlySale {
@@ -29,7 +34,12 @@ export default function Dashboard() {
     orders: 0,
     customers: 0,
     products: 0,
-    lowStockCount: 0
+    lowStockCount: 0,
+    totalReturns: 0,
+    pendingReturns: 0,
+    approvedReturns: 0,
+    cancelledOrders: 0,
+    refundsCompleted: 0
   });
 
   const [monthlySales, setMonthlySales] = useState<MonthlySale[]>([]);
@@ -47,7 +57,12 @@ export default function Dashboard() {
           orders: res.stats.totalOrders || 0,
           customers: res.stats.totalUsers || 0,
           products: res.stats.totalProducts || 0,
-          lowStockCount: lowStockRes.success ? lowStockRes.count : 0
+          lowStockCount: lowStockRes.success ? lowStockRes.count : 0,
+          totalReturns: res.stats.totalReturns || 0,
+          pendingReturns: res.stats.pendingReturns || 0,
+          approvedReturns: res.stats.approvedReturns || 0,
+          cancelledOrders: res.stats.cancelledOrders || 0,
+          refundsCompleted: res.stats.refundsCompleted || 0
         });
       }
     } catch (err) {
@@ -262,6 +277,14 @@ export default function Dashboard() {
     { label: 'Low Stock', val: stats.lowStockCount, icon: AlertTriangle, color: stats.lowStockCount > 0 ? 'text-red-600 bg-red-50 border-red-200 animate-pulse' : 'text-slate-500 bg-slate-50 border-slate-100' },
   ];
 
+  const returnStatItems = [
+    { label: 'Total Returns', val: stats.totalReturns, icon: RotateCcw, color: 'text-blue-600 bg-blue-50 border-blue-100' },
+    { label: 'Pending Returns', val: stats.pendingReturns, icon: AlertTriangle, color: 'text-yellow-600 bg-yellow-50 border-yellow-100' },
+    { label: 'Approved Returns', val: stats.approvedReturns, icon: CheckCircle, color: 'text-green-600 bg-green-50 border-green-100' },
+    { label: 'Cancelled Orders', val: stats.cancelledOrders, icon: XCircle, color: 'text-red-600 bg-red-50 border-red-100' },
+    { label: 'Refunds Completed', val: stats.refundsCompleted, icon: DollarSign, color: 'text-emerald-600 bg-emerald-50 border-emerald-100' },
+  ];
+
   return (
     <div className="space-y-8 animate-fade-in">
       
@@ -281,6 +304,30 @@ export default function Dashboard() {
             </div>
           );
         })}
+      </div>
+
+      {/* Returns & Refunds Cockpit Overview */}
+      <div className="space-y-3">
+        <h3 className="font-extrabold text-xs text-brand-muted uppercase tracking-wider flex items-center gap-1.5">
+          <RotateCcw className="w-4 h-4 text-brand-green" />
+          <span>Returns & Refunds Cockpit</span>
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+          {returnStatItems.map((c) => {
+            const Icon = c.icon;
+            return (
+              <div key={c.label} className="border p-5 rounded-2xl bg-white shadow-sm flex items-center gap-4 border-brand-border/60">
+                <div className={`p-3.5 rounded-xl ${c.color.split(' ')[1]} ${c.color.split(' ')[0]}`}>
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-brand-muted uppercase block">{c.label}</span>
+                  <span className="font-black text-xl text-brand-dark block mt-0.5">{c.val}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Quick Chart Grid */}

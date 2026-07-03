@@ -26,11 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [imageError, setImageError] = useState(false);
 
   const thumbnail = getProductThumbnail(product.images);
-
-  // Requirement: Hide products with missing images
-  if (!thumbnail || thumbnail.trim() === '') {
-    return null;
-  }
+  const hasImages = thumbnail && thumbnail.trim() !== '';
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -88,7 +84,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       {/* Image Area with Quick Delivery Pill */}
       <div className="aspect-square w-full bg-[#f8f9fa] flex items-center justify-center relative p-4 overflow-hidden border-b border-brand-light">
-        {!imageError ? (
+        {hasImages && !imageError ? (
           <img 
             src={thumbnail} 
             alt={product.name}

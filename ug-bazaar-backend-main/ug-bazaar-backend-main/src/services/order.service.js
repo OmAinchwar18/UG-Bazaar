@@ -144,13 +144,13 @@ class OrderService {
     return order;
   }
 
-  async cancelOrder(id, userId) {
+  async cancelOrder(id, userId, reason = 'Ordered by mistake', comments = '') {
     const order = await orderRepository.findById(id);
     if (!order) {
       throw new AppError('Order not found', 404);
     }
 
-    if (order.user._id.toString() !== userId.toString()) {
+    if (order.user._id.toString() !== userId.toString() && order.user.role !== 'admin') {
       throw new AppError('Unauthorized to cancel this order', 403);
     }
 
@@ -169,7 +169,239 @@ class OrderService {
       );
     }
 
-    return orderRepository.updateStatus(id, 'Cancelled', 'Order cancelled by customer');
+    const finalNote = reason + (comments ? `: ${comments}` : '');
+    order.status = 'Cancelled';
+    order.cancellationReason = finalNote;
+    order.cancelledAt = new Date();
+    order.statusHistory.push({ status: 'Cancelled', note: finalNote, updatedAt: new Date() });
+    
+    if (!order.orderTimeline) order.orderTimeline = [];
+    order.orderTimeline.push({ status: 'Cancelled', note: finalNote, updatedAt: new Date() });
+
+    if (order.payment && order.payment.status === 'paid') {
+      order.payment.status = 'refunded';
+      order.refundStatus = 'Completed';
+      order.refundAmount = order.total;
+      order.refundDate = new Date();
+    }
+
+    const saved = await order.save();
+
+    // Sockets update
+    const { getIO, emitOrderStatusChange } = require('../sockets/socket.handler');
+    emitOrderStatusChange(order.user._id || order.user, order.orderId, 'Cancelled', finalNote);
+    
+    const io = getIO();
+    if (io) {
+      io.emit('admin_new_cancellation', {
+        orderId: order.orderId,
+        reason: finalNote,
+        createdAt: new Date()
+      });
+    }
+
+    // Customer Notification
+    const notificationRepository = require('../repositories/notification.repository');
+    await notificationRepository.create({
+      user: order.user._id || order.user,
+      type: 'order',
+      title: 'Order Cancelled Successfully',
+      body: `Aapka order ${order.orderId} cancel ho gaya hai.`,
+      icon: '❌',
+      link: `/order-detail?id=${order._id}`
+    });
+
+    return saved;
+  }
+
+  async createReturnRequest(id, userId, returnData) {
+    const { reason, comments, images, products } = returnData;
+    const order = await orderRepository.findById(id);
+    if (!order) {
+      throw new AppError('Order not found', 404);
+    }
+
+    if (order.user._id.toString() !== userId.toString()) {
+      throw new AppError('Unauthorized to return this order', 403);
+    }
+
+    if (order.status !== 'Delivered') {
+      throw new AppError('Only delivered orders can be returned', 400);
+    }
+
+    const deliveredEvent = order.statusHistory.find(h => h.status === 'Delivered');
+    const deliveredAt = deliveredEvent ? new Date(deliveredEvent.updatedAt) : new Date(order.updatedAt);
+    const timeDiff = new Date().getTime() - deliveredAt.getTime();
+    const daysDiff = timeDiff / (1000 * 3600 * 24);
+    if (daysDiff > 7) {
+      throw new AppError('Returns are only allowed within 7 days of delivery', 400);
+    }
+
+    const ReturnRequest = require('../models/ReturnRequest');
+    const productIds = (products && products.length > 0) 
+      ? products 
+      : order.items.map(item => item.product._id || item.product);
+
+    const returnRequest = await ReturnRequest.create({
+      order: order._id,
+      customer: userId,
+      products: productIds,
+      reason,
+      images: images || [],
+      comments: comments || '',
+      status: 'Return Requested'
+    });
+
+    order.status = 'Return Requested';
+    order.returnRequest = returnRequest._id;
+    order.returnStatus = 'Return Requested';
+    order.refundStatus = 'Pending';
+    order.refundAmount = order.total;
+
+    const finalNote = `Return requested: ${reason}` + (comments ? ` (${comments})` : '');
+    order.statusHistory.push({ status: 'Return Requested', note: finalNote, updatedAt: new Date() });
+    
+    if (!order.orderTimeline) order.orderTimeline = [];
+    order.orderTimeline.push({ status: 'Return Requested', note: finalNote, updatedAt: new Date() });
+    
+    await order.save();
+
+    const { getIO, emitOrderStatusChange } = require('../sockets/socket.handler');
+    emitOrderStatusChange(order.user._id || order.user, order.orderId, 'Return Requested', finalNote);
+    
+    const io = getIO();
+    if (io) {
+      io.emit('admin_new_return_request', {
+        orderId: order.orderId,
+        reason: finalNote,
+        createdAt: returnRequest.createdAt
+      });
+    }
+
+    const notificationRepository = require('../repositories/notification.repository');
+    await notificationRepository.create({
+      user: userId,
+      type: 'order',
+      title: 'Return Request Submitted',
+      body: `Aapke order ${order.orderId} ke return request ko accept kar liya gaya hai aur review kiya ja raha hai.`,
+      icon: '🔄',
+      link: `/order-detail?id=${order._id}`
+    });
+
+    return returnRequest;
+  }
+
+  async adminGetReturnRequests() {
+    const ReturnRequest = require('../models/ReturnRequest');
+    return ReturnRequest.find()
+      .populate('order', 'orderId total status items')
+      .populate('customer', 'name mobile')
+      .populate('products', 'name price images')
+      .sort({ createdAt: -1 });
+  }
+
+  async adminUpdateReturnStatus(returnId, updateData) {
+    const { status, adminNotes, refundAmount, refundTransactionId, refundMethod, refundDate, adminId } = updateData;
+    const ReturnRequest = require('../models/ReturnRequest');
+    const returnRequest = await ReturnRequest.findById(returnId)
+      .populate('order')
+      .populate('customer');
+    if (!returnRequest) {
+      throw new AppError('Return request not found', 404);
+    }
+
+    const order = returnRequest.order;
+    if (!order) {
+      throw new AppError('Order associated with this return request not found', 404);
+    }
+
+    returnRequest.status = status;
+    if (adminNotes !== undefined) returnRequest.adminNotes = adminNotes;
+    
+    order.returnStatus = status;
+
+    const finalNote = adminNotes || `Return status changed to: ${status}`;
+    order.statusHistory.push({ status: `Return ${status}`, note: finalNote, updatedAt: new Date() });
+    
+    if (!order.orderTimeline) order.orderTimeline = [];
+    order.orderTimeline.push({ status: `Return ${status}`, note: finalNote, updatedAt: new Date() });
+
+    if (status === 'Approved') {
+      order.status = 'Approved';
+      returnRequest.status = 'Approved';
+    } else if (status === 'Rejected') {
+      order.status = 'Delivered';
+      order.returnStatus = 'Rejected';
+      returnRequest.status = 'Rejected';
+    } else if (status === 'Product Received') {
+      const productService = require('./product.service');
+      for (const item of order.items) {
+        if (returnRequest.products.some(pId => pId.toString() === item.product.toString())) {
+          await productService.adjustStock(
+            item.product,
+            item.qty,
+            'order_returned',
+            `Returned items from Order #${order.orderId} received`,
+            adminId
+          );
+        }
+      }
+    } else if (status === 'Refund Completed') {
+      returnRequest.status = 'Refund Completed';
+      returnRequest.refundAmount = refundAmount || order.total;
+      returnRequest.refundTransactionId = refundTransactionId || '';
+      returnRequest.refundMethod = refundMethod || 'upi';
+
+      order.status = 'Refund Completed';
+      order.returnStatus = 'Refund Completed';
+      order.refundStatus = 'Completed';
+      order.refundAmount = refundAmount || order.total;
+      order.refundDate = refundDate ? new Date(refundDate) : new Date();
+      order.refundTransactionId = refundTransactionId || '';
+      order.refundMethod = refundMethod || 'upi';
+    } else if (status === 'Refund Initiated') {
+      order.refundStatus = 'Processing';
+    }
+
+    await returnRequest.save();
+    await order.save();
+
+    const { emitOrderStatusChange } = require('../sockets/socket.handler');
+    emitOrderStatusChange(order.user._id || order.user, order.status, order.status, finalNote);
+
+    const notificationRepository = require('../repositories/notification.repository');
+    let title = 'Return Status Update';
+    let body = `Aapke order ${order.orderId} ke return status ko change kar ke "${status}" kar diya gaya hai.`;
+    let icon = '🔄';
+
+    if (status === 'Approved') {
+      title = 'Return Request Approved';
+      body = `Aapke order ${order.orderId} ka return request approve ho gaya hai. Pickup schedule kiya ja raha hai.`;
+      icon = '✅';
+    } else if (status === 'Rejected') {
+      title = 'Return Request Rejected';
+      body = `Aapke order ${order.orderId} ka return request reject ho gaya hai. Note: ${adminNotes || 'N/A'}`;
+      icon = '❌';
+    } else if (status === 'Refund Initiated') {
+      title = 'Refund Initiated';
+      body = `Aapke order ${order.orderId} ka refund process shuru ho gaya hai.`;
+      icon = '💰';
+    } else if (status === 'Refund Completed') {
+      title = 'Refund Completed';
+      body = `Aapke order ${order.orderId} ka refund amount ₹${refundAmount || order.total} complete ho gaya hai. TXN ID: ${refundTransactionId || 'N/A'}`;
+      icon = '🎉';
+    }
+
+    await notificationRepository.create({
+      user: order.user._id || order.user,
+      type: 'order',
+      title,
+      body,
+      icon,
+      link: `/order-detail?id=${order._id}`
+    });
+
+    return returnRequest;
   }
 
   async adminGetAllOrders(filters) {
@@ -228,13 +460,31 @@ class OrderService {
 
     const User = require('../models/User');
     const Product = require('../models/Product');
+    const ReturnRequest = require('../models/ReturnRequest');
+    const Order = require('../models/Order');
 
-    const [totalOrders, todayOrders, revenueStats, totalUsers, totalProducts] = await Promise.all([
+    const [
+      totalOrders, 
+      todayOrders, 
+      revenueStats, 
+      totalUsers, 
+      totalProducts,
+      totalReturns,
+      pendingReturns,
+      approvedReturns,
+      cancelledOrders,
+      refundsCompleted
+    ] = await Promise.all([
       orderRepository.countOrders(),
       orderRepository.countTodayOrders(today),
       orderRepository.getRevenueStats(today),
       User.countDocuments({ role: 'user' }),
-      Product.countDocuments({ isActive: true })
+      Product.countDocuments({ isActive: true }),
+      ReturnRequest.countDocuments(),
+      ReturnRequest.countDocuments({ status: { $in: ['Return Requested', 'Under Review'] } }),
+      ReturnRequest.countDocuments({ status: 'Approved' }),
+      Order.countDocuments({ status: 'Cancelled' }),
+      ReturnRequest.countDocuments({ status: 'Refund Completed' })
     ]);
 
     return {
@@ -242,6 +492,11 @@ class OrderService {
       todayOrders,
       totalUsers,
       totalProducts,
+      totalReturns,
+      pendingReturns,
+      approvedReturns,
+      cancelledOrders,
+      refundsCompleted,
       ...revenueStats
     };
   }

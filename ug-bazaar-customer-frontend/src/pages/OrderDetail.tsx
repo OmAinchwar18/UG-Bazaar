@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
-import { useOrderDetails, useCancelOrder } from '../api/orderQueries';
+import { useOrderDetails, useCancelOrder, useReturnOrder } from '../api/orderQueries';
 import { apiClient, API_BASE } from '../api/apiClient';
 import { getProductThumbnail } from '@ugbazaar/shared';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { 
   CheckCircle2, XCircle, CreditCard, Calendar, 
-  MapPin, ShoppingBag, ArrowLeft, Trash2, Truck, FileText, Printer, Download
+  MapPin, ArrowLeft, Trash2, Truck, FileText, Printer, Download, Undo, Upload, RotateCcw
 } from 'lucide-react';
 
 export default function OrderDetail() {
@@ -21,15 +21,108 @@ export default function OrderDetail() {
   const order = orderData?.order;
 
   const { mutate: cancelOrder, isPending: isCancelling } = useCancelOrder();
+  const { mutate: returnOrder, isPending: isReturning } = useReturnOrder();
 
-  const handleCancel = () => {
-    if (confirm('Aap sach mein ye order cancel karna chahte hain?')) {
-      cancelOrder(id, {
+  // Cancel Modal State
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [cancelReason, setCancelReason] = useState('Ordered by mistake');
+  const [cancelText, setCancelText] = useState('');
+
+  // Return Modal State
+  const [isReturnModalOpen, setIsReturnModalOpen] = useState(false);
+  const [returnReason, setReturnReason] = useState('Damaged product');
+  const [returnComments, setReturnComments] = useState('');
+  const [returnFiles, setReturnFiles] = useState<FileList | null>(null);
+  const [uploadedImages, setUploadedImages] = useState<string[]>([]);
+  const [uploadingReturnImages, setUploadingReturnImages] = useState(false);
+
+  const handleCancelSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    cancelOrder(
+      { id, reason: cancelReason, comments: cancelText },
+      {
         onSuccess: () => {
           alert('Order Cancelled successfully.');
+          setIsCancelModalOpen(false);
+        },
+        onError: (err: any) => {
+          alert(err.message || 'Cancellation failed.');
         }
-      });
+      }
+    );
+  };
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    if (files.length > 5) {
+      alert('You can only upload up to 5 images as proof.');
+      return;
     }
+
+    setUploadingReturnImages(true);
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files', files[i]);
+    }
+
+    try {
+      const token = localStorage.getItem('ug_token');
+      const res = await fetch(`${API_BASE}/upload/return`, {
+        method: 'POST',
+        headers: {
+          ...(token ? { Authorization: `Bearer ${token}` } : {})
+        },
+        body: formData
+      });
+      const data = await res.json();
+      if (data.success && data.urls) {
+        setUploadedImages(data.urls);
+        alert('Proof images uploaded successfully.');
+      } else {
+        alert(data.message || 'Image upload failed.');
+      }
+    } catch (err: any) {
+      alert(`Upload error: ${err.message}`);
+    } finally {
+      setUploadingReturnImages(false);
+    }
+  };
+
+  const handleReturnSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    returnOrder(
+      {
+        id,
+        reason: returnReason,
+        comments: returnComments,
+        images: uploadedImages
+      },
+      {
+        onSuccess: () => {
+          alert('Return request submitted successfully.');
+          setIsReturnModalOpen(false);
+          setUploadedImages([]);
+          setReturnComments('');
+        },
+        onError: (err: any) => {
+          alert(err.message || 'Return submission failed.');
+        }
+      }
+    );
+  };
+
+  const getDeliveredDate = () => {
+    const deliveredEvent = order?.statusHistory?.find((h: any) => h.status === 'Delivered');
+    return deliveredEvent ? new Date(deliveredEvent.updatedAt) : (order ? new Date(order.updatedAt) : new Date());
+  };
+
+  const isReturnEligible = () => {
+    if (!order || order.status !== 'Delivered') return false;
+    const deliveredAt = getDeliveredDate();
+    const diffTime = Math.abs(new Date().getTime() - deliveredAt.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays <= 7;
   };
 
   const handleViewInvoice = async () => {
@@ -173,11 +266,15 @@ export default function OrderDetail() {
 
   const getStatusColor = (s: string) => {
     switch (s) {
-      case 'Pending': return 'bg-yellow-50 text-yellow-700 border-yellow-200';
-      case 'Confirmed': case 'Packed': return 'bg-blue-50 text-blue-700 border-blue-200';
-      case 'Out for Delivery': return 'bg-purple-50 text-purple-700 border-purple-200';
+      case 'Placed': return 'bg-yellow-50 text-yellow-700 border-yellow-200';
+      case 'Confirmed': return 'bg-blue-50 text-blue-700 border-blue-200';
+      case 'Packed': return 'bg-orange-50 text-orange-700 border-orange-200';
+      case 'Shipped': return 'bg-indigo-50 text-indigo-700 border-indigo-200';
+      case 'Out For Delivery': return 'bg-purple-50 text-purple-700 border-purple-200';
       case 'Delivered': return 'bg-green-50 text-brand-green border-green-200';
       case 'Cancelled': return 'bg-red-50 text-red-700 border-red-200';
+      case 'Return Requested': return 'bg-amber-50 text-amber-700 border-amber-200';
+      case 'Refund Completed': return 'bg-emerald-50 text-emerald-700 border-emerald-200';
       default: return 'bg-slate-50 text-brand-muted border-brand-border';
     }
   };
@@ -246,7 +343,57 @@ export default function OrderDetail() {
           </div>
         </div>
 
+        {/* Visual Stepper Timeline */}
+        {order.orderTimeline && order.orderTimeline.length > 0 && (
+          <div className="border border-brand-border/50 rounded-2xl p-5 bg-[#fafbfd] space-y-4">
+            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Order Tracking Journey</span>
+            <div className="relative pl-6 border-l-2 border-brand-green/30 space-y-5">
+              {order.orderTimeline.map((step: any, idx: number) => (
+                <div key={idx} className="relative group">
+                  <div className="absolute -left-[31px] top-1 w-3.5 h-3.5 bg-brand-green border-2 border-white rounded-full shadow-sm ring-4 ring-brand-green/10"></div>
+                  <p className="text-xs font-black text-brand-dark leading-none uppercase">{step.status}</p>
+                  {step.note && <p className="text-xs text-brand-muted font-medium mt-1 leading-relaxed">{step.note}</p>}
+                  <p className="text-[10px] text-brand-muted font-bold mt-1">
+                    {new Date(step.updatedAt).toLocaleDateString('en-IN', { 
+                      hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'short', year: 'numeric'
+                    })}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
+        {/* Refund Status Segment if active */}
+        {order.refundStatus && order.refundStatus !== 'None' && (
+          <div className="border border-emerald-100 rounded-2xl p-4 bg-emerald-50/25 space-y-2.5">
+            <span className="text-xs font-extrabold text-emerald-800 uppercase tracking-wider block">Refund Status Details</span>
+            <div className="grid grid-cols-2 gap-4 text-xs font-bold">
+              <div>
+                <span className="text-brand-muted block uppercase text-[10px]">Refund State</span>
+                <span className="text-emerald-700 font-extrabold text-sm capitalize">{order.refundStatus}</span>
+              </div>
+              {order.refundAmount > 0 && (
+                <div>
+                  <span className="text-brand-muted block uppercase text-[10px]">Amount Refunded</span>
+                  <span className="text-brand-dark font-extrabold text-sm">₹{order.refundAmount}</span>
+                </div>
+              )}
+              {order.refundMethod && (
+                <div>
+                  <span className="text-brand-muted block uppercase text-[10px]">Refund Method</span>
+                  <span className="text-brand-dark uppercase">{order.refundMethod}</span>
+                </div>
+              )}
+              {order.refundTransactionId && (
+                <div>
+                  <span className="text-brand-muted block uppercase text-[10px]">Transaction ID</span>
+                  <span className="text-brand-dark font-mono text-[11px]">{order.refundTransactionId}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* List of items inside order */}
         <div className="space-y-4">
@@ -315,7 +462,7 @@ export default function OrderDetail() {
 
         {/* Live track & cancel buttons */}
         <div className="border-t border-brand-light pt-6 flex flex-col sm:flex-row justify-between gap-4">
-          {order.status !== 'Delivered' && order.status !== 'Cancelled' && (
+          {order.status !== 'Delivered' && order.status !== 'Cancelled' && order.status !== 'Refund Completed' && (
             <Link 
               to={`/tracking?id=${order._id}`}
               className="btn-primary py-2.5 px-6 text-xs font-extrabold flex items-center justify-center gap-1.5"
@@ -325,19 +472,171 @@ export default function OrderDetail() {
             </Link>
           )}
 
-          {['Pending', 'Confirmed'].includes(order.status) && (
-            <button
-              onClick={handleCancel}
-              disabled={isCancelling}
-              className="text-xs font-extrabold text-red-500 hover:text-red-700 flex items-center gap-1 hover:underline cursor-pointer border border-transparent px-3 py-2 rounded-xl"
-            >
-              <Trash2 className="w-4 h-4" />
-              <span>{isCancelling ? 'Cancelling...' : 'Cancel Order'}</span>
-            </button>
-          )}
+          <div className="flex items-center gap-3 ml-auto">
+            {['Placed', 'Confirmed', 'Pending'].includes(order.status) && (
+              <button
+                onClick={() => setIsCancelModalOpen(true)}
+                className="text-xs font-extrabold text-red-500 hover:text-red-700 flex items-center gap-1.5 hover:underline cursor-pointer border hover:bg-red-50 px-3 py-2 rounded-xl"
+              >
+                <Trash2 className="w-4 h-4" />
+                <span>Cancel Order</span>
+              </button>
+            )}
+
+            {isReturnEligible() && (
+              <button
+                onClick={() => setIsReturnModalOpen(true)}
+                className="text-xs font-extrabold text-brand-green hover:text-green-800 flex items-center gap-1.5 hover:underline cursor-pointer border hover:bg-green-50 px-3 py-2 rounded-xl"
+              >
+                <Undo className="w-4 h-4" />
+                <span>Return Order</span>
+              </button>
+            )}
+          </div>
         </div>
 
       </div>
+
+      {/* MODAL: CANCEL ORDER */}
+      {isCancelModalOpen && (
+        <div className="fixed inset-0 bg-brand-dark/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border shadow-2xl rounded-3xl p-6 md:p-8 max-w-md w-full animate-slide-up">
+            <h3 className="font-extrabold text-lg text-brand-dark mb-4">
+              Cancel Order
+            </h3>
+            
+            <form onSubmit={handleCancelSubmit} className="space-y-4">
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold text-brand-muted uppercase">Reason for Cancellation</label>
+                <select 
+                  value={cancelReason}
+                  onChange={(e) => setCancelReason(e.target.value)}
+                  className="w-full bg-brand-light border rounded-xl px-4 py-2.5 text-xs font-bold outline-none cursor-pointer"
+                >
+                  <option value="Ordered by mistake">Ordered by mistake</option>
+                  <option value="Found a better price">Found a better price</option>
+                  <option value="Delivery time too long">Delivery time too long</option>
+                  <option value="Changed my mind">Changed my mind</option>
+                  <option value="Wrong product selected">Wrong product selected</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold text-brand-muted uppercase">Additional Comments (Optional)</label>
+                <textarea 
+                  value={cancelText}
+                  onChange={(e) => setCancelText(e.target.value)}
+                  placeholder="Kripya cancel karne ka kaaran likhein..."
+                  className="w-full bg-brand-light border rounded-xl p-3 text-xs outline-none h-20 resize-none font-bold"
+                ></textarea>
+              </div>
+
+              <div className="flex items-center gap-3 justify-end pt-4 border-t border-brand-light">
+                <button
+                  type="button"
+                  onClick={() => setIsCancelModalOpen(false)}
+                  className="btn-secondary py-2 px-5 text-xs font-bold cursor-pointer"
+                >
+                  Back
+                </button>
+                <button
+                  type="submit"
+                  disabled={isCancelling}
+                  className="btn-primary bg-red-500 hover:bg-red-600 text-white py-2 px-5 text-xs font-bold cursor-pointer"
+                >
+                  {isCancelling ? 'Cancelling...' : 'Confirm Cancellation'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: RETURN ORDER */}
+      {isReturnModalOpen && (
+        <div className="fixed inset-0 bg-brand-dark/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border shadow-2xl rounded-3xl p-6 md:p-8 max-w-md w-full animate-slide-up">
+            <h3 className="font-extrabold text-lg text-brand-dark mb-4">
+              Return Order Request
+            </h3>
+            
+            <form onSubmit={handleReturnSubmit} className="space-y-4">
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold text-brand-muted uppercase">Reason for Return</label>
+                <select 
+                  value={returnReason}
+                  onChange={(e) => setReturnReason(e.target.value)}
+                  className="w-full bg-brand-light border rounded-xl px-4 py-2.5 text-xs font-bold outline-none cursor-pointer"
+                >
+                  <option value="Damaged product">Damaged product</option>
+                  <option value="Wrong item received">Wrong item received</option>
+                  <option value="Missing accessories">Missing accessories</option>
+                  <option value="Product not as described">Product not as described</option>
+                  <option value="Defective product">Defective product</option>
+                  <option value="Quality issue">Quality issue</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold text-brand-muted uppercase">Upload Proof Images (Max 5)</label>
+                <div className="flex items-center gap-2">
+                  <label className="w-full border-2 border-dashed border-brand-border hover:border-brand-green/50 p-4 rounded-xl flex flex-col items-center justify-center gap-1 cursor-pointer bg-brand-light/10 hover:bg-brand-light/30 transition-all">
+                    <Upload className="w-5 h-5 text-brand-muted" />
+                    <span className="text-[10px] font-bold text-brand-dark">Choose images</span>
+                    <input 
+                      type="file" 
+                      multiple 
+                      accept="image/*"
+                      className="hidden" 
+                      onChange={handleFileUpload}
+                    />
+                  </label>
+                </div>
+                {uploadingReturnImages && (
+                  <span className="text-[10px] font-bold text-brand-green animate-pulse block mt-1">Uploading proof images...</span>
+                )}
+                {uploadedImages.length > 0 && (
+                  <div className="flex items-center gap-1.5 mt-2 overflow-x-auto py-1">
+                    {uploadedImages.map((img, idx) => (
+                      <img key={idx} src={img} alt="proof" className="w-10 h-10 object-cover rounded-lg border bg-white flex-shrink-0" />
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold text-brand-muted uppercase">Additional Comments (Optional)</label>
+                <textarea 
+                  value={returnComments}
+                  onChange={(e) => setReturnComments(e.target.value)}
+                  placeholder="Kripya details likhein (damages/issues)..."
+                  className="w-full bg-brand-light border rounded-xl p-3 text-xs outline-none h-20 resize-none font-bold"
+                ></textarea>
+              </div>
+
+              <div className="flex items-center gap-3 justify-end pt-4 border-t border-brand-light">
+                <button
+                  type="button"
+                  onClick={() => setIsReturnModalOpen(false)}
+                  className="btn-secondary py-2 px-5 text-xs font-bold cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isReturning || uploadingReturnImages}
+                  className="btn-primary py-2 px-5 text-xs font-bold cursor-pointer"
+                >
+                  {isReturning ? 'Submitting...' : 'Submit Request'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

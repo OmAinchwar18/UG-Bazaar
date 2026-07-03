@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../store';
 import { logout } from '../store/slices/authSlice';
@@ -8,7 +8,7 @@ import { io } from 'socket.io-client';
 import { 
   ShieldCheck, LineChart, Layers, AlertTriangle, 
   ShoppingBag, FileText, Users, Plus, BarChart3, 
-  Settings, LogOut, Activity 
+  Settings, LogOut, Activity, RotateCcw
 } from 'lucide-react';
 
 interface LiveAlert {
@@ -83,6 +83,24 @@ export default function AdminLayout() {
       }, ...prev]);
     });
 
+    socket.on('admin_new_cancellation', (data: { orderId: string; reason: string }) => {
+      setLiveAlerts(prev => [{
+        id: Math.random().toString(),
+        type: 'warning',
+        text: `❌ Order Cancelled: ${data.orderId} (Reason: ${data.reason})`,
+        time: new Date()
+      }, ...prev]);
+    });
+
+    socket.on('admin_new_return_request', (data: { orderId: string; reason: string }) => {
+      setLiveAlerts(prev => [{
+        id: Math.random().toString(),
+        type: 'warning',
+        text: `🔄 Return Requested: Order ${data.orderId} (Reason: ${data.reason})`,
+        time: new Date()
+      }, ...prev]);
+    });
+
     return () => {
       socket.disconnect();
     };
@@ -98,6 +116,7 @@ export default function AdminLayout() {
     { key: 'products', label: 'Products Catalog', icon: Layers },
     { key: 'inventory', label: 'Stock & Logs', icon: AlertTriangle },
     { key: 'orders', label: 'Orders Logs', icon: ShoppingBag },
+    { key: 'returns', label: 'Returns Management', icon: RotateCcw },
     { key: 'invoices', label: 'Invoices History', icon: FileText },
     { key: 'customers', label: 'Customer Directory', icon: Users },
     { key: 'coupons', label: 'Promo Coupons', icon: Plus },

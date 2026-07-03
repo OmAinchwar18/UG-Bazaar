@@ -60,14 +60,41 @@ export interface Order {
     pincode: string;
     landmark?: string;
   };
-  status: 'Pending' | 'Confirmed' | 'Packed' | 'Out for Delivery' | 'Ready for Pickup' | 'Delivered' | 'Picked Up' | 'Cancelled' | 'Refunded';
+  status: string;
   statusHistory: Array<{ status: string; updatedAt: string; note?: string }>;
   payment: {
     method: 'upi' | 'card' | 'netbanking' | 'cod';
-    status: 'pending' | 'paid' | 'failed' | 'refunded';
+    status: string;
     razorpayOrderId?: string;
     razorpayPaymentId?: string;
     paidAt?: string;
   };
+  cancellationReason?: string;
+  cancelledAt?: string;
+  returnRequest?: any;
+  returnStatus?: string;
+  refundStatus?: string;
+  refundAmount?: number;
+  refundDate?: string;
+  refundTransactionId?: string;
+  refundMethod?: string;
+  orderTimeline?: Array<{ status: string; note?: string; updatedAt: string }>;
   createdAt: string;
+}
+
+export interface ReturnRequest {
+  _id: string;
+  order: any;
+  customer: any;
+  products: any[];
+  reason: string;
+  images?: string[];
+  comments?: string;
+  status: string;
+  adminNotes?: string;
+  refundAmount?: number;
+  refundTransactionId?: string;
+  refundMethod?: string;
+  createdAt: string;
+  updatedAt: string;
 }
