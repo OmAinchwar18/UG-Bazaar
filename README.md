@@ -1,6 +1,6 @@
 # 🛒 UG Bazaar — Multi-Department Hyperlocal E-Commerce Platform
 
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D%2018.0.0-blue.svg)](https://nodejs.org/)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.0.0-blue.svg)](https://nodejs.org/)
 [![NPM Version](https://img.shields.io/badge/npm-%3E%3D%209.0.0-red.svg)](https://www.npmjs.com/)
 [![React Version](https://img.shields.io/badge/react-19.x-61dafb.svg)](https://react.dev/)
 [![Database](https://img.shields.io/badge/database-MongoDB-green.svg)](https://www.mongodb.com/)
