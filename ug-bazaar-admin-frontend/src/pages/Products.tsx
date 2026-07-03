@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { apiClient, getProductThumbnail, API_BASE } from '@ugbazaar/shared';
-import { Plus, Edit3, Trash2, UploadCloud, Image as ImageIcon, Star } from 'lucide-react';
+import { Plus, Edit3, Trash2, UploadCloud, Star } from 'lucide-react';
+
+interface AdminProduct {
+  _id: string;
+  name: string;
+  price: number;
+  mrp: number;
+  stock: number;
+  minStockLevel: number;
+  sku?: string;
+  supplierName?: string;
+  dept: string;
+  badge?: string;
+  images: Array<{ url: string; isPrimary: boolean }>;
+  description?: string;
+  isActive?: boolean;
+}
 
 export default function Products() {
-  const [productsList, setProductsList] = useState<any[]>([]);
+  const [productsList, setProductsList] = useState<AdminProduct[]>([]);
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
   const [editProductId, setEditProductId] = useState<string | null>(null);
 
@@ -22,20 +38,24 @@ export default function Products() {
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
 
-  useEffect(() => {
-    loadProducts();
-  }, []);
-
   const loadProducts = async () => {
     try {
       const res = await apiClient('/products?limit=100');
       if (res.success && res.products) {
         setProductsList(res.products);
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load products:', err);
+    }
   };
 
-  const openProductModal = (prod: any) => {
+  useEffect(() => {
+    setTimeout(() => {
+      loadProducts();
+    }, 0);
+  }, []);
+
+  const openProductModal = (prod: AdminProduct | null) => {
     setUploadError(null);
     if (prod) {
       setEditProductId(prod._id);
@@ -109,8 +129,9 @@ export default function Products() {
         setEditProductId(null);
         loadProducts();
       }
-    } catch (err: any) {
-      alert(`Save failed: ${err.message}`);
+    } catch (err) {
+      const error = err as Error;
+      alert(`Save failed: ${error.message}`);
     }
   };
 
@@ -165,8 +186,9 @@ export default function Products() {
         }));
         setImagesList([...imagesList, ...newImgs]);
       }
-    } catch (err: any) {
-      setUploadError(err.message || 'Image upload failed.');
+    } catch (err) {
+      const error = err as Error;
+      setUploadError(error.message || 'Image upload failed.');
     } finally {
       setUploading(false);
     }

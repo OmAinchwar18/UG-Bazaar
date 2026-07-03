@@ -1,11 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { apiClient } from '@ugbazaar/shared';
 
+interface InventoryProduct {
+  _id: string;
+  name: string;
+  dept: string;
+  stock: number;
+  minStockLevel: number;
+  sku?: string;
+  supplierName?: string;
+}
+
+interface InventoryLog {
+  quantityChange: number;
+  resultingStock: number;
+  note?: string;
+  type: string;
+  user?: { name: string };
+  createdAt: string;
+}
+
 export default function Inventory() {
-  const [productsList, setProductsList] = useState<any[]>([]);
+  const [productsList, setProductsList] = useState<InventoryProduct[]>([]);
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const [selectedProductName, setSelectedProductName] = useState<string>('');
-  const [selectedProductLogs, setSelectedProductLogs] = useState<any[]>([]);
+  const [selectedProductLogs, setSelectedProductLogs] = useState<InventoryLog[]>([]);
   const [isAdjustStockModalOpen, setIsAdjustStockModalOpen] = useState(false);
 
   // Stock Adjustment Form
@@ -13,20 +32,24 @@ export default function Inventory() {
   const [adjType, setAdjType] = useState('stock_adjusted');
   const [adjNote, setAdjNote] = useState('');
 
-  useEffect(() => {
-    loadProducts();
-  }, []);
-
   const loadProducts = async () => {
     try {
       const res = await apiClient('/products?limit=100');
       if (res.success && res.products) {
         setProductsList(res.products);
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load products:', err);
+    }
   };
 
-  const openAdjustStockModal = (prod: any) => {
+  useEffect(() => {
+    setTimeout(() => {
+      loadProducts();
+    }, 0);
+  }, []);
+
+  const openAdjustStockModal = (prod: InventoryProduct) => {
     setSelectedProductId(prod._id);
     setSelectedProductName(prod.name);
     setAdjQty('');
@@ -41,7 +64,9 @@ export default function Inventory() {
       if (res.success) {
         setSelectedProductLogs(res.logs);
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load product logs:', err);
+    }
   };
 
   const handleAdjustStock = async (e: React.FormEvent) => {
@@ -65,8 +90,9 @@ export default function Inventory() {
           loadProductLogs(selectedProductId);
         }
       }
-    } catch (err: any) {
-      alert(`Adjustment failed: ${err.message}`);
+    } catch (err) {
+      const error = err as Error;
+      alert(`Adjustment failed: ${error.message}`);
     }
   };
 

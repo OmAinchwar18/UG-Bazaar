@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { apiClient } from '@ugbazaar/shared';
 
-export default function Customers() {
-  const [customersList, setCustomersList] = useState<any[]>([]);
+interface Customer {
+  _id: string;
+  name: string;
+  mobile: string;
+  email?: string;
+  village?: string;
+  isVerified?: boolean;
+  createdAt: string;
+}
 
-  useEffect(() => {
-    loadCustomers();
-  }, []);
+export default function Customers() {
+  const [customersList, setCustomersList] = useState<Customer[]>([]);
 
   const loadCustomers = async () => {
     try {
@@ -14,8 +20,16 @@ export default function Customers() {
       if (res.success && res.users) {
         setCustomersList(res.users);
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load customers:', err);
+    }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      loadCustomers();
+    }, 0);
+  }, []);
 
   return (
     <div className="bg-white border border-brand-border/60 rounded-3xl p-6 md:p-8 shadow-sm space-y-6 animate-fade-in">

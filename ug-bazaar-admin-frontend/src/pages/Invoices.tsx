@@ -1,14 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { apiClient, API_BASE } from '@ugbazaar/shared';
-import { Download, Printer } from 'lucide-react';
+import { Download } from 'lucide-react';
+
+interface Invoice {
+  _id: string;
+  invoiceNo: string;
+  invoiceDate: string;
+  cgst: number;
+  sgst: number;
+  grandTotal: number;
+  order?: {
+    _id: string;
+    orderId: string;
+    total: number;
+    createdAt: string;
+  };
+  user?: {
+    name: string;
+  };
+}
 
 export default function Invoices() {
-  const [invoicesList, setInvoicesList] = useState<any[]>([]);
+  const [invoicesList, setInvoicesList] = useState<Invoice[]>([]);
   const [invoiceSearch, setInvoiceSearch] = useState('');
-
-  useEffect(() => {
-    loadInvoices();
-  }, []);
 
   const loadInvoices = async () => {
     try {
@@ -16,8 +30,16 @@ export default function Invoices() {
       if (res.success && res.invoices) {
         setInvoicesList(res.invoices);
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load invoices:', err);
+    }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      loadInvoices();
+    }, 0);
+  }, []);
 
   const handlePrintInvoice = (orderId: string) => {
     const token = localStorage.getItem('ug_token');
@@ -30,7 +52,7 @@ export default function Invoices() {
     }
   };
 
-  const filteredInvoices = invoicesList.filter((invoice: any) => 
+  const filteredInvoices = invoicesList.filter((invoice: Invoice) => 
     invoice.invoiceNo?.toLowerCase().includes(invoiceSearch.toLowerCase()) ||
     invoice.order?.orderId?.toLowerCase().includes(invoiceSearch.toLowerCase()) ||
     invoice.user?.name?.toLowerCase().includes(invoiceSearch.toLowerCase())
@@ -64,7 +86,7 @@ export default function Invoices() {
             </tr>
           </thead>
           <tbody className="divide-y divide-brand-light text-sm font-semibold">
-            {filteredInvoices.map((inv: any) => (
+            {filteredInvoices.map((inv: Invoice) => (
               <tr key={inv._id} className="hover:bg-brand-light/30">
                 <td className="py-4 px-4 font-extrabold text-brand-dark">{inv.invoiceNo}</td>
                 <td className="py-4 px-4 font-extrabold text-brand-muted">{inv.order?.orderId}</td>

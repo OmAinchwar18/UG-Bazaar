@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { apiClient } from '@ugbazaar/shared';
 
+interface Order {
+  _id: string;
+  orderId: string;
+  status: string;
+  total: number;
+  createdAt: string;
+  paymentStatus: string;
+  paymentMethod: string;
+  user?: {
+    name: string;
+    mobile: string;
+  };
+}
+
 export default function Orders() {
-  const [ordersList, setOrdersList] = useState<any[]>([]);
+  const [ordersList, setOrdersList] = useState<Order[]>([]);
   const [isOrderStatusModalOpen, setIsOrderStatusModalOpen] = useState(false);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
   const [orderStatus, setOrderStatus] = useState('Placed');
   const [orderStatusNote, setOrderStatusNote] = useState('');
-
-  useEffect(() => {
-    loadOrders();
-  }, []);
 
   const loadOrders = async () => {
     try {
@@ -18,10 +28,18 @@ export default function Orders() {
       if (res.success && res.orders) {
         setOrdersList(res.orders);
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load orders:', err);
+    }
   };
 
-  const openOrderStatusModal = (order: any) => {
+  useEffect(() => {
+    setTimeout(() => {
+      loadOrders();
+    }, 0);
+  }, []);
+
+  const openOrderStatusModal = (order: Order) => {
     setSelectedOrderId(order._id);
     setOrderStatus(order.status);
     setOrderStatusNote('');
@@ -45,8 +63,9 @@ export default function Orders() {
         setIsOrderStatusModalOpen(false);
         loadOrders();
       }
-    } catch (err: any) {
-      alert(`Failed to update status: ${err.message}`);
+    } catch (err) {
+      const error = err as Error;
+      alert(`Failed to update status: ${error.message}`);
     }
   };
 

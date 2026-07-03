@@ -2,8 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { apiClient } from '@ugbazaar/shared';
 import { Trash2 } from 'lucide-react';
 
+interface Coupon {
+  _id: string;
+  code: string;
+  type: string;
+  value: number;
+  minOrder: number;
+  expiresAt: string;
+  isActive?: boolean;
+}
+
 export default function Coupons() {
-  const [couponsList, setCouponsList] = useState<any[]>([]);
+  const [couponsList, setCouponsList] = useState<Coupon[]>([]);
 
   // Coupon Form
   const [couponCode, setCouponCode] = useState('');
@@ -12,18 +22,22 @@ export default function Coupons() {
   const [couponMinOrder, setCouponMinOrder] = useState('0');
   const [couponExpires, setCouponExpires] = useState('');
 
-  useEffect(() => {
-    loadCoupons();
-  }, []);
-
   const loadCoupons = async () => {
     try {
       const res = await apiClient('/coupons');
       if (res.success && res.coupons) {
         setCouponsList(res.coupons);
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load coupons:', err);
+    }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      loadCoupons();
+    }, 0);
+  }, []);
 
   const handleAddCoupon = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,8 +62,9 @@ export default function Coupons() {
         setCouponExpires('');
         loadCoupons();
       }
-    } catch (err: any) {
-      alert(`Failed to create coupon: ${err.message}`);
+    } catch (err) {
+      const error = err as Error;
+      alert(`Failed to create coupon: ${error.message}`);
     }
   };
 
@@ -60,8 +75,9 @@ export default function Coupons() {
       if (res.success) {
         loadCoupons();
       }
-    } catch (err: any) {
-      alert(err.message);
+    } catch (err) {
+      const error = err as Error;
+      alert(error.message);
     }
   };
 

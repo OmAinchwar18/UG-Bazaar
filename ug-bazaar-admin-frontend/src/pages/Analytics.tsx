@@ -9,6 +9,12 @@ interface Stats {
   lowStockCount: number;
 }
 
+interface CategoryData {
+  name: string;
+  value: number;
+  color?: string;
+}
+
 export default function Analytics() {
   const [stats, setStats] = useState<Stats>({
     revenue: 0,
@@ -17,12 +23,7 @@ export default function Analytics() {
     lowStockCount: 0
   });
 
-  const [topCategories, setTopCategories] = useState<any[]>([]);
-
-  useEffect(() => {
-    loadStats();
-    loadAnalyticsData();
-  }, []);
+  const [topCategories, setTopCategories] = useState<CategoryData[]>([]);
 
   const loadStats = async () => {
     try {
@@ -36,7 +37,9 @@ export default function Analytics() {
           lowStockCount: lowStockRes.success ? lowStockRes.count : 0
         });
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load stats:', err);
+    }
   };
 
   const loadAnalyticsData = async () => {
@@ -45,8 +48,17 @@ export default function Analytics() {
       if (res.success && res.analytics) {
         setTopCategories(res.analytics.topCategories || []);
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load analytics data:', err);
+    }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      loadStats();
+      loadAnalyticsData();
+    }, 0);
+  }, []);
 
   const handleExport = (format: 'csv' | 'pdf') => {
     const token = localStorage.getItem('ug_token');

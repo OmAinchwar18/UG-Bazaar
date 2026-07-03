@@ -1,15 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation, Outlet } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../store';
 import { logout } from '../store/slices/authSlice';
-import { apiClient, API_BASE } from '@ugbazaar/shared';
+import { API_BASE } from '@ugbazaar/shared';
 import { io } from 'socket.io-client';
 import { 
   ShieldCheck, LineChart, Layers, AlertTriangle, 
   ShoppingBag, FileText, Users, Plus, BarChart3, 
   Settings, LogOut, Activity 
 } from 'lucide-react';
+
+interface LiveAlert {
+  id: string;
+  type: 'info' | 'warning' | 'success';
+  text: string;
+  time: Date;
+}
+
+interface NewOrderAlertData {
+  orderId: string;
+  total: number;
+  userName: string;
+}
+
+interface LowStockAlertData {
+  name: string;
+  stock: number;
+}
+
+interface PaymentSuccessAlertData {
+  orderId: string;
+  total: number;
+  userName: string;
+}
 
 export default function AdminLayout() {
   const navigate = useNavigate();
@@ -19,7 +43,7 @@ export default function AdminLayout() {
   const activeTab = pathname.split('/').pop() || 'dashboard';
 
   // Real-time alerts queue
-  const [liveAlerts, setLiveAlerts] = useState<any[]>([]);
+  const [liveAlerts, setLiveAlerts] = useState<LiveAlert[]>([]);
 
   // Real-Time Sockets Listener for Admins
   useEffect(() => {
@@ -32,7 +56,7 @@ export default function AdminLayout() {
       socket.emit('join_user', user._id);
     });
 
-    socket.on('new_order', (data: any) => {
+    socket.on('new_order', (data: NewOrderAlertData) => {
       setLiveAlerts(prev => [{
         id: Math.random().toString(),
         type: 'info',
@@ -41,7 +65,7 @@ export default function AdminLayout() {
       }, ...prev]);
     });
 
-    socket.on('low_stock_alert', (data: any) => {
+    socket.on('low_stock_alert', (data: LowStockAlertData) => {
       setLiveAlerts(prev => [{
         id: Math.random().toString(),
         type: 'warning',
@@ -50,7 +74,7 @@ export default function AdminLayout() {
       }, ...prev]);
     });
 
-    socket.on('admin_payment_success', (data: any) => {
+    socket.on('admin_payment_success', (data: PaymentSuccessAlertData) => {
       setLiveAlerts(prev => [{
         id: Math.random().toString(),
         type: 'success',

@@ -13,6 +13,16 @@ interface Stats {
   lowStockCount: number;
 }
 
+interface MonthlySale {
+  name: string;
+  revenue: number;
+}
+
+interface BestSeller {
+  name: string;
+  sales: number;
+}
+
 export default function Dashboard() {
   const [stats, setStats] = useState<Stats>({
     revenue: 0,
@@ -22,15 +32,10 @@ export default function Dashboard() {
     lowStockCount: 0
   });
 
-  const [monthlySales, setMonthlySales] = useState<any[]>([]);
-  const [bestSellers, setBestSellers] = useState<any[]>([]);
+  const [monthlySales, setMonthlySales] = useState<MonthlySale[]>([]);
+  const [bestSellers, setBestSellers] = useState<BestSeller[]>([]);
   const [aiInsight, setAiInsight] = useState<string | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
-
-  useEffect(() => {
-    loadStats();
-    loadAnalyticsData();
-  }, []);
 
   const loadStats = async () => {
     try {
@@ -45,7 +50,9 @@ export default function Dashboard() {
           lowStockCount: lowStockRes.success ? lowStockRes.count : 0
         });
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load stats:', err);
+    }
   };
 
   const loadAnalyticsData = async () => {
@@ -55,8 +62,17 @@ export default function Dashboard() {
         setMonthlySales(res.analytics.monthlySales || []);
         setBestSellers(res.analytics.bestSellers || []);
       }
-    } catch {}
+    } catch (err) {
+      console.error('Failed to load analytics data:', err);
+    }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      loadStats();
+      loadAnalyticsData();
+    }, 0);
+  }, []);
 
   const runAIInsights = async () => {
     setAiLoading(true);

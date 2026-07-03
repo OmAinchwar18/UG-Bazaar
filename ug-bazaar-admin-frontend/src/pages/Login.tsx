@@ -44,8 +44,9 @@ export default function Login() {
       } else {
         throw new Error('Invalid credentials.');
       }
-    } catch (err: any) {
-      setError(err.message || 'Login failed. Please check your credentials.');
+    } catch (err) {
+      const error = err as Error;
+      setError(error.message || 'Login failed. Please check your credentials.');
     } finally {
       setLoading(false);
     }
