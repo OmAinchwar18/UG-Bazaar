@@ -24,8 +24,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: |
+          package-lock.json
           ug-bazaar-backend-main/ug-bazaar-backend-main/package-lock.json
-          ug-bazaar-frontend-main/ug-bazaar-frontend-main/package-lock.json
 
     # 1. API Build & Test Validation
     - name: Install API Dependencies
@@ -36,23 +36,43 @@ jobs:
     - name: Run API Linting Checks
       run: |
         cd ug-bazaar-backend-main/ug-bazaar-backend-main
-        # If lint command exists: npm run lint || true
+        npm run lint --if-present
 
     - name: Run API Test Suite
       run: |
         cd ug-bazaar-backend-main/ug-bazaar-backend-main
-        # If test script exists: npm test || true
+        npm test --if-present
 
-    # 2. Client Build Validation
-    - name: Install Client Dependencies
+    # 2. Workspace Monorepo Dependencies
+    - name: Install Monorepo Dependencies
       run: |
-        cd ug-bazaar-frontend-main/ug-bazaar-frontend-main
         npm ci
 
-    - name: Build Production Web Bundle
+    # 3. Customer Frontend Build & Test
+    - name: Run Customer Frontend Linting
       run: |
-        cd ug-bazaar-frontend-main/ug-bazaar-frontend-main
-        npm run build
+        npm run lint --workspace=ug-bazaar-customer-frontend --if-present
+
+    - name: Build Customer Frontend Bundle
+      run: |
+        npm run build --workspace=ug-bazaar-customer-frontend --if-present
+
+    - name: Run Customer Frontend Tests
+      run: |
+        npm test --workspace=ug-bazaar-customer-frontend --if-present
+
+    # 4. Admin Frontend Build & Test
+    - name: Run Admin Frontend Linting
+      run: |
+        npm run lint --workspace=ug-bazaar-admin-frontend --if-present
+
+    - name: Build Admin Frontend Bundle
+      run: |
+        npm run build --workspace=ug-bazaar-admin-frontend --if-present
+
+    - name: Run Admin Frontend Tests
+      run: |
+        npm test --workspace=ug-bazaar-admin-frontend --if-present
 
   docker-image-validation:
     needs: build-and-test
