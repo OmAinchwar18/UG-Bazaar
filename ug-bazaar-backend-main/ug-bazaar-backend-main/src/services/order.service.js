@@ -240,7 +240,7 @@ class OrderService {
     const ReturnRequest = require('../models/ReturnRequest');
     const productIds = (products && products.length > 0) 
       ? products 
-      : order.items.map(item => item.product._id || item.product);
+      : order.items.map(item => item.product ? (item.product._id || item.product) : null).filter(Boolean);
 
     const returnRequest = await ReturnRequest.create({
       order: order._id,
