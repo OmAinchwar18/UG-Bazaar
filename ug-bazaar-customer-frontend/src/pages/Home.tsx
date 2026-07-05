@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProducts } from '../api/productQueries';
 import ProductCard from '../components/ProductCard';
+import { useTranslation } from '../hooks/useTranslation';
+import { getTranslated } from '@ugbazaar/shared';
 import { 
   Sparkles, ShieldCheck, ChevronRight, Truck, 
   Leaf, Zap, Hammer, Armchair, Coffee, HardDrive, ShoppingBag,
@@ -21,8 +23,25 @@ const categoryMap = [
   { name: 'General Store', emoji: '🛍️', label: 'Daily General', icon: ShoppingBag, bg: 'bg-pink-50 text-pink-700 border-pink-100' }
 ];
 
+const getCategoryLabel = (name: string, lang: string) => {
+  const map: Record<string, Record<string, string>> = {
+    Grocery: { en: 'Grocery & Staples', hi: 'किराना और राशन', mr: 'किराणा आणि किराणा सामान' },
+    Agriculture: { en: 'Agri Inputs', hi: 'कृषि इनपुट', mr: 'कृषी निविष्ठा' },
+    'Building Materials': { en: 'Building Materials', hi: 'भवन निर्माण सामग्री', mr: 'बांधकाम साहित्य' },
+    'Hardware Tools': { en: 'Hardware Tools', hi: 'हार्डवेयर और उपकरण', mr: 'हार्डवेअर आणि साधने' },
+    Plumbing: { en: 'Plumbing Fittings', hi: 'प्लंबिंग फिटिंग', mr: 'प्लंबिंग फिटिंग्ज' },
+    Electrical: { en: 'Electrical & Wires', hi: 'इलेक्ट्रिकल और तार', mr: 'इलेक्ट्रिकल आणि वायर्स' },
+    Furniture: { en: 'Furniture Wood', hi: 'फर्नीचर और लकड़ी', mr: 'फर्निचर आणि लाकूड' },
+    'Home Appliances': { en: 'Home Appliances', hi: 'घरेलू उपकरण', mr: 'घरगुती उपकरणे' },
+    Electronics: { en: 'Electronics Tech', hi: 'इलेक्ट्रॉनिक्स', mr: 'इलेक्ट्रॉनिक्स' },
+    'General Store': { en: 'Daily General', hi: 'दैनिक जरुरत', mr: 'दैनिक जनरल' }
+  };
+  return map[name]?.[lang] || map[name]?.en || name;
+};
+
 export default function Home() {
   const navigate = useNavigate();
+  const { currentDict, lang } = useTranslation();
 
   const { data: popularData, isLoading: popLoading } = useProducts({ badge: 'Popular', limit: 8 });
   const { data: buildData, isLoading: buildLoading } = useProducts({ dept: 'Building Materials', limit: 4 });
@@ -50,16 +69,23 @@ export default function Home() {
                 Gangadhar Traders
               </span>
               <h1 className="font-extrabold text-3xl md:text-5xl mt-4 leading-tight">
-                Construction Materials, Hardware & <span className="text-brand-yellow">Daily Essentials</span>
+                {lang === 'hi' ? 'भवन निर्माण, हार्डवेयर और ' : lang === 'mr' ? 'बांधकाम साहित्य, हार्डवेअर आणि ' : 'Construction Materials, Hardware & '}
+                <span className="text-brand-yellow">
+                  {lang === 'hi' ? 'दैनिक जरुरत' : lang === 'mr' ? 'दैनिक गरजा' : 'Daily Essentials'}
+                </span>
               </h1>
               <p className="text-white/80 text-sm mt-3 font-semibold">
-                Superfast delivery straight from CDCC Bank Road, Talodhi directly to your project site or home.
+                {lang === 'hi' 
+                  ? 'सीडीसीसी बैंक रोड, तलोधी से सीधे आपके प्रोजेक्ट साइट या घर पर सुपरफास्ट डिलीवरी।' 
+                  : lang === 'mr' 
+                  ? 'सीडीसीसी बँक रोड, तळोधी येथून थेट तुमच्या प्रोजेक्ट साइटवर किंवा घरी सुपरफास्ट डिलिव्हरी.' 
+                  : 'Superfast delivery straight from CDCC Bank Road, Talodhi directly to your project site or home.'}
               </p>
               <button 
                 onClick={() => navigate('/search')}
                 className="mt-6 bg-brand-yellow hover:bg-opacity-95 text-brand-dark font-extrabold px-6 py-3 rounded-xl flex items-center gap-2 active:scale-95 transition-all shadow-md cursor-pointer"
               >
-                <span>Browse Catalog</span>
+                <span>{currentDict.buttons.browseCatalog}</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -67,10 +93,20 @@ export default function Home() {
             <div className="relative z-10 flex flex-col items-center bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl md:w-80">
               <div className="flex items-center gap-2 text-brand-yellow font-extrabold text-sm mb-3">
                 <Sparkles className="w-5 h-5 fill-brand-yellow" />
-                <span>LIMITED TIME OFFER</span>
+                <span>
+                  {lang === 'hi' ? 'सीमित समय की पेशकश' : lang === 'mr' ? 'मर्यादित वेळेची ऑफर' : 'LIMITED TIME OFFER'}
+                </span>
               </div>
-              <p className="text-2xl font-black text-center text-white">Flat ₹100 OFF</p>
-              <p className="text-xs text-white/80 font-bold text-center mt-1">On orders above ₹500 across Grocery</p>
+              <p className="text-2xl font-black text-center text-white">
+                {lang === 'hi' ? 'सीधे ₹100 की छूट' : lang === 'mr' ? 'थेट ₹१०० सूट' : 'Flat ₹100 OFF'}
+              </p>
+              <p className="text-xs text-white/80 font-bold text-center mt-1">
+                {lang === 'hi' 
+                  ? 'किराना पर ₹500 से अधिक के ऑर्डर पर' 
+                  : lang === 'mr' 
+                  ? 'किराणा मालावर ₹५०० पेक्षा जास्त ऑर्डरवर' 
+                  : 'On orders above ₹500 across Grocery'}
+              </p>
               <div className="bg-white text-brand-dark px-4 py-2 rounded-xl mt-4 font-black text-sm border-2 border-brand-yellow border-dashed tracking-wider select-all cursor-pointer">
                 BAZAAR100
               </div>
@@ -83,8 +119,10 @@ export default function Home() {
       {/* Category Explorer Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
         <h2 className="font-extrabold text-xl md:text-2xl text-brand-dark flex items-center gap-2">
-          <span>Explore Departments</span>
-          <span className="text-xs text-brand-muted font-bold bg-brand-light border px-2.5 py-1 rounded-full">Choose Category</span>
+          <span>{lang === 'hi' ? 'विभागों को खोजें' : lang === 'mr' ? 'विभाग शोधा' : 'Explore Departments'}</span>
+          <span className="text-xs text-brand-muted font-bold bg-brand-light border px-2.5 py-1 rounded-full">
+            {lang === 'hi' ? 'श्रेणी चुनें' : lang === 'mr' ? 'श्रेणी निवडा' : 'Choose Category'}
+          </span>
         </h2>
         
         <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-4 mt-6">
@@ -99,7 +137,7 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center border shadow-sm group-hover:scale-110 transition-transform duration-200">
                   <Icon className="w-6 h-6" />
                 </div>
-                <span className="font-extrabold text-sm mt-3 text-brand-dark">{cat.label}</span>
+                <span className="font-extrabold text-sm mt-3 text-brand-dark">{getCategoryLabel(cat.name, lang)}</span>
               </div>
             );
           })}
@@ -111,13 +149,15 @@ export default function Home() {
         <div className="flex items-center justify-between border-b border-brand-border/60 pb-3">
           <h2 className="font-extrabold text-xl md:text-2xl text-brand-dark flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-brand-yellow fill-brand-yellow" />
-            <span>Popular in Talodhi</span>
+            <span>
+              {lang === 'hi' ? 'तलोधी में लोकप्रिय' : lang === 'mr' ? 'तळोधीमध्ये लोकप्रिय' : 'Popular in Talodhi'}
+            </span>
           </h2>
           <button 
             onClick={() => navigate('/search')}
             className="text-xs font-bold text-brand-green hover:underline flex items-center gap-1"
           >
-            <span>View All</span>
+            <span>{currentDict.buttons.viewAll}</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -147,15 +187,23 @@ export default function Home() {
           <div>
             <h2 className="font-extrabold text-xl text-amber-800 flex items-center gap-2">
               <Package className="w-5 h-5 text-brand-orange" />
-              <span>Building & Construction Materials</span>
+              <span>
+                {lang === 'hi' ? 'भवन और निर्माण सामग्री' : lang === 'mr' ? 'इमारत आणि बांधकाम साहित्य' : 'Building & Construction Materials'}
+              </span>
             </h2>
-            <p className="text-xs text-brand-muted font-semibold mt-0.5">High grade cement, steel TMT bars and clay bricks</p>
+            <p className="text-xs text-brand-muted font-semibold mt-0.5">
+              {lang === 'hi' 
+                ? 'उच्च गुणवत्ता वाला सीमेंट, स्टील टीएमटी बार और मिट्टी की ईंटें' 
+                : lang === 'mr' 
+                ? 'उत्कृष्ट दर्जाचे सिमेंट, स्टील टीएमटी बार आणि मातीची वीट' 
+                : 'High grade cement, steel TMT bars and clay bricks'}
+            </p>
           </div>
           <button 
             onClick={() => navigate('/search?dept=Building Materials')}
             className="text-xs font-bold text-brand-green hover:underline flex items-center gap-1"
           >
-            <span>View All Materials</span>
+            <span>{lang === 'hi' ? 'सभी सामग्री देखें' : lang === 'mr' ? 'सर्व साहित्य पहा' : 'View All Materials'}</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -184,15 +232,23 @@ export default function Home() {
           <div>
             <h2 className="font-extrabold text-xl text-emerald-800 flex items-center gap-2">
               <Leaf className="w-5 h-5 text-brand-green" />
-              <span>Agriculture & Farming Inputs</span>
+              <span>
+                {lang === 'hi' ? 'कृषि और खेती इनपुट्स' : lang === 'mr' ? 'कृषी आणि शेती निविष्ठा' : 'Agriculture & Farming Inputs'}
+              </span>
             </h2>
-            <p className="text-xs text-brand-muted font-semibold mt-0.5">High yield hybrid seeds & organic compost fertilizers</p>
+            <p className="text-xs text-brand-muted font-semibold mt-0.5">
+              {lang === 'hi' 
+                ? 'अधिक उपज देने वाले हाइब्रिड बीज और जैविक खाद' 
+                : lang === 'mr' 
+                ? 'जास्त उत्पादन देणारे हायब्रिड बियाणे आणि सेंद्रिय खत' 
+                : 'High yield hybrid seeds & organic compost fertilizers'}
+            </p>
           </div>
           <button 
             onClick={() => navigate('/search?dept=Agriculture')}
             className="text-xs font-bold text-brand-green hover:underline flex items-center gap-1"
           >
-            <span>View All Agri</span>
+            <span>{lang === 'hi' ? 'सभी कृषि सामग्री देखें' : lang === 'mr' ? 'सर्व कृषी साहित्य पहा' : 'View All Agri'}</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -202,7 +258,6 @@ export default function Home() {
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="bg-white border rounded-2xl p-4 space-y-4 h-72">
                 <div className="w-full h-36 rounded-xl skeleton-pulse"></div>
-                <div className="h-4 w-3/4 rounded skeleton-pulse"></div>
               </div>
             ))}
           </div>
@@ -220,15 +275,21 @@ export default function Home() {
         <div className="flex items-center justify-between border-b border-brand-border/60 pb-3">
           <div>
             <h2 className="font-extrabold text-xl text-brand-dark flex items-center gap-2">
-              <span>Grocery & Daily Staples</span>
+              <span>{lang === 'hi' ? 'किराना और दैनिक राशन' : lang === 'mr' ? 'किराणा आणि दैनिक किराणा सामान' : 'Grocery & Daily Staples'}</span>
             </h2>
-            <p className="text-xs text-brand-muted font-semibold mt-0.5">Daily pulses, premium oil & basmati rice packages</p>
+            <p className="text-xs text-brand-muted font-semibold mt-0.5">
+              {lang === 'hi' 
+                ? 'दैनिक दालें, शुद्ध तेल और बासमती चावल पैकेट' 
+                : lang === 'mr' 
+                ? 'रोजच्या डाळी, शुद्ध तेल आणि बासमती तांदूळ पाकिटे' 
+                : 'Daily pulses, premium oil & basmati rice packages'}
+            </p>
           </div>
           <button 
             onClick={() => navigate('/search?dept=Grocery')}
             className="text-xs font-bold text-brand-green hover:underline flex items-center gap-1"
           >
-            <span>View All Grocery</span>
+            <span>{lang === 'hi' ? 'सभी किराना देखें' : lang === 'mr' ? 'सर्व किराणा पहा' : 'View All Grocery'}</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -258,9 +319,15 @@ export default function Home() {
               <Truck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-extrabold text-sm text-brand-dark">Instant Site Delivery</h4>
+              <h4 className="font-extrabold text-sm text-brand-dark">
+                {lang === 'hi' ? 'सीधे साइट पर डिलीवरी' : lang === 'mr' ? 'थेट साइटवर डिलिव्हरी' : 'Instant Site Delivery'}
+              </h4>
               <p className="text-xs text-brand-muted mt-1 leading-relaxed font-semibold">
-                Delivering building materials and supplies directly to your construction site or house.
+                {lang === 'hi' 
+                  ? 'निर्माण सामग्री और आपूर्ति सीधे आपके निर्माण स्थल या घर तक पहुँचाना।' 
+                  : lang === 'mr' 
+                  ? 'बांधकाम साहित्य आणि वस्तू थेट तुमच्या बांधकाम साइटवर किंवा घरी पोहोचवणे.' 
+                  : 'Delivering building materials and supplies directly to your construction site or house.'}
               </p>
             </div>
           </div>
@@ -271,7 +338,11 @@ export default function Home() {
             <div>
               <h4 className="font-extrabold text-sm text-brand-dark">100% Secure Payments</h4>
               <p className="text-xs text-brand-muted mt-1 leading-relaxed font-semibold">
-                Payments verified by Razorpay. Choose cash on delivery, card, or UPI.
+                {lang === 'hi' 
+                  ? 'भुगतान रेज़रपे द्वारा सत्यापित। कैश ऑन डिलीवरी, कार्ड या यूपीआई चुनें।' 
+                  : lang === 'mr' 
+                  ? 'पेमेंट रेझरपे द्वारे सुरक्षित. कॅश ऑन डिलिव्हरी, कार्ड किंवा यूपीआय निवडा.' 
+                  : 'Payments verified by Razorpay. Choose cash on delivery, card, or UPI.'}
               </p>
             </div>
           </div>
@@ -280,9 +351,15 @@ export default function Home() {
               <Sparkles className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-extrabold text-sm text-brand-dark">Quality Assured Brands</h4>
+              <h4 className="font-extrabold text-sm text-brand-dark">
+                {lang === 'hi' ? 'गुणवत्तापूर्ण ब्रांड्स' : lang === 'mr' ? 'गुणवत्तापूर्ण ब्रँड्स' : 'Quality Assured Brands'}
+              </h4>
               <p className="text-xs text-brand-muted mt-1 leading-relaxed font-semibold">
-                Stocking leading brands: UltraTech, Tata, Bosch, Stanley, Astral, Jaquar, Bajaj, Wipro.
+                {lang === 'hi' 
+                  ? 'अग्रणी ब्रांडों का स्टॉक: अल्ट्राटेक, टाटा, बॉश, स्टेनली, एस्ट्रल, जगुआर, बजाज, विप्रो।' 
+                  : lang === 'mr' 
+                  ? 'प्रमुख ब्रँड्सचा साठा: अल्ट्राटेक, टाटा, बॉश, स्टेनली, एस्ट्रल, जगुआर, बजाज, विप्रो.' 
+                  : 'Stocking leading brands: UltraTech, Tata, Bosch, Stanley, Astral, Jaquar, Bajaj, Wipro.'}
               </p>
             </div>
           </div>

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { useOrderDetails, useCancelOrder, useReturnOrder } from '../api/orderQueries';
 import { apiClient, API_BASE } from '../api/apiClient';
-import { getProductThumbnail } from '@ugbazaar/shared';
+import { getProductThumbnail, getTranslated } from '@ugbazaar/shared';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import { useTranslation } from '../hooks/useTranslation';
 import { 
   CheckCircle2, XCircle, CreditCard, Calendar, 
   MapPin, ArrowLeft, Trash2, Truck, FileText, Printer, Download, Undo, Upload, RotateCcw
@@ -14,6 +15,7 @@ export default function OrderDetail() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id') || '';
+  const { currentDict, lang } = useTranslation();
 
   const { user } = useSelector((state: RootState) => state.auth);
 
@@ -32,7 +34,6 @@ export default function OrderDetail() {
   const [isReturnModalOpen, setIsReturnModalOpen] = useState(false);
   const [returnReason, setReturnReason] = useState('Damaged product');
   const [returnComments, setReturnComments] = useState('');
-  const [returnFiles, setReturnFiles] = useState<FileList | null>(null);
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
   const [uploadingReturnImages, setUploadingReturnImages] = useState(false);
 
@@ -42,7 +43,7 @@ export default function OrderDetail() {
       { id, reason: cancelReason, comments: cancelText },
       {
         onSuccess: () => {
-          alert('Order Cancelled successfully.');
+          alert(lang === 'hi' ? 'ऑर्डर सफलतापूर्वक रद्द कर दिया गया।' : lang === 'mr' ? 'ऑर्डर यशस्वीपणे रद्द केली.' : 'Order Cancelled successfully.');
           setIsCancelModalOpen(false);
         },
         onError: (err: any) => {
@@ -56,7 +57,7 @@ export default function OrderDetail() {
     const files = e.target.files;
     if (!files || files.length === 0) return;
     if (files.length > 5) {
-      alert('You can only upload up to 5 images as proof.');
+      alert(lang === 'hi' ? 'आप केवल 5 तस्वीरें तक ही अपलोड कर सकते हैं।' : lang === 'mr' ? 'तुम्ही फक्त ५ प्रतिमा अपलोड करू शकता.' : 'You can only upload up to 5 images as proof.');
       return;
     }
 
@@ -78,7 +79,7 @@ export default function OrderDetail() {
       const data = await res.json();
       if (data.success && data.urls) {
         setUploadedImages(data.urls);
-        alert('Proof images uploaded successfully.');
+        alert(lang === 'hi' ? 'प्रमाण फ़ाइलें सफलतापूर्वक अपलोड हो गईं।' : lang === 'mr' ? 'पुरावा फाइली यशस्वीपणे अपलोड केल्या.' : 'Proof images uploaded successfully.');
       } else {
         alert(data.message || 'Image upload failed.');
       }
@@ -100,7 +101,7 @@ export default function OrderDetail() {
       },
       {
         onSuccess: () => {
-          alert('Return request submitted successfully.');
+          alert(lang === 'hi' ? 'वापसी अनुरोध सफलतापूर्वक जमा कर दिया गया।' : lang === 'mr' ? 'परतावा विनंती यशस्वीपणे सबमिट केली.' : 'Return request submitted successfully.');
           setIsReturnModalOpen(false);
           setUploadedImages([]);
           setReturnComments('');
@@ -114,7 +115,7 @@ export default function OrderDetail() {
 
   const getDeliveredDate = () => {
     const deliveredEvent = order?.statusHistory?.find((h: any) => h.status === 'Delivered');
-    return deliveredEvent ? new Date(deliveredEvent.updatedAt) : (order ? new Date(order.updatedAt) : new Date());
+    return deliveredEvent ? new Date(deliveredEvent.updatedAt) : (order ? new Date((order as any).updatedAt || order.createdAt) : new Date());
   };
 
   const isReturnEligible = () => {
@@ -258,11 +259,30 @@ export default function OrderDetail() {
   if (!order) {
     return (
       <div className="max-w-3xl mx-auto py-16 px-4 text-center">
-        <h2 className="font-extrabold text-xl text-brand-dark">Order Not Found</h2>
-        <Link to="/" className="btn-primary mt-6 inline-flex">Back to Home</Link>
+        <h2 className="font-extrabold text-xl text-brand-dark">
+          {lang === 'hi' ? 'ऑर्डर नहीं मिला' : lang === 'mr' ? 'ऑर्डर आढळला नाही' : 'Order Not Found'}
+        </h2>
+        <Link to="/" className="btn-primary mt-6 inline-flex">
+          {lang === 'hi' ? 'होम पेज पर वापस जाएं' : lang === 'mr' ? 'मुख्यपृष्ठावर परत जा' : 'Back to Home'}
+        </Link>
       </div>
     );
   }
+
+  const getOrderStatusText = (s: string) => {
+    const map: Record<string, Record<string, string>> = {
+      Placed: { en: 'Placed', hi: 'ऑर्डर भेजा गया', mr: 'ऑर्डर पाठवली' },
+      Confirmed: { en: 'Confirmed', hi: 'पुष्टि की गई', mr: 'पुष्टी केली' },
+      Packed: { en: 'Packed', hi: 'पैक किया गया', mr: 'पॅक केले' },
+      Shipped: { en: 'Shipped', hi: 'भेजा गया', mr: 'पाठवले' },
+      'Out For Delivery': { en: 'Out For Delivery', hi: 'वितरण के लिए बाहर', mr: 'डिलिव्हरीसाठी बाहेर' },
+      Delivered: { en: 'Delivered', hi: 'वितरित हुआ', mr: 'वितरित झाले' },
+      Cancelled: { en: 'Cancelled', hi: 'रद्द किया गया', mr: 'रद्द केले' },
+      'Return Requested': { en: 'Return Requested', hi: 'वापसी का अनुरोध', mr: 'परतावा विनंती केली' },
+      'Refund Completed': { en: 'Refund Completed', hi: 'रिफंड पूरा हुआ', mr: 'परतावा पूर्ण झाला' }
+    };
+    return map[s]?.[lang] || map[s]?.en || s;
+  };
 
   const getStatusColor = (s: string) => {
     switch (s) {
@@ -285,7 +305,7 @@ export default function OrderDetail() {
       {/* Back button */}
       <Link to="/profile" className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-muted hover:text-brand-dark mb-6 uppercase tracking-wider">
         <ArrowLeft className="w-4 h-4" />
-        <span>Back to Profile</span>
+        <span>{lang === 'hi' ? 'प्रोफाइल पर वापस जाएं' : lang === 'mr' ? 'प्रोफाइलवर परत जा' : 'Back to Profile'}</span>
       </Link>
 
       <div className="bg-white border border-brand-border/60 rounded-3xl p-6 md:p-8 shadow-sm space-y-6">
@@ -294,17 +314,19 @@ export default function OrderDetail() {
         <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-brand-light pb-6">
           <div>
             <span className={`text-[10px] font-black uppercase px-2.5 py-1 rounded-full border ${getStatusColor(order.status)}`}>
-              {order.status}
+              {getOrderStatusText(order.status)}
             </span>
-            <h1 className="font-extrabold text-2xl text-brand-dark mt-3">Order {order.orderId}</h1>
+            <h1 className="font-extrabold text-2xl text-brand-dark mt-3">
+              {lang === 'hi' ? 'ऑर्डर' : lang === 'mr' ? 'ऑर्डर' : 'Order'} {order.orderId}
+            </h1>
             <p className="text-xs text-brand-muted mt-1 flex items-center gap-1.5 font-bold">
               <Calendar className="w-3.5 h-3.5" />
-              <span>{new Date(order.createdAt).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+              <span>{new Date(order.createdAt).toLocaleDateString(lang === 'en' ? 'en-IN' : lang === 'hi' ? 'hi-IN' : 'mr-IN', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
             </p>
           </div>
 
           <div className="flex flex-col sm:items-end">
-            <span className="text-xs text-brand-muted font-bold">Total Amount</span>
+            <span className="text-xs text-brand-muted font-bold">{lang === 'hi' ? 'कुल राशि' : lang === 'mr' ? 'एकूण रक्कम' : 'Total Amount'}</span>
             <span className="font-black text-2xl text-brand-green mt-0.5">₹{order.total}</span>
           </div>
         </div>
@@ -314,7 +336,9 @@ export default function OrderDetail() {
           <div className="flex items-center gap-2">
             <FileText className="w-5 h-5 text-brand-green" />
             <div>
-              <span className="text-xs font-extrabold text-brand-dark block font-sans">Tax Invoice</span>
+              <span className="text-xs font-extrabold text-brand-dark block font-sans">
+                {lang === 'hi' ? 'टैक्स इनवॉइस' : lang === 'mr' ? 'कर बीजक (टॅक्स इनव्हॉइस)' : 'Tax Invoice'}
+              </span>
               <span className="text-[10px] text-brand-muted font-bold block mt-0.5">GST-ready billing statement</span>
             </div>
           </div>
@@ -324,21 +348,21 @@ export default function OrderDetail() {
               className="px-3.5 py-2 bg-white border border-brand-border hover:border-brand-green/40 text-xs font-extrabold text-brand-dark hover:text-brand-green rounded-xl transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
               <FileText className="w-3.5 h-3.5" />
-              <span>View Invoice</span>
+              <span>{lang === 'hi' ? 'इनवॉइस देखें' : lang === 'mr' ? 'इनव्हॉइस पहा' : 'View Invoice'}</span>
             </button>
             <button
               onClick={handleDownloadInvoice}
               className="px-3.5 py-2 bg-brand-green hover:bg-brand-green/90 text-xs font-extrabold text-white rounded-xl transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download PDF</span>
+              <span>{lang === 'hi' ? 'पीडीएफ डाउनलोड करें' : lang === 'mr' ? 'पीडीएफ डाउनलोड करा' : 'Download PDF'}</span>
             </button>
             <button
               onClick={handlePrintInvoice}
               className="px-3.5 py-2 bg-white border border-brand-border hover:border-brand-green/40 text-xs font-extrabold text-brand-dark hover:text-brand-green rounded-xl transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span>Print Invoice</span>
+              <span>{lang === 'hi' ? 'इनवॉइस प्रिंट करें' : lang === 'mr' ? 'इनव्हॉइस प्रिंट करा' : 'Print Invoice'}</span>
             </button>
           </div>
         </div>
@@ -346,15 +370,17 @@ export default function OrderDetail() {
         {/* Visual Stepper Timeline */}
         {order.orderTimeline && order.orderTimeline.length > 0 && (
           <div className="border border-brand-border/50 rounded-2xl p-5 bg-[#fafbfd] space-y-4">
-            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Order Tracking Journey</span>
+            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+              {lang === 'hi' ? 'ऑर्डर ट्रैकिंग यात्रा' : lang === 'mr' ? 'ऑर्डर ट्रॅकिंग प्रवास' : 'Order Tracking Journey'}
+            </span>
             <div className="relative pl-6 border-l-2 border-brand-green/30 space-y-5">
               {order.orderTimeline.map((step: any, idx: number) => (
                 <div key={idx} className="relative group">
                   <div className="absolute -left-[31px] top-1 w-3.5 h-3.5 bg-brand-green border-2 border-white rounded-full shadow-sm ring-4 ring-brand-green/10"></div>
-                  <p className="text-xs font-black text-brand-dark leading-none uppercase">{step.status}</p>
+                  <p className="text-xs font-black text-brand-dark leading-none uppercase">{getOrderStatusText(step.status)}</p>
                   {step.note && <p className="text-xs text-brand-muted font-medium mt-1 leading-relaxed">{step.note}</p>}
                   <p className="text-[10px] text-brand-muted font-bold mt-1">
-                    {new Date(step.updatedAt).toLocaleDateString('en-IN', { 
+                    {new Date(step.updatedAt).toLocaleDateString(lang === 'en' ? 'en-IN' : lang === 'hi' ? 'hi-IN' : 'mr-IN', { 
                       hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'short', year: 'numeric'
                     })}
                   </p>
@@ -367,21 +393,23 @@ export default function OrderDetail() {
         {/* Refund Status Segment if active */}
         {order.refundStatus && order.refundStatus !== 'None' && (
           <div className="border border-emerald-100 rounded-2xl p-4 bg-emerald-50/25 space-y-2.5">
-            <span className="text-xs font-extrabold text-emerald-800 uppercase tracking-wider block">Refund Status Details</span>
+            <span className="text-xs font-extrabold text-emerald-800 uppercase tracking-wider block">
+              {lang === 'hi' ? 'रिफंड स्थिति विवरण' : lang === 'mr' ? 'परतावा स्थिती तपशील' : 'Refund Status Details'}
+            </span>
             <div className="grid grid-cols-2 gap-4 text-xs font-bold">
               <div>
-                <span className="text-brand-muted block uppercase text-[10px]">Refund State</span>
+                <span className="text-brand-muted block uppercase text-[10px]">{lang === 'hi' ? 'रिफंड स्थिति' : lang === 'mr' ? 'परतावा स्थिती' : 'Refund State'}</span>
                 <span className="text-emerald-700 font-extrabold text-sm capitalize">{order.refundStatus}</span>
               </div>
-              {order.refundAmount > 0 && (
+              {(order.refundAmount ?? 0) > 0 && (
                 <div>
-                  <span className="text-brand-muted block uppercase text-[10px]">Amount Refunded</span>
+                  <span className="text-brand-muted block uppercase text-[10px]">{lang === 'hi' ? 'रिफंड की गई राशि' : lang === 'mr' ? 'परतावा केलेली रक्कम' : 'Amount Refunded'}</span>
                   <span className="text-brand-dark font-extrabold text-sm">₹{order.refundAmount}</span>
                 </div>
               )}
               {order.refundMethod && (
                 <div>
-                  <span className="text-brand-muted block uppercase text-[10px]">Refund Method</span>
+                  <span className="text-brand-muted block uppercase text-[10px]">{lang === 'hi' ? 'रिफंड विधि' : lang === 'mr' ? 'परतावा पद्धत' : 'Refund Method'}</span>
                   <span className="text-brand-dark uppercase">{order.refundMethod}</span>
                 </div>
               )}
@@ -397,19 +425,23 @@ export default function OrderDetail() {
 
         {/* List of items inside order */}
         <div className="space-y-4">
-          <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Items Summary</span>
+          <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+            {lang === 'hi' ? 'सामग्री का सारांश' : lang === 'mr' ? 'वस्तूंचा सारांश' : 'Items Summary'}
+          </span>
           <div className="divide-y divide-brand-light border border-brand-border/60 rounded-2xl p-4 bg-brand-light/20">
             {order.items.map((item, idx) => (
               <div key={idx} className="flex items-center justify-between py-3 first:pt-0 last:pb-0 font-semibold text-sm">
                 <div className="flex items-center gap-2">
                   <span className="text-xl bg-white p-1 rounded-lg border w-8 h-8 flex items-center justify-center overflow-hidden">
                     {getProductThumbnail(item.product?.images) ? (
-                      <img src={getProductThumbnail(item.product?.images)} alt={item.name} className="w-full h-full object-contain" />
+                      <img src={getProductThumbnail(item.product?.images)} alt={getTranslated(item.product?.name, lang) || item.name} className="w-full h-full object-contain" />
                     ) : (
                       '📦'
                     )}
                   </span>
-                  <span className="text-brand-dark">{item.name} <span className="text-brand-muted text-xs font-bold">x {item.qty}</span></span>
+                  <span className="text-brand-dark">
+                    {getTranslated(item.product?.name, lang) || item.name} <span className="text-brand-muted text-xs font-bold">x {item.qty}</span>
+                  </span>
                 </div>
                 <span className="font-extrabold text-brand-dark">₹{item.total}</span>
               </div>
@@ -420,7 +452,9 @@ export default function OrderDetail() {
         {/* Recipient Details & Payment info */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-brand-light pt-6">
           <div className="space-y-3">
-            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Delivery Address</span>
+            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+              {lang === 'hi' ? 'डिलिव्हरी पता' : lang === 'mr' ? 'डिलिव्हरी पत्ता' : 'Delivery Address'}
+            </span>
             <div className="text-sm font-semibold text-brand-dark space-y-1">
               <p className="font-extrabold">{order.deliveryAddress?.name}</p>
               <p>{order.deliveryAddress?.mobile}</p>
@@ -431,14 +465,16 @@ export default function OrderDetail() {
           </div>
 
           <div className="space-y-3 border-t md:border-t-0 md:border-l border-brand-border/60 pt-6 md:pt-0 md:pl-6">
-            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Payment Details</span>
+            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+              {lang === 'hi' ? 'भुगतान विवरण' : lang === 'mr' ? 'पेमेंट तपशील' : 'Payment Details'}
+            </span>
             <div className="text-sm font-semibold text-brand-dark space-y-2">
               <div className="flex justify-between items-center text-xs">
-                <span>Method:</span>
+                <span>{lang === 'hi' ? 'विधि:' : lang === 'mr' ? 'पद्धत:' : 'Method:'}</span>
                 <span className="font-black uppercase text-brand-green">{order.payment?.method}</span>
               </div>
               <div className="flex justify-between items-center text-xs">
-                <span>Status:</span>
+                <span>{lang === 'hi' ? 'स्थिति:' : lang === 'mr' ? 'स्थिती:' : 'Status:'}</span>
                 <span className={`font-black uppercase px-2 py-0.5 border rounded-md ${
                   order.payment?.status === 'paid' ? 'bg-green-50 text-brand-green border-green-200' : 'bg-yellow-50 text-yellow-700 border-yellow-200'
                 }`}>
@@ -453,7 +489,7 @@ export default function OrderDetail() {
                   className="btn-accent w-full text-xs font-black py-2 mt-2"
                 >
                   <CreditCard className="w-3.5 h-3.5" />
-                  <span>PAY ₹{order.total} NOW</span>
+                  <span>{lang === 'hi' ? `अभी ₹${order.total} भुगतान करें` : lang === 'mr' ? `आता ₹${order.total} पेमेंट करा` : `PAY ₹${order.total} NOW`}</span>
                 </button>
               )}
             </div>
@@ -468,7 +504,7 @@ export default function OrderDetail() {
               className="btn-primary py-2.5 px-6 text-xs font-extrabold flex items-center justify-center gap-1.5"
             >
               <Truck className="w-4 h-4" />
-              <span>Track Live Delivery</span>
+              <span>{lang === 'hi' ? 'लाइव डिलीवरी ट्रैक करें' : lang === 'mr' ? 'लाइव्ह डिलिव्हरी ट्रॅक करा' : 'Track Live Delivery'}</span>
             </Link>
           )}
 
@@ -479,7 +515,7 @@ export default function OrderDetail() {
                 className="text-xs font-extrabold text-red-500 hover:text-red-700 flex items-center gap-1.5 hover:underline cursor-pointer border hover:bg-red-50 px-3 py-2 rounded-xl"
               >
                 <Trash2 className="w-4 h-4" />
-                <span>Cancel Order</span>
+                <span>{lang === 'hi' ? 'ऑर्डर रद्द करें' : lang === 'mr' ? 'ऑर्डर रद्द करा' : 'Cancel Order'}</span>
               </button>
             )}
 
@@ -489,7 +525,7 @@ export default function OrderDetail() {
                 className="text-xs font-extrabold text-brand-green hover:text-green-800 flex items-center gap-1.5 hover:underline cursor-pointer border hover:bg-green-50 px-3 py-2 rounded-xl"
               >
                 <Undo className="w-4 h-4" />
-                <span>Return Order</span>
+                <span>{lang === 'hi' ? 'ऑर्डर वापस करें' : lang === 'mr' ? 'ऑर्डर परत करा' : 'Return Order'}</span>
               </button>
             )}
           </div>
@@ -502,12 +538,14 @@ export default function OrderDetail() {
         <div className="fixed inset-0 bg-brand-dark/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white border shadow-2xl rounded-3xl p-6 md:p-8 max-w-md w-full animate-slide-up">
             <h3 className="font-extrabold text-lg text-brand-dark mb-4">
-              Cancel Order
+              {lang === 'hi' ? 'ऑर्डर रद्द करें' : lang === 'mr' ? 'ऑर्डर रद्द करा' : 'Cancel Order'}
             </h3>
             
             <form onSubmit={handleCancelSubmit} className="space-y-4">
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-brand-muted uppercase">Reason for Cancellation</label>
+                <label className="text-[10px] font-bold text-brand-muted uppercase">
+                  {lang === 'hi' ? 'रद्द करने का कारण' : lang === 'mr' ? 'रद्द करण्याचे कारण' : 'Reason for Cancellation'}
+                </label>
                 <select 
                   value={cancelReason}
                   onChange={(e) => setCancelReason(e.target.value)}
@@ -523,7 +561,9 @@ export default function OrderDetail() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-brand-muted uppercase">Additional Comments (Optional)</label>
+                <label className="text-[10px] font-bold text-brand-muted uppercase">
+                  {lang === 'hi' ? 'अतिरिक्त टिप्पणियाँ (वैकल्पिक)' : lang === 'mr' ? 'अतिरिक्त टिप्पण्या (पर्यायी)' : 'Additional Comments (Optional)'}
+                </label>
                 <textarea 
                   value={cancelText}
                   onChange={(e) => setCancelText(e.target.value)}
@@ -538,14 +578,14 @@ export default function OrderDetail() {
                   onClick={() => setIsCancelModalOpen(false)}
                   className="btn-secondary py-2 px-5 text-xs font-bold cursor-pointer"
                 >
-                  Back
+                  {lang === 'hi' ? 'पीछे' : lang === 'mr' ? 'मागे' : 'Back'}
                 </button>
                 <button
                   type="submit"
                   disabled={isCancelling}
                   className="btn-primary bg-red-500 hover:bg-red-600 text-white py-2 px-5 text-xs font-bold cursor-pointer"
                 >
-                  {isCancelling ? 'Cancelling...' : 'Confirm Cancellation'}
+                  {isCancelling ? '...' : (lang === 'hi' ? 'रद्द करने की पुष्टि करें' : lang === 'mr' ? 'रद्द करण्याची पुष्टी करा' : 'Confirm Cancellation')}
                 </button>
               </div>
             </form>
@@ -558,12 +598,14 @@ export default function OrderDetail() {
         <div className="fixed inset-0 bg-brand-dark/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white border shadow-2xl rounded-3xl p-6 md:p-8 max-w-md w-full animate-slide-up">
             <h3 className="font-extrabold text-lg text-brand-dark mb-4">
-              Return Order Request
+              {lang === 'hi' ? 'ऑर्डर वापसी अनुरोध' : lang === 'mr' ? 'ऑर्डर परतावा विनंती' : 'Return Order Request'}
             </h3>
             
             <form onSubmit={handleReturnSubmit} className="space-y-4">
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-brand-muted uppercase">Reason for Return</label>
+                <label className="text-[10px] font-bold text-brand-muted uppercase">
+                  {lang === 'hi' ? 'वापसी का कारण' : lang === 'mr' ? 'परताव्याचे कारण' : 'Reason for Return'}
+                </label>
                 <select 
                   value={returnReason}
                   onChange={(e) => setReturnReason(e.target.value)}
@@ -580,11 +622,13 @@ export default function OrderDetail() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-brand-muted uppercase">Upload Proof Images (Max 5)</label>
+                <label className="text-[10px] font-bold text-brand-muted uppercase">
+                  {lang === 'hi' ? 'प्रमाण फोटो अपलोड करें (अधिकतम 5)' : lang === 'mr' ? 'पुरावा फोटो अपलोड करा (जास्तीत जास्त ५)' : 'Upload Proof Images (Max 5)'}
+                </label>
                 <div className="flex items-center gap-2">
                   <label className="w-full border-2 border-dashed border-brand-border hover:border-brand-green/50 p-4 rounded-xl flex flex-col items-center justify-center gap-1 cursor-pointer bg-brand-light/10 hover:bg-brand-light/30 transition-all">
                     <Upload className="w-5 h-5 text-brand-muted" />
-                    <span className="text-[10px] font-bold text-brand-dark">Choose images</span>
+                    <span className="text-[10px] font-bold text-brand-dark">{lang === 'hi' ? 'तस्वीरें चुनें' : lang === 'mr' ? 'फोटो निवडा' : 'Choose images'}</span>
                     <input 
                       type="file" 
                       multiple 
@@ -595,7 +639,7 @@ export default function OrderDetail() {
                   </label>
                 </div>
                 {uploadingReturnImages && (
-                  <span className="text-[10px] font-bold text-brand-green animate-pulse block mt-1">Uploading proof images...</span>
+                  <span className="text-[10px] font-bold text-brand-green animate-pulse block mt-1">Uploading...</span>
                 )}
                 {uploadedImages.length > 0 && (
                   <div className="flex items-center gap-1.5 mt-2 overflow-x-auto py-1">
@@ -607,7 +651,9 @@ export default function OrderDetail() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-[10px] font-bold text-brand-muted uppercase">Additional Comments (Optional)</label>
+                <label className="text-[10px] font-bold text-brand-muted uppercase">
+                  {lang === 'hi' ? 'अतिरिक्त टिप्पणियाँ (वैकल्पिक)' : lang === 'mr' ? 'अतिरिक्त टिप्पण्या (पर्यायी)' : 'Additional Comments (Optional)'}
+                </label>
                 <textarea 
                   value={returnComments}
                   onChange={(e) => setReturnComments(e.target.value)}
@@ -622,14 +668,14 @@ export default function OrderDetail() {
                   onClick={() => setIsReturnModalOpen(false)}
                   className="btn-secondary py-2 px-5 text-xs font-bold cursor-pointer"
                 >
-                  Cancel
+                  {lang === 'hi' ? 'रद्द करें' : lang === 'mr' ? 'रद्द करा' : 'Cancel'}
                 </button>
                 <button
                   type="submit"
                   disabled={isReturning || uploadingReturnImages}
                   className="btn-primary py-2 px-5 text-xs font-bold cursor-pointer"
                 >
-                  {isReturning ? 'Submitting...' : 'Submit Request'}
+                  {isReturning ? '...' : (lang === 'hi' ? 'अनुरोध भेजें' : lang === 'mr' ? 'विनंती सबमिट करा' : 'Submit Request')}
                 </button>
               </div>
             </form>

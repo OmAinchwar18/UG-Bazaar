@@ -5,6 +5,7 @@ import { RootState } from '../store';
 import { updateUser } from '../store/slices/authSlice';
 import { useMyOrders } from '../api/orderQueries';
 import { apiClient, API_BASE } from '../api/apiClient';
+import { useTranslation } from '../hooks/useTranslation';
 import { 
   User, MapPin, ClipboardList, Mail, Phone, ChevronRight, FileDown
 } from 'lucide-react';
@@ -13,6 +14,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
+  const { currentDict, lang } = useTranslation();
 
   const [name, setName] = useState(user?.name || '');
   const [village, setVillage] = useState(user?.village || '');
@@ -59,13 +61,28 @@ export default function Profile() {
       });
       if (res.success) {
         dispatch(updateUser({ name, village, email }));
-        setUpdateMsg('Profile updated successfully!');
+        setUpdateMsg(lang === 'hi' ? 'प्रोफ़ाइल सफलतापूर्वक अपडेट हो गई!' : lang === 'mr' ? 'प्रोफाइल यशस्वीपणे अपडेट झाली!' : 'Profile updated successfully!');
       }
     } catch (err: any) {
       setUpdateMsg(err.message || 'Update failed');
     } finally {
       setIsUpdating(false);
     }
+  };
+
+  const getOrderStatusText = (s: string) => {
+    const map: Record<string, Record<string, string>> = {
+      Placed: { en: 'Placed', hi: 'ऑर्डर भेजा गया', mr: 'ऑर्डर पाठवली' },
+      Confirmed: { en: 'Confirmed', hi: 'पुष्टि की गई', mr: 'पुष्टी केली' },
+      Packed: { en: 'Packed', hi: 'पैक किया गया', mr: 'पॅक केले' },
+      Shipped: { en: 'Shipped', hi: 'भेजा गया', mr: 'पाठवले' },
+      'Out For Delivery': { en: 'Out For Delivery', hi: 'वितरण के लिए बाहर', mr: 'डिलिव्हरीसाठी बाहेर' },
+      Delivered: { en: 'Delivered', hi: 'वितरित हुआ', mr: 'वितरित झाले' },
+      Cancelled: { en: 'Cancelled', hi: 'रद्द किया गया', mr: 'रद्द केले' },
+      'Return Requested': { en: 'Return Requested', hi: 'वापसी का अनुरोध', mr: 'परतावा विनंती केली' },
+      'Refund Completed': { en: 'Refund Completed', hi: 'रिफंड पूरा हुआ', mr: 'परतावा पूर्ण झाला' }
+    };
+    return map[s]?.[lang] || map[s]?.en || s;
   };
 
   const getStatusColor = (status: string) => {
@@ -97,7 +114,9 @@ export default function Profile() {
 
           {updateMsg && (
             <div className={`p-3.5 rounded-xl text-xs font-bold text-center border ${
-              updateMsg.includes('success') ? 'bg-green-50 text-brand-green border-green-200' : 'bg-red-50 text-red-600 border-red-200'
+              updateMsg.includes('success') || updateMsg.includes('सफलतापूर्वक') || updateMsg.includes('यशस्वीपणे')
+                ? 'bg-green-50 text-brand-green border-green-200' 
+                : 'bg-red-50 text-red-600 border-red-200'
             }`}>
               {updateMsg}
             </div>
@@ -105,7 +124,9 @@ export default function Profile() {
 
           <form onSubmit={handleProfileUpdate} className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Full Name</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'पूरा नाम' : lang === 'mr' ? 'पूर्ण नाव' : 'Full Name'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="text"
@@ -119,7 +140,9 @@ export default function Profile() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Village Name</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'गाँव का नाम' : lang === 'mr' ? 'गावाचे नाव' : 'Village Name'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="text"
@@ -132,13 +155,15 @@ export default function Profile() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Email Address (Optional)</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'ईमेल पता (वैकल्पिक)' : lang === 'mr' ? 'ईमेल पत्ता (पर्यायी)' : 'Email Address (Optional)'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="e.g. uday@gmail.com"
+                  placeholder="e.g. rahul@gmail.com"
                   className="w-full bg-brand-light border rounded-xl pl-11 pr-4 py-2.5 text-sm outline-none font-medium"
                 />
                 <Mail className="w-4 h-4 text-brand-muted absolute left-4" />
@@ -146,7 +171,9 @@ export default function Profile() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Registered Mobile</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'पंजीकृत मोबाइल' : lang === 'mr' ? 'नोंदणीकृत मोबाईल' : 'Registered Mobile'}
+              </label>
               <div className="relative flex items-center opacity-70">
                 <input
                   type="text"
@@ -163,7 +190,7 @@ export default function Profile() {
               disabled={isUpdating}
               className="btn-primary w-full py-3 mt-4 text-sm font-extrabold"
             >
-              {isUpdating ? 'Saving...' : 'Update Settings'}
+              {isUpdating ? '...' : currentDict.profile.saveProfileBtn}
             </button>
           </form>
         </div>
@@ -173,7 +200,7 @@ export default function Profile() {
           
           <h2 className="font-extrabold text-xl text-brand-dark flex items-center gap-2 border-b border-brand-light pb-4">
             <ClipboardList className="w-5 h-5 text-brand-green" />
-            <span>My Orders History</span>
+            <span>{currentDict.profile.ordersTab}</span>
           </h2>
 
           {ordersLoading ? (
@@ -193,7 +220,7 @@ export default function Profile() {
                     <div>
                       <span className="font-extrabold text-sm text-brand-dark block">{order.orderId}</span>
                       <span className="text-[10px] text-brand-muted font-bold block mt-0.5">
-                        {new Date(order.createdAt).toLocaleDateString('en-IN', { 
+                        {new Date(order.createdAt).toLocaleDateString(lang === 'en' ? 'en-IN' : lang === 'hi' ? 'hi-IN' : 'mr-IN', { 
                           year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
                         })}
                       </span>
@@ -201,10 +228,10 @@ export default function Profile() {
 
                     <div className="flex items-center gap-2.5">
                       <span className={`text-[10px] font-black uppercase px-3 py-1 rounded-full border ${getStatusColor(order.status)}`}>
-                        {order.status}
+                        {getOrderStatusText(order.status)}
                       </span>
                       <span className="text-[10px] font-black uppercase bg-slate-100 border text-brand-dark px-2.5 py-1 rounded-full">
-                        {order.type}
+                        {order.type === 'delivery' ? (lang === 'hi' ? 'होम डिलीवरी' : lang === 'mr' ? 'होम डिलिव्हरी' : 'Home Delivery') : (lang === 'hi' ? 'पिकअप' : lang === 'mr' ? 'पिकअप' : 'Pickup')}
                       </span>
                     </div>
                   </div>
@@ -216,7 +243,7 @@ export default function Profile() {
                     </p>
                     <div className="flex items-center gap-3.5 flex-shrink-0">
                       <div className="text-right">
-                        <span className="text-xs text-brand-muted font-bold block">Grand Total</span>
+                        <span className="text-xs text-brand-muted font-bold block">{currentDict.cart.total}</span>
                         <span className="font-black text-base text-brand-dark">₹{order.total}</span>
                       </div>
                       <button 
@@ -240,7 +267,7 @@ export default function Profile() {
             </div>
           ) : (
             <div className="py-16 text-center text-brand-muted font-bold text-sm">
-              You haven\'t booked any orders yet!
+              {lang === 'hi' ? 'आपने अभी तक कोई ऑर्डर बुक नहीं किया है!' : lang === 'mr' ? 'तुम्ही अजून कोणतीही ऑर्डर बुक केलेली नाही!' : "You haven't booked any orders yet!"}
             </div>
           )}
 

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useProducts, useProductSearch } from '../api/productQueries';
 import ProductCard from '../components/ProductCard';
+import { useTranslation } from '../hooks/useTranslation';
+import { getTranslated } from '@ugbazaar/shared';
 import { SlidersHorizontal, PackageX, Sparkles, Filter } from 'lucide-react';
 
 const departments = [
@@ -9,10 +11,27 @@ const departments = [
   'Electrical', 'Furniture', 'Home Appliances', 'Electronics', 'General Store'
 ];
 
+const getCategoryLabel = (name: string, lang: string) => {
+  const map: Record<string, Record<string, string>> = {
+    Grocery: { en: 'Grocery & Staples', hi: 'किराना और राशन', mr: 'किराणा आणि किराणा सामान' },
+    Agriculture: { en: 'Agri Inputs', hi: 'कृषि इनपुट', mr: 'कृषी निविष्ठा' },
+    'Building Materials': { en: 'Building Materials', hi: 'भवन निर्माण सामग्री', mr: 'बांधकाम साहित्य' },
+    'Hardware Tools': { en: 'Hardware Tools', hi: 'हार्डवेयर और उपकरण', mr: 'हार्डवेअर आणि साधने' },
+    Plumbing: { en: 'Plumbing Fittings', hi: 'प्लंबिंग फिटिंग', mr: 'प्लंबिंग फिटिंग्ज' },
+    Electrical: { en: 'Electrical & Wires', hi: 'इलेक्ट्रिकल और तार', mr: 'इलेक्ट्रिकल आणि वायर्स' },
+    Furniture: { en: 'Furniture Wood', hi: 'फर्नीचर और लकड़ी', mr: 'फर्निचर आणि लाकूड' },
+    'Home Appliances': { en: 'Home Appliances', hi: 'घरेलू उपकरण', mr: 'घरगुती उपकरणे' },
+    Electronics: { en: 'Electronics Tech', hi: 'इलेक्ट्रॉनिक्स', mr: 'इलेक्ट्रॉनिक्स' },
+    'General Store': { en: 'Daily General', hi: 'दैनिक जरुरत', mr: 'दैनिक जनरल' }
+  };
+  return map[name]?.[lang] || map[name]?.en || name;
+};
+
 export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
   const q = searchParams.get('q') || '';
   const dept = searchParams.get('dept') || '';
+  const { currentDict, lang } = useTranslation();
 
   const [inStock, setInStock] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<string>('newest');
@@ -59,28 +78,32 @@ export default function Search() {
         <div>
           {q ? (
             <h1 className="font-extrabold text-2xl text-brand-dark">
-              Search Results for <span className="text-brand-green">"{q}"</span>
+              {lang === 'hi' ? `"${q}" के लिए खोज परिणाम` : lang === 'mr' ? `"${q}" साठी शोध निकाल` : `Search Results for "${q}"`}
             </h1>
           ) : (
             <h1 className="font-extrabold text-2xl text-brand-dark">
-              Explore Catalog {selectedDept && <span className="text-brand-green">— {selectedDept}</span>}
+              {lang === 'hi' ? 'कैटलॉग खोजें' : lang === 'mr' ? 'कॅटलॉग शोधा' : 'Explore Catalog'} {selectedDept && <span className="text-brand-green">— {getCategoryLabel(selectedDept, lang)}</span>}
             </h1>
           )}
-          <p className="text-xs text-brand-muted mt-1 font-semibold">Found {totalCount} items matching criteria</p>
+          <p className="text-xs text-brand-muted mt-1 font-semibold">
+            {lang === 'hi' ? `मापदंड से मेल खाने वाले ${totalCount} उत्पाद मिले` : lang === 'mr' ? `निकषांशी जुळणारे ${totalCount} उत्पादन आढळले` : `Found ${totalCount} items matching criteria`}
+          </p>
         </div>
 
         {/* Sort Controls */}
         <div className="flex items-center gap-3">
-          <label className="text-xs font-bold text-brand-muted uppercase tracking-wider">Sort By</label>
+          <label className="text-xs font-bold text-brand-muted uppercase tracking-wider">
+            {lang === 'hi' ? 'क्रमबद्ध करें' : lang === 'mr' ? 'क्रमवारी लावा' : 'Sort By'}
+          </label>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className="bg-white border border-brand-border/60 hover:border-brand-green/45 rounded-xl px-4 py-2 text-sm font-bold outline-none transition-all cursor-pointer"
           >
-            <option value="newest">Newest Arrivals</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="rating">Top Rated</option>
+            <option value="newest">{lang === 'hi' ? 'नवीनतम उत्पाद' : lang === 'mr' ? 'नवीनतम उत्पादने' : 'Newest Arrivals'}</option>
+            <option value="price-low">{lang === 'hi' ? 'कीमत: कम से अधिक' : lang === 'mr' ? 'किंमत: कमी ते जास्त' : 'Price: Low to High'}</option>
+            <option value="price-high">{lang === 'hi' ? 'कीमत: अधिक से कम' : lang === 'mr' ? 'किंमत: जास्त ते कमी' : 'Price: High to Low'}</option>
+            <option value="rating">{lang === 'hi' ? 'शीर्ष रेटेड' : lang === 'mr' ? 'टॉप रेटेड' : 'Top Rated'}</option>
           </select>
         </div>
       </div>
@@ -95,7 +118,7 @@ export default function Search() {
             <div className="flex items-center justify-between border-b border-brand-light pb-3">
               <span className="font-extrabold text-sm text-brand-dark flex items-center gap-1.5">
                 <Filter className="w-4 h-4 text-brand-green" />
-                <span>Filters</span>
+                <span>{lang === 'hi' ? 'फ़िल्टर' : lang === 'mr' ? 'फिल्टर्स' : 'Filters'}</span>
               </span>
               <button 
                 onClick={() => {
@@ -105,13 +128,15 @@ export default function Search() {
                 }}
                 className="text-xs font-bold text-brand-green hover:underline"
               >
-                Clear All
+                {lang === 'hi' ? 'सभी साफ़ करें' : lang === 'mr' ? 'सर्व साफ करा' : 'Clear All'}
               </button>
             </div>
 
             {/* In Stock Filter */}
             <div className="space-y-3">
-              <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Availability</span>
+              <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+                {lang === 'hi' ? 'उपलब्धता' : lang === 'mr' ? 'उपलब्धता' : 'Availability'}
+              </span>
               <label className="flex items-center gap-3 font-semibold text-sm cursor-pointer select-none">
                 <input
                   type="checkbox"
@@ -119,13 +144,15 @@ export default function Search() {
                   onChange={(e) => setInStock(e.target.checked)}
                   className="w-4 h-4 text-brand-green rounded border-brand-border focus:ring-brand-green"
                 />
-                <span>Hide Out of Stock</span>
+                <span>{lang === 'hi' ? 'आउट ऑफ स्टॉक छुपाएं' : lang === 'mr' ? 'आउट ऑफ स्टॉक लपवा' : 'Hide Out of Stock'}</span>
               </label>
             </div>
 
             {/* Department list */}
             <div className="space-y-3">
-              <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Departments</span>
+              <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+                {lang === 'hi' ? 'विभाग' : lang === 'mr' ? 'विभाग' : 'Departments'}
+              </span>
               <div className="flex flex-col gap-2">
                 {departments.map((deptName) => {
                   const isActive = selectedDept === deptName;
@@ -134,12 +161,12 @@ export default function Search() {
                       key={deptName}
                       onClick={() => handleDeptFilter(deptName)}
                       className={`text-left px-3.5 py-2.5 rounded-xl font-bold text-sm transition-all duration-150 flex items-center justify-between ${
-                        isActive 
-                          ? 'bg-brand-green/10 text-brand-green border-brand-green/30 border' 
-                          : 'bg-brand-light border border-transparent hover:bg-brand-border/30 text-brand-dark'
+                      isActive 
+                        ? 'bg-brand-green/10 text-brand-green border-brand-green/30 border' 
+                        : 'bg-brand-light border border-transparent hover:bg-brand-border/30 text-brand-dark'
                       }`}
                     >
-                      <span>{deptName}</span>
+                      <span>{getCategoryLabel(deptName, lang)}</span>
                       {isActive && <span className="w-1.5 h-1.5 rounded-full bg-brand-green"></span>}
                     </button>
                   );
@@ -173,9 +200,15 @@ export default function Search() {
               <div className="bg-brand-light p-4 rounded-full text-brand-muted">
                 <PackageX className="w-10 h-10" />
               </div>
-              <h3 className="font-extrabold text-lg text-brand-dark mt-4">No Products Found</h3>
+              <h3 className="font-extrabold text-lg text-brand-dark mt-4">
+                {lang === 'hi' ? 'कोई उत्पाद नहीं मिला' : lang === 'mr' ? 'कोणतीही उत्पादने आढळली नाहीत' : 'No Products Found'}
+              </h3>
               <p className="text-sm text-brand-muted font-semibold mt-1 max-w-sm">
-                Aapke filter criteria ke anusar koi product nahi mila. Kripya doosra query daalein ya filter clear karein.
+                {lang === 'hi' 
+                  ? 'आपके फ़िल्टर मानदंडों के अनुसार कोई उत्पाद नहीं मिला। कृपया दूसरा कीवर्ड डालें या फ़िल्टर साफ़ करें।' 
+                  : lang === 'mr' 
+                  ? 'तुमच्या फिल्टर निकषांनुसार कोणतेही उत्पादन आढळले नाही. कृपया दुसरी क्वेरी टाका किंवा फिल्टर साफ करा.' 
+                  : 'No products were found matching your criteria. Try another search query or clear filters.'}
               </p>
               <button 
                 onClick={() => {
@@ -185,7 +218,7 @@ export default function Search() {
                 }}
                 className="btn-primary mt-6 text-sm"
               >
-                Show All Products
+                {lang === 'hi' ? 'सभी उत्पाद दिखाएं' : lang === 'mr' ? 'सर्व उत्पादने दाखवा' : 'Show All Products'}
               </button>
             </div>
           )}

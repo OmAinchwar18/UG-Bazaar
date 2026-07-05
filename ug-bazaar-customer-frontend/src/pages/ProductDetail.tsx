@@ -8,11 +8,14 @@ import { useAddToCart, useCart, useUpdateCartItem } from '../api/orderQueries';
 import { apiClient } from '../api/apiClient';
 import { 
   Plus, Minus, ShoppingCart, Sparkles, MessageSquare, 
-  ArrowLeftRight, HelpCircle, CheckCircle2, ChevronRight, X, Heart
+  ArrowLeftRight, HelpCircle, CheckCircle2, ChevronRight, X, Heart, Volume2
 } from 'lucide-react';
-import { getProductThumbnail } from '@ugbazaar/shared';
+import { getProductThumbnail, getTranslated } from '@ugbazaar/shared';
+import { useTranslation } from '../hooks/useTranslation';
+
 
 export default function ProductDetail() {
+  const { currentDict, lang } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id: paramId } = useParams();
@@ -22,6 +25,26 @@ export default function ProductDetail() {
   const comparisonList = useSelector((state: RootState) => state.ui.comparisonList);
   const recentlyViewedIds = useSelector((state: RootState) => state.ui.recentlyViewed);
   const isCompared = comparisonList.includes(id);
+
+  const handleSpeak = () => {
+    if (typeof window === 'undefined' || !window.speechSynthesis || !product) return;
+    window.speechSynthesis.cancel();
+    
+    const prodName = getTranslated(product.name, lang);
+    const prodDesc = getTranslated(product.description, lang);
+    const textToSpeak = `${prodName}. ${prodDesc ? prodDesc : ''}`;
+    
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    const langMap = { en: 'en-IN', hi: 'hi-IN', mr: 'mr-IN' };
+    utterance.lang = langMap[lang] || 'en-IN';
+
+    const voices = window.speechSynthesis.getVoices();
+    const matchingVoice = voices.find(v => v.lang.startsWith(utterance.lang) || v.lang.replace('_', '-').startsWith(utterance.lang));
+    if (matchingVoice) {
+      utterance.voice = matchingVoice;
+    }
+    window.speechSynthesis.speak(utterance);
+  };
 
   const [reviews, setReviews] = useState<any[]>([]);
   const [reviewLoading, setReviewLoading] = useState(false);
@@ -203,7 +226,7 @@ export default function ProductDetail() {
         <ChevronRight className="w-3 h-3" />
         <Link to={`/search?dept=${product.dept}`} className="hover:text-brand-green">{product.dept}</Link>
         <ChevronRight className="w-3 h-3" />
-        <span className="text-brand-dark max-w-[150px] truncate">{product.name}</span>
+        <span className="text-brand-dark max-w-[150px] truncate">{getTranslated(product.name, lang)}</span>
       </div>
 
       {/* Main Info */}
@@ -254,7 +277,7 @@ export default function ProductDetail() {
                     ? product.images[activeImageIdx].url
                     : (typeof product.images[activeImageIdx] === 'string' ? product.images[activeImageIdx] : '')
                 } 
-                alt={product.name} 
+                alt={getTranslated(product.name, lang)} 
                 style={zoomStyle}
                 className="w-full h-full object-contain transition-transform duration-75 ease-out select-none"
               />
@@ -323,15 +346,22 @@ export default function ProductDetail() {
         <div className="flex flex-col justify-between space-y-6">
           <div>
             <span className="text-xs font-black text-brand-green tracking-widest uppercase bg-brand-green/10 px-3 py-1.5 rounded-full inline-block">
-              {product.dept}
+              {getTranslated(product.category, lang) || product.dept}
             </span>
             <h1 className="font-extrabold text-2xl md:text-4xl text-brand-dark mt-4 leading-tight">
-              {product.name}
+              {getTranslated(product.name, lang)}
             </h1>
-            <p className="text-sm font-bold text-brand-muted mt-1.5 flex items-center gap-2">
-              <span>{product.nameHindi || product.nameMarathi}</span>
+            <div className="flex items-center gap-2.5 mt-2">
               {product.badge && <span className="bg-brand-orange/10 text-brand-orange text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase">{product.badge}</span>}
-            </p>
+              <button 
+                onClick={handleSpeak}
+                className="bg-brand-green/10 text-brand-green hover:bg-brand-green hover:text-white transition-all text-xs font-bold px-3 py-1 rounded-xl flex items-center gap-1 shadow-sm cursor-pointer"
+                title="Speak Product Details"
+              >
+                <Volume2 className="w-3.5 h-3.5" />
+                <span>{lang === 'hi' ? 'विवरण सुनें' : lang === 'mr' ? 'तपशील ऐका' : 'Listen'}</span>
+              </button>
+            </div>
 
             {/* Ratings Summary */}
             <div className="flex items-center gap-2 mt-4">
@@ -339,7 +369,7 @@ export default function ProductDetail() {
                 <span>★</span>
                 <span>{product.ratings?.average?.toFixed(1) || '0.0'}</span>
               </div>
-              <span className="text-xs font-semibold text-brand-muted">({product.ratings?.count || 0} reviews)</span>
+              <span className="text-xs font-semibold text-brand-muted">({product.ratings?.count || 0} {currentDict.product.reviewsTitle.toLowerCase()})</span>
             </div>
 
             {/* Price section */}
@@ -359,35 +389,73 @@ export default function ProductDetail() {
             <div className="mt-4">
               {product.stock <= 0 ? (
                 <span className="inline-block bg-red-50 border border-red-200 text-red-600 font-extrabold text-xs px-3.5 py-1.5 rounded-xl">
-                  Out of Stock
+                  {currentDict.product.outOfStock}
                 </span>
               ) : product.stock < 10 ? (
                 <span className="inline-block bg-orange-50 border border-orange-200 text-brand-orange font-extrabold text-xs px-3.5 py-1.5 rounded-xl">
-                  Only {product.stock} left in stock!
+                  {lang === 'hi' ? `केवल ${product.stock} स्टॉक में बचे हैं!` : lang === 'mr' ? `फक्त ${product.stock} स्टॉकमध्ये शिल्लक आहेत!` : `Only ${product.stock} left in stock!`}
                 </span>
               ) : (
                 <span className="inline-block bg-green-50 border border-green-200 text-brand-green font-extrabold text-xs px-3.5 py-1.5 rounded-xl">
-                  In Stock ({product.stock} units available)
+                  {currentDict.product.inStock} ({product.stock} {lang === 'hi' ? 'नग' : lang === 'mr' ? 'नग' : 'units'})
                 </span>
               )}
             </div>
 
             {/* Description */}
             <div className="mt-6 text-sm font-semibold text-brand-muted leading-relaxed whitespace-pre-line border-t border-brand-light pt-6">
-              {product.description || 'Description has not been provided for this product yet. Rest assured, it is sourcing directly from certified local vendors.'}
+              <h3 className="font-extrabold text-sm text-brand-dark uppercase tracking-wider mb-2">{currentDict.product.descriptionTitle}</h3>
+              {getTranslated(product.description, lang) || 'Description has not been provided for this product yet.'}
             </div>
+
+            {/* Specifications */}
+            {product.specifications && product.specifications.length > 0 && (
+              <div className="mt-6 border-t border-brand-light pt-6">
+                <h3 className="font-extrabold text-sm text-brand-dark uppercase tracking-wider mb-3">
+                  {currentDict.product.specsTitle}
+                </h3>
+                <div className="grid grid-cols-2 gap-y-2 text-xs font-semibold">
+                  {product.specifications.map((spec: any, idx: number) => (
+                    <React.Fragment key={idx}>
+                      <div className="text-brand-muted bg-brand-light p-2.5 rounded-l-xl">
+                        {getTranslated(spec.key, lang)}
+                      </div>
+                      <div className="text-brand-dark bg-brand-light/50 p-2.5 rounded-r-xl">
+                        {getTranslated(spec.value, lang)}
+                      </div>
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Features */}
+            {product.features && product.features.length > 0 && (
+              <div className="mt-6 border-t border-brand-light pt-6">
+                <h3 className="font-extrabold text-sm text-brand-dark uppercase tracking-wider mb-3">
+                  {currentDict.product.featuresTitle}
+                </h3>
+                <ul className="list-disc list-inside text-xs font-semibold text-brand-muted space-y-1.5">
+                  {product.features.map((feat: any, idx: number) => (
+                    <li key={idx} className="leading-relaxed">
+                      {getTranslated(feat, lang)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           {/* ADD TO CART ACTION BOX */}
           <div className="bg-brand-light border border-brand-border/60 p-5 rounded-2xl flex items-center justify-between gap-4 mt-6">
             <div>
-              <span className="text-xs text-brand-muted font-bold block">Final Subtotal</span>
+              <span className="text-xs text-brand-muted font-bold block">{currentDict.cart.subtotal}</span>
               <span className="font-extrabold text-xl text-brand-dark">₹{(cartItem?.qty || 1) * product.price}</span>
             </div>
 
             {product.stock <= 0 ? (
               <button disabled className="bg-brand-muted/20 text-brand-muted cursor-not-allowed font-extrabold text-sm py-3 px-8 rounded-xl">
-                Unavailable
+                {lang === 'hi' ? 'अनुपलब्ध' : lang === 'mr' ? 'अनुपलब्ध' : 'Unavailable'}
               </button>
             ) : cartItem ? (
               <div className="flex items-center bg-brand-green text-white rounded-xl overflow-hidden font-extrabold text-sm shadow-md h-12">
@@ -414,7 +482,7 @@ export default function ProductDetail() {
                 className="btn-primary py-3 px-8 text-sm"
               >
                 <ShoppingCart className="w-4 h-4" />
-                <span>ADD TO BASKET</span>
+                <span>{currentDict.buttons.addToCart.toUpperCase()}</span>
               </button>
             )}
           </div>
@@ -426,20 +494,22 @@ export default function ProductDetail() {
       {/* Frequently Bought Together */}
       {product && recommendations.length > 0 && (
         <section className="mt-12 bg-white border border-brand-border/60 rounded-3xl p-6 md:p-8 shadow-sm">
-          <h3 className="font-extrabold text-lg text-brand-dark mb-4">Frequently Bought Together</h3>
+          <h3 className="font-extrabold text-lg text-brand-dark mb-4">
+            {lang === 'hi' ? 'अक्सर एक साथ खरीदे जाने वाले' : lang === 'mr' ? 'वारंवार एकत्र खरेदी केलेले' : 'Frequently Bought Together'}
+          </h3>
           <div className="flex flex-col md:flex-row items-center gap-6 justify-between">
             <div className="flex items-center gap-4 flex-wrap">
               {/* Current item */}
               <div className="flex items-center gap-3 bg-brand-light p-3 rounded-2xl border">
                 <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-2 border">
                   {getProductThumbnail(product.images) ? (
-                    <img src={getProductThumbnail(product.images)} alt={product.name} className="w-full h-full object-contain" />
+                    <img src={getProductThumbnail(product.images)} alt={getTranslated(product.name, lang)} className="w-full h-full object-contain" />
                   ) : (
                     <span className="text-3xl">📦</span>
                   )}
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-brand-dark block max-w-[150px] truncate">{product.name}</span>
+                  <span className="text-xs font-bold text-brand-dark block max-w-[150px] truncate">{getTranslated(product.name, lang)}</span>
                   <span className="font-extrabold text-sm text-brand-green">₹{product.price}</span>
                 </div>
               </div>
@@ -450,13 +520,13 @@ export default function ProductDetail() {
               <div className="flex items-center gap-3 bg-brand-light p-3 rounded-2xl border">
                 <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center p-2 border animate-pulse">
                   {getProductThumbnail(recommendations[0].images) ? (
-                    <img src={getProductThumbnail(recommendations[0].images)} alt={recommendations[0].name} className="w-full h-full object-contain" />
+                    <img src={getProductThumbnail(recommendations[0].images)} alt={getTranslated(recommendations[0].name, lang)} className="w-full h-full object-contain" />
                   ) : (
                     <span className="text-3xl">📦</span>
                   )}
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-brand-dark block max-w-[150px] truncate">{recommendations[0].name}</span>
+                  <span className="text-xs font-bold text-brand-dark block max-w-[150px] truncate">{getTranslated(recommendations[0].name, lang)}</span>
                   <span className="font-extrabold text-sm text-brand-green">₹{recommendations[0].price}</span>
                 </div>
               </div>
@@ -465,7 +535,9 @@ export default function ProductDetail() {
             {/* Price & Action */}
             <div className="flex flex-col sm:flex-row items-center gap-5 border-t md:border-t-0 border-brand-light pt-4 md:pt-0 w-full md:w-auto justify-end">
               <div>
-                <span className="text-xs text-brand-muted font-bold block">Combo Price</span>
+                <span className="text-xs text-brand-muted font-bold block">
+                  {lang === 'hi' ? 'कॉम्बो कीमत' : lang === 'mr' ? 'कॉम्बो किंमत' : 'Combo Price'}
+                </span>
                 <span className="font-black text-2xl text-brand-dark">₹{product.price + recommendations[0].price}</span>
               </div>
               <button
@@ -473,14 +545,14 @@ export default function ProductDetail() {
                   try {
                     addToCart({ productId: product._id, qty: 1 });
                     addToCart({ productId: recommendations[0]._id, qty: 1 });
-                    alert('Both items added to your basket!');
+                    alert(lang === 'hi' ? 'दोनों सामान आपके बास्केट में जोड़ दिए गए हैं!' : lang === 'mr' ? 'दोन्ही वस्तू तुमच्या बास्केटमध्ये जोडल्या गेल्या आहेत!' : 'Both items added to your basket!');
                   } catch (err: any) {
                     alert(err.message || 'Failed to add combo');
                   }
                 }}
                 className="bg-brand-yellow hover:bg-brand-yellow/90 text-brand-dark font-extrabold text-xs px-6 py-3.5 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer w-full sm:w-auto text-center"
               >
-                Add Both to Basket
+                {lang === 'hi' ? 'दोनों को बास्केट में जोड़ें' : lang === 'mr' ? 'दोन्ही बास्केटमध्ये जोडा' : 'Add Both to Basket'}
               </button>
             </div>
           </div>
@@ -493,20 +565,20 @@ export default function ProductDetail() {
       {recommendations.length > 0 && (
         <section className="mt-16">
           <h2 className="font-extrabold text-xl text-brand-dark border-b border-brand-border/60 pb-3 mb-6 font-sans">
-            Related Products
+            {currentDict.product.relatedTitle}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {recommendations.map((p) => (
               <div 
                 key={p._id} 
-                onClick={() => navigate(`/product/${p._id}`)}
+                onClick={() => navigate(`/product?id=${p._id}`)}
                 className="bg-white border rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer flex flex-col justify-between h-72"
               >
                 <div className="aspect-square bg-brand-light flex items-center justify-center p-4 rounded-xl text-4xl overflow-hidden">
                   {getProductThumbnail(p.images) ? (
                     <img 
                       src={getProductThumbnail(p.images)} 
-                      alt={p.name} 
+                      alt={getTranslated(p.name, lang)} 
                       className="w-full h-full object-contain"
                     />
                   ) : (
@@ -514,8 +586,10 @@ export default function ProductDetail() {
                   )}
                 </div>
                 <div className="mt-3">
-                  <span className="text-[10px] text-brand-muted uppercase font-bold block">{p.dept}</span>
-                  <h4 className="font-extrabold text-sm text-brand-dark mt-0.5 truncate">{p.name}</h4>
+                  <span className="text-[10px] text-brand-muted uppercase font-bold block">
+                    {getTranslated(p.category, lang) || p.dept}
+                  </span>
+                  <h4 className="font-extrabold text-sm text-brand-dark mt-0.5 truncate">{getTranslated(p.name, lang)}</h4>
                   <span className="font-black text-brand-green text-sm block mt-2">₹{p.price}</span>
                 </div>
               </div>
@@ -528,20 +602,20 @@ export default function ProductDetail() {
       {recentlyViewedProds.length > 0 && (
         <section className="mt-16">
           <h2 className="font-extrabold text-xl text-brand-dark border-b border-brand-border/60 pb-3 mb-6 font-sans">
-            Recently Viewed
+            {lang === 'hi' ? 'हाल ही में देखे गए' : lang === 'mr' ? 'नुकतीच पाहिलेली उत्पादने' : 'Recently Viewed'}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {recentlyViewedProds.map((p) => (
               <div 
                 key={p._id} 
-                onClick={() => navigate(`/product/${p._id}`)}
+                onClick={() => navigate(`/product?id=${p._id}`)}
                 className="bg-white border rounded-2xl p-4 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer flex flex-col justify-between h-72"
               >
                 <div className="aspect-square bg-brand-light flex items-center justify-center p-4 rounded-xl text-4xl overflow-hidden">
                   {getProductThumbnail(p.images) ? (
                     <img 
                       src={getProductThumbnail(p.images)} 
-                      alt={p.name} 
+                      alt={getTranslated(p.name, lang)} 
                       className="w-full h-full object-contain"
                     />
                   ) : (
@@ -549,8 +623,10 @@ export default function ProductDetail() {
                   )}
                 </div>
                 <div className="mt-3">
-                  <span className="text-[10px] text-brand-muted uppercase font-bold block">{p.dept}</span>
-                  <h4 className="font-extrabold text-sm text-brand-dark mt-0.5 truncate">{p.name}</h4>
+                  <span className="text-[10px] text-brand-muted uppercase font-bold block">
+                    {getTranslated(p.category, lang) || p.dept}
+                  </span>
+                  <h4 className="font-extrabold text-sm text-brand-dark mt-0.5 truncate">{getTranslated(p.name, lang)}</h4>
                   <span className="font-black text-brand-green text-sm block mt-2">₹{p.price}</span>
                 </div>
               </div>
@@ -566,7 +642,7 @@ export default function ProductDetail() {
         <div className="space-y-6">
           <h2 className="font-extrabold text-xl text-brand-dark flex items-center gap-2">
             <MessageSquare className="w-5 h-5 text-brand-green" />
-            <span>Customer Reviews ({reviews.length})</span>
+            <span>{currentDict.product.reviewsTitle} ({reviews.length})</span>
           </h2>
           
           {reviews.length > 0 ? (
@@ -583,7 +659,7 @@ export default function ProductDetail() {
                       {r.verified && (
                         <span className="text-[10px] text-brand-green font-bold bg-green-50 border border-green-200 px-2 py-0.5 rounded-full flex items-center gap-0.5">
                           <CheckCircle2 className="w-2.5 h-2.5 fill-brand-green text-white" />
-                          <span>Verified Purchase</span>
+                          <span>{lang === 'hi' ? 'सत्यापित खरीद' : lang === 'mr' ? 'सत्यापित खरेदी' : 'Verified Purchase'}</span>
                         </span>
                       )}
                     </div>
@@ -595,7 +671,7 @@ export default function ProductDetail() {
             </div>
           ) : (
             <div className="bg-white border rounded-2xl p-8 text-center text-brand-muted font-bold text-sm">
-              No reviews available yet. Be the first to review!
+              {lang === 'hi' ? 'अभी तक कोई समीक्षा उपलब्ध नहीं है। समीक्षा लिखने वाले पहले व्यक्ति बनें!' : lang === 'mr' ? 'अद्याप कोणतीही पुनरावलोकने उपलब्ध नाहीत. पुनरावलोकन करणारे पहिले व्हा!' : 'No reviews available yet. Be the first to review!'}
             </div>
           )}
         </div>
@@ -603,12 +679,12 @@ export default function ProductDetail() {
         {/* Submit Review Form */}
         <div className="bg-white border border-brand-border/60 p-6 md:p-8 rounded-3xl shadow-sm">
           <h3 className="font-extrabold text-lg text-brand-dark border-b border-brand-light pb-3 mb-6">
-            Write a Review
+            {currentDict.product.addReviewTitle}
           </h3>
           
           <form onSubmit={handleReviewSubmit} className="space-y-4">
             <div>
-              <label className="text-xs font-bold text-brand-muted uppercase tracking-wider block mb-2">Rating</label>
+              <label className="text-xs font-bold text-brand-muted uppercase tracking-wider block mb-2">{currentDict.product.rateLabel}</label>
               <div className="flex items-center gap-2">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
@@ -624,23 +700,25 @@ export default function ProductDetail() {
             </div>
 
             <div>
-              <label className="text-xs font-bold text-brand-muted uppercase tracking-wider block mb-2">Review Title</label>
+              <label className="text-xs font-bold text-brand-muted uppercase tracking-wider block mb-2">
+                {lang === 'hi' ? 'समीक्षा का शीर्षक' : lang === 'mr' ? 'पुनरावलोकन शीर्षक' : 'Review Title'}
+              </label>
               <input
                 type="text"
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
-                placeholder="Summary of your review (e.g. Great quality Rice!)"
+                placeholder={lang === 'hi' ? 'समीक्षा का सारांश' : lang === 'mr' ? 'पुनरावलोकनाचा सारांश' : 'Summary of your review'}
                 className="w-full bg-brand-light border border-brand-border/60 focus:border-brand-green focus:bg-white rounded-xl px-4 py-2.5 text-sm outline-none font-medium transition-all"
                 required
               />
             </div>
 
             <div>
-              <label className="text-xs font-bold text-brand-muted uppercase tracking-wider block mb-2">Review Text</label>
+              <label className="text-xs font-bold text-brand-muted uppercase tracking-wider block mb-2">{currentDict.product.commentLabel}</label>
               <textarea
                 value={newText}
                 onChange={(e) => setNewText(e.target.value)}
-                placeholder="Share details of your experience using this product..."
+                placeholder={currentDict.product.reviewPlaceholder}
                 className="w-full bg-brand-light border border-brand-border/60 focus:border-brand-green focus:bg-white rounded-xl px-4 py-2.5 text-sm outline-none font-medium transition-all h-28 resize-none"
                 required
               ></textarea>
@@ -651,7 +729,7 @@ export default function ProductDetail() {
               disabled={reviewLoading}
               className="btn-primary w-full text-sm font-extrabold py-3"
             >
-              {reviewLoading ? 'Submitting...' : 'Submit Review'}
+              {reviewLoading ? (lang === 'hi' ? 'जमा किया जा रहा है...' : lang === 'mr' ? 'सबमिट करत आहे...' : 'Submitting...') : currentDict.buttons.submitReview}
             </button>
 
             {reviewSuccess && (

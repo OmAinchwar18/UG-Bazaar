@@ -37,6 +37,7 @@ adminRouter.put('/settings', protect, adminOnly, otherController.updateSettings)
 adminRouter.get('/analytics/summary', protect, adminOnly, otherController.adminGetAnalyticsSummary);
 adminRouter.get('/analytics/export', protect, adminOnly, otherController.adminExportAnalyticsReport);
 adminRouter.get('/inventory/low-stock', protect, adminOnly, productController.getLowStockProducts);
+adminRouter.post('/translate', protect, adminOnly, otherController.translateProductDetails);
 
 // 6. NOTIFICATION ROUTER
 const notifRouter = express.Router();

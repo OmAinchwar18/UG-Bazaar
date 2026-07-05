@@ -4,12 +4,14 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from '../store/slices/authSlice';
 import { apiClient } from '../api/apiClient';
 import { Sparkles, Phone, Lock, User, MapPin, KeyRound, ArrowLeft } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 type AuthScreen = 'login' | 'register' | 'otp_verify' | 'forgot_password' | 'reset_password';
 
 export default function Auth() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { currentDict, lang } = useTranslation();
 
   const [screen, setScreen] = useState<AuthScreen>('login');
   
@@ -120,7 +122,7 @@ export default function Auth() {
           body: JSON.stringify({ mobile: otpMobile })
         });
         if (res.success) {
-          setSuccessMsg(res.message || 'Reset OTP sent successfully!');
+          setSuccessMsg(res.message || (lang === 'hi' ? 'रीसेट OTP सफलतापूर्वक भेजा गया!' : lang === 'mr' ? 'रीसेट OTP यशस्वीपणे पाठविला!' : 'Reset OTP sent successfully!'));
           setScreen('reset_password');
         }
       } else if (screen === 'reset_password') {
@@ -130,7 +132,7 @@ export default function Auth() {
           body: JSON.stringify({ mobile: otpMobile, otp: otpCode, newPassword })
         });
         if (res.success) {
-          setSuccessMsg('Password reset successful! Kripya login karein.');
+          setSuccessMsg(lang === 'hi' ? 'पासवर्ड सफलतापूर्वक रीसेट हो गया! कृपया लॉगिन करें।' : lang === 'mr' ? 'पासवर्ड यशस्वीपणे रीसेट झाला! कृपया लॉगिन करा.' : 'Password reset successful! Please log in.');
           setScreen('login');
           setOtpCode('');
           setNewPassword('');
@@ -175,14 +177,16 @@ export default function Auth() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 bg-brand-green/10 text-brand-green px-4 py-2 rounded-2xl">
             <Sparkles className="w-5 h-5 text-brand-yellow fill-brand-yellow" />
-            <span className="font-extrabold text-sm tracking-wide">Namaste! Swagat Hai</span>
+            <span className="font-extrabold text-sm tracking-wide">
+              {lang === 'hi' ? 'नमस्ते! स्वागत है' : lang === 'mr' ? 'नमस्ते! स्वागत आहे' : 'Namaste! Swagat Hai'}
+            </span>
           </div>
           <h2 className="font-extrabold text-2xl text-brand-dark mt-4">
-            {screen === 'login' && 'UG Bazaar Session'}
-            {screen === 'register' && 'Naya Account Banayein'}
+            {screen === 'login' && (lang === 'hi' ? 'लॉग इन करें' : lang === 'mr' ? 'लॉग इन करा' : 'Sign In')}
+            {screen === 'register' && (lang === 'hi' ? 'नया खाता बनाएं' : lang === 'mr' ? 'नवीन खाते तयार करा' : 'Create Account')}
             {screen === 'otp_verify' && 'OTP Verification'}
-            {screen === 'forgot_password' && 'Password Bhool Gaye?'}
-            {screen === 'reset_password' && 'Naya Password Set Karein'}
+            {screen === 'forgot_password' && (lang === 'hi' ? 'पासवर्ड भूल गए?' : lang === 'mr' ? 'पासवर्ड विसरलात?' : 'Forgot Password?')}
+            {screen === 'reset_password' && (lang === 'hi' ? 'नया पासवर्ड सेट करें' : lang === 'mr' ? 'नवीन पासवर्ड सेट करा' : 'Set New Password')}
           </h2>
         </div>
 
@@ -207,7 +211,7 @@ export default function Auth() {
                 screen === 'login' ? 'border-brand-green text-brand-green' : 'border-transparent text-brand-muted'
               }`}
             >
-              Sign In
+              {lang === 'hi' ? 'लॉग इन' : lang === 'mr' ? 'लॉग इन' : 'Sign In'}
             </button>
             <button
               type="button"
@@ -216,7 +220,7 @@ export default function Auth() {
                 screen === 'register' ? 'border-brand-green text-brand-green' : 'border-transparent text-brand-muted'
               }`}
             >
-              Register
+              {lang === 'hi' ? 'पंजीकरण' : lang === 'mr' ? 'नोंदणी' : 'Register'}
             </button>
           </div>
         )}
@@ -224,13 +228,15 @@ export default function Auth() {
         {screen === 'login' && (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Mobile / Username</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'मोबाइल नंबर / यूज़रनेम' : lang === 'mr' ? 'मोबाईल नंबर / युझरनेम' : 'Mobile / Username'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="text"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
-                  placeholder="Registered Mobile or Username"
+                  placeholder={lang === 'hi' ? 'पंजीकृत मोबाइल या यूज़रनेम' : lang === 'mr' ? 'नोंदणीकृत मोबाईल किंवा युझरनेम' : 'Registered Mobile or Username'}
                   className="w-full bg-brand-light border rounded-xl pl-11 pr-4 py-2.5 text-sm outline-none font-medium"
                   required
                 />
@@ -240,13 +246,15 @@ export default function Auth() {
 
             <div className="space-y-1.5">
               <div className="flex justify-between items-center">
-                <label className="text-[10px] font-bold text-brand-muted uppercase">Password</label>
+                <label className="text-[10px] font-bold text-brand-muted uppercase">
+                  {lang === 'hi' ? 'पासवर्ड' : lang === 'mr' ? 'पासवर्ड' : 'Password'}
+                </label>
                 <button
                   type="button"
                   onClick={() => { setScreen('forgot_password'); setErrorMsg(null); setSuccessMsg(null); }}
                   className="text-xs text-brand-green hover:underline font-bold"
                 >
-                  Forgot Password?
+                  {lang === 'hi' ? 'पासवर्ड भूल गए?' : lang === 'mr' ? 'पासवर्ड विसरलात?' : 'Forgot Password?'}
                 </button>
               </div>
               <div className="relative flex items-center">
@@ -254,7 +262,7 @@ export default function Auth() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter Secret Password"
+                  placeholder={lang === 'hi' ? 'पासवर्ड दर्ज करें' : lang === 'mr' ? 'पासवर्ड प्रविष्ट करा' : 'Enter Password'}
                   className="w-full bg-brand-light border rounded-xl pl-11 pr-4 py-2.5 text-sm outline-none font-medium"
                   required
                 />
@@ -267,12 +275,14 @@ export default function Auth() {
               disabled={loading}
               className="btn-primary w-full py-3 mt-4 text-sm font-extrabold"
             >
-              {loading ? 'Processing...' : 'Sign In'}
+              {loading ? (lang === 'hi' ? 'प्रोसेसिंग...' : lang === 'mr' ? 'प्रोसेसिंग...' : 'Processing...') : (lang === 'hi' ? 'लॉग इन करें' : lang === 'mr' ? 'लॉग इन करा' : 'Sign In')}
             </button>
 
             <div className="relative flex py-4 items-center">
               <div className="flex-grow border-t border-brand-border"></div>
-              <span className="flex-shrink mx-4 text-brand-muted text-xs font-bold uppercase">Or continue with</span>
+              <span className="flex-shrink mx-4 text-brand-muted text-xs font-bold uppercase">
+                {lang === 'hi' ? 'या इसके साथ जारी रखें' : lang === 'mr' ? 'किंवा यासह सुरू ठेवा' : 'Or continue with'}
+              </span>
               <div className="flex-grow border-t border-brand-border"></div>
             </div>
             
@@ -283,13 +293,15 @@ export default function Auth() {
         {screen === 'register' && (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Full Name</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'पूरा नाम' : lang === 'mr' ? 'पूर्ण नाव' : 'Full Name'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Uday ji"
+                  placeholder="e.g. Rahul ji"
                   className="w-full bg-brand-light border rounded-xl pl-11 pr-4 py-2.5 text-sm outline-none font-medium"
                   required
                 />
@@ -298,13 +310,15 @@ export default function Auth() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Mobile / Username</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'मोबाइल नंबर / यूज़रनेम' : lang === 'mr' ? 'मोबाईल नंबर / युझरनेम' : 'Mobile / Username'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="text"
                   value={mobile}
                   onChange={(e) => setMobile(e.target.value)}
-                  placeholder="Registered Mobile or Username"
+                  placeholder={lang === 'hi' ? 'पंजीकृत मोबाइल या यूज़रनेम' : lang === 'mr' ? 'नोंदणीकृत मोबाईल किंवा युझरनेम' : 'Registered Mobile or Username'}
                   className="w-full bg-brand-light border rounded-xl pl-11 pr-4 py-2.5 text-sm outline-none font-medium"
                   required
                 />
@@ -313,13 +327,15 @@ export default function Auth() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Password</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'पासवर्ड' : lang === 'mr' ? 'पासवर्ड' : 'Password'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter Secret Password"
+                  placeholder={lang === 'hi' ? 'पासवर्ड दर्ज करें' : lang === 'mr' ? 'पासवर्ड प्रविष्ट करा' : 'Enter Password'}
                   className="w-full bg-brand-light border rounded-xl pl-11 pr-4 py-2.5 text-sm outline-none font-medium"
                   required
                 />
@@ -328,7 +344,9 @@ export default function Auth() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Village Name</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'गाँव का नाम' : lang === 'mr' ? 'गावाचे नाव' : 'Village Name'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="text"
@@ -346,7 +364,7 @@ export default function Auth() {
               disabled={loading}
               className="btn-primary w-full py-3 mt-4 text-sm font-extrabold"
             >
-              {loading ? 'Processing...' : 'Register Account'}
+              {loading ? (lang === 'hi' ? 'प्रोसेसिंग...' : lang === 'mr' ? 'प्रोसेसिंग...' : 'Processing...') : (lang === 'hi' ? 'खाता बनाएं' : lang === 'mr' ? 'खाते तयार करा' : 'Register Account')}
             </button>
           </form>
         )}
@@ -355,7 +373,7 @@ export default function Auth() {
           <form onSubmit={handleOtpSubmit} className="space-y-6">
             <div className="text-center">
               <p className="text-sm font-semibold text-brand-muted">
-                Enter the 6-digit OTP code sent to:
+                {lang === 'hi' ? '६-अंकों का OTP कोड दर्ज करें जो यहाँ भेजा गया है:' : lang === 'mr' ? 'येथे पाठवलेला ६-अंकी OTP कोड प्रविष्ट करा:' : 'Enter the 6-digit OTP code sent to:'}
               </p>
               <p className="font-extrabold text-brand-dark mt-1">+91 {otpMobile}</p>
             </div>
@@ -381,7 +399,7 @@ export default function Auth() {
               disabled={loading}
               className="btn-primary w-full py-3 text-sm font-extrabold"
             >
-              {loading ? 'Verifying...' : 'Verify OTP & Log In'}
+              {loading ? 'Verifying...' : (lang === 'hi' ? 'सत्यापित करें और लॉग इन करें' : lang === 'mr' ? 'सत्यापित करा आणि लॉग इन करा' : 'Verify OTP & Log In')}
             </button>
           </form>
         )}
@@ -390,12 +408,18 @@ export default function Auth() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="text-center mb-4">
               <p className="text-xs text-brand-muted font-medium">
-                Apna registered mobile number enter karein. Hum aapko ek password reset OTP bhejenge.
+                {lang === 'hi' 
+                  ? 'अपना पंजीकृत मोबाइल नंबर दर्ज करें। हम आपको एक पासवर्ड रीसेट OTP भेजेंगे।' 
+                  : lang === 'mr' 
+                  ? 'तुमचा नोंदणीकृत मोबाईल नंबर प्रविष्ट करा. आम्ही तुम्हाला पासवर्ड रीसेट करण्यासाठी OTP पाठवू.' 
+                  : 'Enter your registered mobile number. We will send you a password reset OTP.'}
               </p>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Mobile Number</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'मोबाइल नंबर' : lang === 'mr' ? 'मोबाईल नंबर' : 'Mobile Number'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="text"
@@ -414,7 +438,7 @@ export default function Auth() {
               disabled={loading}
               className="btn-primary w-full py-3 mt-2 text-sm font-extrabold"
             >
-              {loading ? 'Sending...' : 'Send Reset OTP'}
+              {loading ? 'Sending...' : (lang === 'hi' ? 'रीसेट OTP भेजें' : lang === 'mr' ? 'रीसेट OTP पाठवा' : 'Send Reset OTP')}
             </button>
 
             <button
@@ -422,7 +446,7 @@ export default function Auth() {
               onClick={() => { setScreen('login'); setErrorMsg(null); setSuccessMsg(null); }}
               className="flex items-center gap-2 justify-center w-full py-2.5 text-xs font-bold text-brand-muted hover:text-brand-dark transition-all mt-2"
             >
-              <ArrowLeft className="w-3.5 h-3.5" /> Back to Sign In
+              <ArrowLeft className="w-3.5 h-3.5" /> {lang === 'hi' ? 'लॉग इन पर वापस जाएं' : lang === 'mr' ? 'लॉग इनवर परत जा' : 'Back to Sign In'}
             </button>
           </form>
         )}
@@ -431,12 +455,14 @@ export default function Auth() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="text-center mb-4">
               <p className="text-xs text-brand-muted font-medium">
-                Reset OTP and Naya Password enter karein.
+                {lang === 'hi' ? 'रीसेट OTP और नया पासवर्ड दर्ज करें।' : lang === 'mr' ? 'रीसेट OTP आणि नवीन पासवर्ड प्रविष्ट करा.' : 'Enter Reset OTP and New Password.'}
               </p>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">Reset OTP Code</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'रीसेट OTP कोड' : lang === 'mr' ? 'रीसेट OTP कोड' : 'Reset OTP Code'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="text"
@@ -452,7 +478,9 @@ export default function Auth() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold text-brand-muted uppercase">New Password</label>
+              <label className="text-[10px] font-bold text-brand-muted uppercase">
+                {lang === 'hi' ? 'नया पासवर्ड' : lang === 'mr' ? 'नवीन पासवर्ड' : 'New Password'}
+              </label>
               <div className="relative flex items-center">
                 <input
                   type="password"
@@ -471,7 +499,7 @@ export default function Auth() {
               disabled={loading}
               className="btn-primary w-full py-3 mt-2 text-sm font-extrabold"
             >
-              {loading ? 'Resetting...' : 'Reset Password'}
+              {loading ? 'Resetting...' : (lang === 'hi' ? 'पासवर्ड रीसेट करें' : lang === 'mr' ? 'पासवर्ड रीसेट करा' : 'Reset Password')}
             </button>
 
             <button
@@ -479,7 +507,7 @@ export default function Auth() {
               onClick={() => { setScreen('login'); setErrorMsg(null); setSuccessMsg(null); }}
               className="flex items-center gap-2 justify-center w-full py-2.5 text-xs font-bold text-brand-muted hover:text-brand-dark transition-all mt-2"
             >
-              <ArrowLeft className="w-3.5 h-3.5" /> Back to Sign In
+              <ArrowLeft className="w-3.5 h-3.5" /> {lang === 'hi' ? 'लॉग इन पर वापस जाएं' : lang === 'mr' ? 'लॉग इनवर परत जा' : 'Back to Sign In'}
             </button>
           </form>
         )}

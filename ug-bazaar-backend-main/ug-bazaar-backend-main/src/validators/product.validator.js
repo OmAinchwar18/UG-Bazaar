@@ -1,16 +1,47 @@
 const Joi = require('joi');
 
 const productSchema = Joi.object({
-  name: Joi.string().required().trim().min(2).max(100),
-  nameHindi: Joi.string().allow('').optional(),
-  nameMarathi: Joi.string().allow('').optional(),
-  description: Joi.string().allow('').optional(),
+  name: Joi.object({
+    en: Joi.string().required().trim().min(2).max(100),
+    hi: Joi.string().allow('').optional().trim(),
+    mr: Joi.string().allow('').optional().trim()
+  }).required(),
+  description: Joi.object({
+    en: Joi.string().allow('').optional().trim(),
+    hi: Joi.string().allow('').optional().trim(),
+    mr: Joi.string().allow('').optional().trim()
+  }).optional(),
+  category: Joi.object({
+    en: Joi.string().allow('').optional().trim(),
+    hi: Joi.string().allow('').optional().trim(),
+    mr: Joi.string().allow('').optional().trim()
+  }).optional(),
+  specifications: Joi.array().items(
+    Joi.object({
+      key: Joi.object({
+        en: Joi.string().required(),
+        hi: Joi.string().allow('').optional(),
+        mr: Joi.string().allow('').optional()
+      }).required(),
+      value: Joi.object({
+        en: Joi.string().required(),
+        hi: Joi.string().allow('').optional(),
+        mr: Joi.string().allow('').optional()
+      }).required()
+    })
+  ).optional(),
+  features: Joi.array().items(
+    Joi.object({
+      en: Joi.string().required(),
+      hi: Joi.string().allow('').optional(),
+      mr: Joi.string().allow('').optional()
+    })
+  ).optional(),
   dept: Joi.string().required().valid(
     'Grocery', 'Agriculture', 'Building Materials', 'Hardware Tools', 'Plumbing',
     'Electrical', 'Furniture', 'Home Appliances', 'Electronics', 'General Store',
     'Mobiles', 'Fashion', 'Beauty', 'Home & Kitchen', 'Hardware', 'Krushi Kendra'
   ),
-  category: Joi.string().allow('').optional(),
   price: Joi.number().required().min(0),
   mrp: Joi.number().required().min(Joi.ref('price')).messages({
     'number.min': 'MRP must be greater than or equal to the selling Price'

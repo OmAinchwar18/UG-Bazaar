@@ -1,7 +1,10 @@
 import React from 'react';
 import { Sparkles, Phone, Mail, MapPin } from 'lucide-react';
+import { useTranslation } from '../hooks/useTranslation';
 
 export default function Footer() {
+  const { currentDict } = useTranslation();
+
   return (
     <footer className="bg-brand-dark text-white pt-16 pb-12 border-t border-white/10 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,55 +21,65 @@ export default function Footer() {
               <span className="font-extrabold text-xl tracking-tight">UG Bazaar</span>
             </div>
             <p className="text-sm text-brand-muted font-medium leading-relaxed">
-              Your trusted hyperlocal multi-department superstore delivering essentials, electricals, furniture, and agri inputs directly to your home.
+              {currentDict.footer.introText}
             </p>
           </div>
 
           {/* Hyperlocal Coverage */}
           <div className="flex flex-col gap-4">
-            <h4 className="font-bold text-sm text-brand-yellow tracking-wider uppercase">Hyperlocal Delivery</h4>
+            <h4 className="font-bold text-sm text-brand-yellow tracking-wider uppercase">
+              {currentDict.footer.coverageTitle}
+            </h4>
             <ul className="text-sm text-brand-muted space-y-2.5 font-medium">
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-brand-green" />
-                <span>Talodhi (Tq. Gondpipri)</span>
+                <span>{currentDict.footer.talodhi}</span>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-brand-green" />
-                <span>Bhangaram Chowk</span>
+                <span>{currentDict.footer.bhangaram}</span>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-brand-green" />
-                <span>Chandrapur District, MH</span>
+                <span>{currentDict.footer.district}</span>
               </li>
             </ul>
           </div>
 
           {/* Business Timings */}
           <div className="flex flex-col gap-4">
-            <h4 className="font-bold text-sm text-brand-yellow tracking-wider uppercase">Store Details</h4>
+            <h4 className="font-bold text-sm text-brand-yellow tracking-wider uppercase">
+              {currentDict.footer.detailsTitle}
+            </h4>
             <ul className="text-sm text-brand-muted space-y-2.5 font-medium">
               <li>
-                <span className="block text-white font-bold text-xs uppercase">Timings</span>
-                <span>9:00 AM – 9:00 PM (Daily)</span>
+                <span className="block text-white font-bold text-xs uppercase">
+                  Timings
+                </span>
+                <span>{currentDict.footer.timings}</span>
               </li>
               <li>
-                <span className="block text-white font-bold text-xs uppercase">Free Delivery Limit</span>
-                <span>Orders above ₹500</span>
+                <span className="block text-white font-bold text-xs uppercase">
+                  {currentDict.cart.deliveryCharge}
+                </span>
+                <span>{currentDict.footer.freeDelivery}</span>
               </li>
             </ul>
           </div>
 
           {/* Contact Support */}
           <div className="flex flex-col gap-4">
-            <h4 className="font-bold text-sm text-brand-yellow tracking-wider uppercase">Contact Support</h4>
+            <h4 className="font-bold text-sm text-brand-yellow tracking-wider uppercase">
+              {currentDict.footer.supportTitle}
+            </h4>
             <ul className="text-sm text-brand-muted space-y-2.5 font-medium">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-brand-green" />
-                <span>+91 9422137293</span>
+                <span>{currentDict.footer.supportPhone}</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-brand-green" />
-                <span>support@ugbazaar.com</span>
+                <span>{currentDict.footer.supportEmail}</span>
               </li>
             </ul>
           </div>
@@ -76,7 +89,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-brand-muted font-medium">
-            © {new Date().getFullYear()} UG Bazaar. All rights reserved. Registered under MSME Maharashtra.
+            © {new Date().getFullYear()} {currentDict.footer.copyright}
           </p>
           <div className="flex items-center gap-4 text-xs text-brand-muted font-bold">
             <span className="bg-white/5 px-2.5 py-1 rounded-md">Razorpay SECURE</span>

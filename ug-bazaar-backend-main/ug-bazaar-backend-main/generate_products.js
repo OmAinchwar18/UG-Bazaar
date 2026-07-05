@@ -3,6 +3,124 @@ const path = require('path');
 
 const products = [];
 
+const deptTranslations = {
+  'Grocery': { hi: 'किराना और राशन', mr: 'किराणा आणि किराणा सामान' },
+  'Agriculture': { hi: 'कृषि इनपुट', mr: 'कृषी निविष्ठा' },
+  'Building Materials': { hi: 'भवन निर्माण सामग्री', mr: 'बांधकाम साहित्य' },
+  'Hardware Tools': { hi: 'हार्डवेयर और उपकरण', mr: 'हार्डवेअर आणि साधने' },
+  'Plumbing': { hi: 'प्लंबिंग फिटिंग', mr: 'प्लंबिंग फिटिंग्ज' },
+  'Electrical': { hi: 'इलेक्ट्रिकल और तार', mr: 'इलेक्ट्रिकल आणि वायर्स' },
+  'Furniture': { hi: 'फर्नीचर और लकड़ी', mr: 'फर्निचर आणि लाकूड' },
+  'Home Appliances': { hi: 'घरेलू उपकरण', mr: 'घरगुती उपकरणे' },
+  'Electronics': { hi: 'इलेक्ट्रॉनिक्स', mr: 'इलेक्ट्रॉनिक्स' },
+  'General Store': { hi: 'दैनिक जरुरत', mr: 'दैनिक जनरल' }
+};
+
+const translateMock = (text, targetLang) => {
+  const dictMap = {
+    hi: {
+      'Atta': 'आटा',
+      'Salt': 'नमक',
+      'Mustard Oil': 'सरसों का तेल',
+      'Cow Ghee': 'गाय का घी',
+      'Noodles': 'नूडल्स',
+      'Tea': 'चाय',
+      'Biscuits': 'बिस्कुट',
+      'Chocolate': 'चॉकलेट',
+      'Bhujia': 'भुजिया',
+      'Turmeric': 'हल्दी',
+      'Coriander': 'धनिया',
+      'Dal': 'दाल',
+      'Almonds': 'बादाम',
+      'Butter': 'मक्खन',
+      'Detergent': 'डिटर्जेंट',
+      'Dishwash': 'डिशवॉश',
+      'Organic': 'जैविक',
+      'Manure': 'खाद',
+      'Watering Can': 'पानी देने का डिब्बा',
+      'Seeds': 'बीज',
+      'Cement': 'सीमेंट',
+      'Waterproofing': 'वॉटरप्रूफिंग',
+      'Hammer': 'हथौड़ा',
+      'Screwdriver': 'पेचकश',
+      'Pliers': 'प्लास',
+      'Pipe': 'पाइप',
+      'Tape': 'टेप',
+      'LED Bulb': 'एलईडी बल्ब',
+      'Wire': 'तार',
+      'Switch': 'स्विच',
+      'Chair': 'कुर्सी',
+      'Table': 'मेज',
+      'Sofa': 'सोफा',
+      'Cooker': 'कुकर',
+      'Mixer': 'मिक्सर',
+      'Kettle': 'केतली',
+      'Mobile': 'मोबाइल',
+      'T-Shirt': 'टी-शर्ट',
+      'Jeans': 'जींस',
+      'Soap': 'साबुन',
+      'Shampoo': 'शैम्पू',
+      'Broom': 'झाडू',
+      'Pipes': 'पाइप',
+      'Pipes Fittings': 'पाइप फिटिंग'
+    },
+    mr: {
+      'Atta': 'पीठ',
+      'Salt': 'मीठ',
+      'Mustard Oil': 'मोहरीचे तेल',
+      'Cow Ghee': 'गायीचे तूप',
+      'Noodles': 'नुडल्स',
+      'Tea': 'चहा',
+      'Biscuits': 'बिस्किटे',
+      'Chocolate': 'चॉकलेट',
+      'Bhujia': 'भुजिया',
+      'Turmeric': 'हळद',
+      'Coriander': 'धणे',
+      'Dal': 'डाळ',
+      'Almonds': 'बदाम',
+      'Butter': 'लोणी',
+      'Detergent': 'डिटर्जंट',
+      'Dishwash': 'डिशवॉश',
+      'Organic': 'सेंद्रिय',
+      'Manure': 'खत',
+      'Watering Can': 'पाणी देण्याचा डबा',
+      'Seeds': 'बियाणे',
+      'Cement': 'सिमेंट',
+      'Waterproofing': 'वॉटरप्रूफिंग',
+      'Hammer': 'हातोडा',
+      'Screwdriver': 'स्क्रू ड्रायव्हर',
+      'Pliers': 'पक्कड',
+      'Pipe': 'पाइप',
+      'Tape': 'टेप',
+      'LED Bulb': 'एलईडी बल्ब',
+      'Wire': 'वायर',
+      'Switch': 'स्विच',
+      'Chair': 'खुर्ची',
+      'Table': 'टेबल',
+      'Sofa': 'सोफा',
+      'Cooker': 'कुकर',
+      'Mixer': 'मिक्सर',
+      'Kettle': 'केतली',
+      'Mobile': 'मोबाईल',
+      'T-Shirt': 'टी-शर्ट',
+      'Jeans': 'जीन्स',
+      'Soap': 'साबण',
+      'Shampoo': 'शॅम्पू',
+      'Broom': 'झाडू',
+      'Pipes': 'पाइप',
+      'Pipes Fittings': 'पाइप फिटिंग्ज'
+    }
+  };
+
+  let result = text;
+  const words = dictMap[targetLang] || {};
+  Object.entries(words).forEach(([enWord, translated]) => {
+    const regex = new RegExp(`\\b${enWord}\\b`, 'gi');
+    result = result.replace(regex, translated);
+  });
+  return result;
+};
+
 // Helper to push products to array
 const addProduct = (dept, brand, name, price, discountPercent, image, description, emoji) => {
   const mrp = Math.round(price / (1 - discountPercent / 100));
@@ -21,8 +139,14 @@ const addProduct = (dept, brand, name, price, discountPercent, image, descriptio
     userName: `Buyer-${Math.floor(100 + Math.random() * 900)}`
   });
 
+  const catTr = deptTranslations[dept] || { hi: dept, mr: dept };
+
   products.push({
-    name,
+    name: {
+      en: name,
+      hi: translateMock(name, 'hi'),
+      mr: translateMock(name, 'mr')
+    },
     brand,
     dept,
     price,
@@ -36,7 +160,38 @@ const addProduct = (dept, brand, name, price, discountPercent, image, descriptio
       count
     },
     images: [image.includes('unsplash.com') ? `${image}?auto=format&fit=crop&w=600&q=80` : image],
-    description,
+    description: {
+      en: description,
+      hi: translateMock(description, 'hi'),
+      mr: translateMock(description, 'mr')
+    },
+    category: {
+      en: dept,
+      hi: catTr.hi,
+      mr: catTr.mr
+    },
+    specifications: [
+      {
+        key: { en: 'Brand', hi: 'ब्रांड', mr: 'ब्रँड' },
+        value: { en: brand, hi: brand, mr: brand }
+      },
+      {
+        key: { en: 'Sourced From', hi: 'स्रोत', mr: 'स्त्रोत' },
+        value: { en: 'Local Supplier', hi: 'स्थानीय आपूर्तिकर्ता', mr: 'स्थानिक पुरवठादार' }
+      }
+    ],
+    features: [
+      {
+        en: '100% original product directly from certified dealers.',
+        hi: 'प्रमाणित डीलरों से सीधे 100% मूल उत्पाद।',
+        mr: 'प्रमाणित डीलर्सकडून थेट 100% मूळ उत्पादन.'
+      },
+      {
+        en: 'High performance and long-lasting durability.',
+        hi: 'उच्च प्रदर्शन और लंबे समय तक चलने वाला स्थायित्व।',
+        mr: 'उच्च कार्यक्षमता आणि दीर्घकाळ टिकणारी टिकाऊपणा.'
+      }
+    ],
     isActive: true,
     isFeatured: Math.random() > 0.85,
     reviews

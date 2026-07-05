@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { apiClient } from '../api/apiClient';
-import { getProductThumbnail } from '@ugbazaar/shared';
+import { getProductThumbnail, getTranslated } from '@ugbazaar/shared';
 import { useAddToCart, useCart, useUpdateCartItem } from '../api/orderQueries';
+import { useTranslation } from '../hooks/useTranslation';
 import { ShoppingBasket, Heart, Trash2, Plus, Minus, ArrowLeft } from 'lucide-react';
 
 export default function Wishlist() {
   const navigate = useNavigate();
+  const { currentDict, lang } = useTranslation();
   const [wishlist, setWishlist] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -80,7 +82,7 @@ export default function Wishlist() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 animate-fade-in pb-24">
       <Link to="/" className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-muted hover:text-brand-dark mb-6 uppercase tracking-wider">
         <ArrowLeft className="w-4 h-4" />
-        <span>Back to Catalog</span>
+        <span>{lang === 'hi' ? 'कैटलॉग पर वापस जाएं' : lang === 'mr' ? 'कॅटलॉगवर परत जा' : 'Back to Catalog'}</span>
       </Link>
 
       <div className="flex items-center gap-3 border-b border-brand-border/60 pb-5 mb-8">
@@ -88,8 +90,12 @@ export default function Wishlist() {
           <Heart className="w-5 h-5 fill-red-500 text-none" />
         </div>
         <div>
-          <h1 className="font-extrabold text-2xl text-brand-dark">My Saved Items</h1>
-          <p className="text-xs text-brand-muted font-semibold mt-0.5">Your bookmarked shopping items list</p>
+          <h1 className="font-extrabold text-2xl text-brand-dark">
+            {lang === 'hi' ? 'मेरी सुरक्षित सामग्री' : lang === 'mr' ? 'माझ्या जतन केलेल्या वस्तू' : 'My Saved Items'}
+          </h1>
+          <p className="text-xs text-brand-muted font-semibold mt-0.5">
+            {lang === 'hi' ? 'आपकी पसंदीदा खरीदारी सूची' : lang === 'mr' ? 'तुमची आवडती खरेदी सूची' : 'Your bookmarked shopping items list'}
+          </p>
         </div>
       </div>
 
@@ -115,11 +121,11 @@ export default function Wishlist() {
 
                 {/* Product display */}
                 <div 
-                  onClick={() => navigate(`/product/${p._id}`)}
+                  onClick={() => navigate(`/product?id=${p._id}`)}
                   className="aspect-square bg-brand-light flex items-center justify-center p-4 rounded-xl text-5xl overflow-hidden cursor-pointer relative"
                 >
                   {getProductThumbnail(p.images) ? (
-                    <img src={getProductThumbnail(p.images)} alt={p.name} className="w-full h-full object-contain" />
+                    <img src={getProductThumbnail(p.images)} alt={getTranslated(p.name, lang)} className="w-full h-full object-contain" />
                   ) : (
                     <span>📦</span>
                   )}
@@ -131,10 +137,12 @@ export default function Wishlist() {
                 </div>
 
                 <div className="mt-3 flex-1 flex flex-col justify-between">
-                  <div onClick={() => navigate(`/product/${p._id}`)} className="cursor-pointer">
-                    <span className="text-[9px] text-brand-muted uppercase font-bold block">{p.dept}</span>
+                  <div onClick={() => navigate(`/product?id=${p._id}`)} className="cursor-pointer">
+                    <span className="text-[9px] text-brand-muted uppercase font-bold block">
+                      {getTranslated(p.category, lang) || p.dept}
+                    </span>
                     <h4 className="font-extrabold text-sm text-brand-dark mt-0.5 line-clamp-2 leading-tight min-h-[2.5rem] group-hover:text-brand-green transition-colors">
-                      {p.name}
+                      {getTranslated(p.name, lang)}
                     </h4>
                   </div>
 
@@ -149,7 +157,7 @@ export default function Wishlist() {
 
                     {p.stock <= 0 ? (
                       <span className="text-[10px] font-bold text-red-500 bg-red-50 border border-red-200 px-2.5 py-1.5 rounded-lg">
-                        Out of Stock
+                        {currentDict.product.outOfStock}
                       </span>
                     ) : cartItem ? (
                       <div className="flex items-center bg-brand-green text-white rounded-lg overflow-hidden font-bold text-[10px] shadow-sm">
@@ -176,7 +184,7 @@ export default function Wishlist() {
                         className="bg-brand-green/10 hover:bg-brand-green text-brand-green hover:text-white border border-brand-green/20 font-extrabold text-[10px] px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer active:scale-95"
                       >
                         <Plus className="w-3 h-3" />
-                        <span>ADD</span>
+                        <span>{lang === 'hi' ? 'जोड़ें' : lang === 'mr' ? 'जोडा' : 'ADD'}</span>
                       </button>
                     )}
                   </div>
@@ -188,12 +196,12 @@ export default function Wishlist() {
       ) : (
         <div className="py-20 text-center text-brand-muted font-bold text-sm bg-white border border-brand-border/60 rounded-3xl flex flex-col items-center justify-center gap-4 max-w-xl mx-auto shadow-sm">
           <ShoppingBasket className="w-12 h-12 text-brand-muted/40" />
-          <p>Your wishlist is empty!</p>
+          <p>{lang === 'hi' ? 'आपकी विशलिस्ट खाली है!' : lang === 'mr' ? 'तुमची विशलिस्ट रिकामी आहे!' : 'Your wishlist is empty!'}</p>
           <button 
             onClick={() => navigate('/')} 
             className="text-xs bg-brand-green text-white font-extrabold px-6 py-3 rounded-xl shadow-md cursor-pointer hover:bg-brand-green/95"
           >
-            Explore Catalog
+            {currentDict.buttons.browseCatalog}
           </button>
         </div>
       )}

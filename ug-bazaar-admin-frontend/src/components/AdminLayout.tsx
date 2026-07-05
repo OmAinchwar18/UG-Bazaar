@@ -3,7 +3,8 @@ import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../store';
 import { logout } from '../store/slices/authSlice';
-import { API_BASE } from '@ugbazaar/shared';
+import { useTranslation } from '../hooks/useTranslation';
+import { API_BASE, getTranslated } from '@ugbazaar/shared';
 import { io } from 'socket.io-client';
 import { 
   ShieldCheck, LineChart, Layers, AlertTriangle, 
@@ -25,7 +26,7 @@ interface NewOrderAlertData {
 }
 
 interface LowStockAlertData {
-  name: string;
+  name: any;
   stock: number;
 }
 
@@ -40,6 +41,7 @@ export default function AdminLayout() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const { user } = useSelector((state: RootState) => state.auth);
+  const { currentDict, lang, changeLanguage } = useTranslation();
   const activeTab = pathname.split('/').pop() || 'dashboard';
 
   // Real-time alerts queue
@@ -57,46 +59,77 @@ export default function AdminLayout() {
     });
 
     socket.on('new_order', (data: NewOrderAlertData) => {
+      const msg = lang === 'hi' 
+        ? `🛒 नया ऑर्डर आया: ${data.orderId} (₹${data.total}) - ${data.userName} द्वारा`
+        : lang === 'mr'
+        ? `🛒 नवीन ऑर्डर आली: ${data.orderId} (₹${data.total}) - ${data.userName} द्वारे`
+        : `🛒 New Order Placed: ${data.orderId} (₹${data.total}) by ${data.userName}`;
+
       setLiveAlerts(prev => [{
         id: Math.random().toString(),
         type: 'info',
-        text: `🛒 New Order Placed: ${data.orderId} (₹${data.total}) by ${data.userName}`,
+        text: msg,
         time: new Date()
       }, ...prev]);
     });
 
     socket.on('low_stock_alert', (data: LowStockAlertData) => {
+      const prodName = getTranslated(data.name, lang);
+      const msg = lang === 'hi'
+        ? `⚠️ कम स्टॉक चेतावनी: उत्पाद "${prodName}" में केवल ${data.stock} नग बचे हैं!`
+        : lang === 'mr'
+        ? `⚠️ कमी स्टॉक चेतावणी: उत्पादन "${prodName}" मध्ये फक्त ${data.stock} नग शिल्लक आहेत!`
+        : `⚠️ Low Stock Alert: Product "${prodName}" has only ${data.stock} units left!`;
+
       setLiveAlerts(prev => [{
         id: Math.random().toString(),
         type: 'warning',
-        text: `⚠️ Low Stock Alert: Product "${data.name}" has only ${data.stock} units left!`,
+        text: msg,
         time: new Date()
       }, ...prev]);
     });
 
     socket.on('admin_payment_success', (data: PaymentSuccessAlertData) => {
+      const msg = lang === 'hi'
+        ? `💰 भुगतान सत्यापित: ऑर्डर ${data.orderId} (₹${data.total}) - ${data.userName} का`
+        : lang === 'mr'
+        ? `💰 पेमेंट सत्यापित: ऑर्डर ${data.orderId} (₹${data.total}) - ${data.userName} चे`
+        : `💰 Payment Verified: Order ${data.orderId} (₹${data.total}) from ${data.userName}`;
+
       setLiveAlerts(prev => [{
         id: Math.random().toString(),
         type: 'success',
-        text: `💰 Payment Verified: Order ${data.orderId} (₹${data.total}) from ${data.userName}`,
+        text: msg,
         time: new Date()
       }, ...prev]);
     });
 
     socket.on('admin_new_cancellation', (data: { orderId: string; reason: string }) => {
+      const msg = lang === 'hi'
+        ? `❌ ऑर्डर रद्द: ${data.orderId} (कारण: ${data.reason})`
+        : lang === 'mr'
+        ? `❌ ऑर्डर रद्द: ${data.orderId} (कारण: ${data.reason})`
+        : `❌ Order Cancelled: ${data.orderId} (Reason: ${data.reason})`;
+
       setLiveAlerts(prev => [{
         id: Math.random().toString(),
         type: 'warning',
-        text: `❌ Order Cancelled: ${data.orderId} (Reason: ${data.reason})`,
+        text: msg,
         time: new Date()
       }, ...prev]);
     });
 
     socket.on('admin_new_return_request', (data: { orderId: string; reason: string }) => {
+      const msg = lang === 'hi'
+        ? `🔄 वापसी अनुरोध: ऑर्डर ${data.orderId} (कारण: ${data.reason})`
+        : lang === 'mr'
+        ? `🔄 परतावा विनंती: ऑर्डर ${data.orderId} (कारण: ${data.reason})`
+        : `🔄 Return Requested: Order ${data.orderId} (Reason: ${data.reason})`;
+
       setLiveAlerts(prev => [{
         id: Math.random().toString(),
         type: 'warning',
-        text: `🔄 Return Requested: Order ${data.orderId} (Reason: ${data.reason})`,
+        text: msg,
         time: new Date()
       }, ...prev]);
     });
@@ -104,7 +137,7 @@ export default function AdminLayout() {
     return () => {
       socket.disconnect();
     };
-  }, [user]);
+  }, [user, lang]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -112,16 +145,16 @@ export default function AdminLayout() {
   };
 
   const navItems = [
-    { key: 'dashboard', label: 'Dashboard', icon: LineChart },
-    { key: 'products', label: 'Products Catalog', icon: Layers },
-    { key: 'inventory', label: 'Stock & Logs', icon: AlertTriangle },
-    { key: 'orders', label: 'Orders Logs', icon: ShoppingBag },
-    { key: 'returns', label: 'Returns Management', icon: RotateCcw },
-    { key: 'invoices', label: 'Invoices History', icon: FileText },
-    { key: 'customers', label: 'Customer Directory', icon: Users },
-    { key: 'coupons', label: 'Promo Coupons', icon: Plus },
-    { key: 'analytics', label: 'Detailed Analytics', icon: BarChart3 },
-    { key: 'settings', label: 'Store Settings', icon: Settings },
+    { key: 'dashboard', label: currentDict.admin.dashboard, icon: LineChart },
+    { key: 'products', label: currentDict.admin.catalog, icon: Layers },
+    { key: 'inventory', label: currentDict.admin.inventory, icon: AlertTriangle },
+    { key: 'orders', label: currentDict.admin.orders, icon: ShoppingBag },
+    { key: 'returns', label: currentDict.admin.returns, icon: RotateCcw },
+    { key: 'invoices', label: currentDict.admin.invoices, icon: FileText },
+    { key: 'customers', label: currentDict.admin.customers, icon: Users },
+    { key: 'coupons', label: currentDict.admin.coupons, icon: Plus },
+    { key: 'analytics', label: currentDict.admin.analytics, icon: BarChart3 },
+    { key: 'settings', label: currentDict.admin.settings, icon: Settings },
   ];
 
   return (
@@ -133,6 +166,23 @@ export default function AdminLayout() {
           <div className="p-6 border-b border-white/5 flex items-center gap-3">
             <ShieldCheck className="w-5 h-5 text-brand-green fill-brand-green" />
             <span className="font-extrabold text-lg">Admin Cockpit</span>
+          </div>
+
+          {/* Sidebar Language Selectors */}
+          <div className="px-6 py-3.5 border-b border-white/5 flex gap-2">
+            {(['en', 'hi', 'mr'] as const).map((l) => (
+              <button
+                key={l}
+                onClick={() => changeLanguage(l)}
+                className={`flex-1 text-[10px] font-black py-1 px-1.5 rounded-lg border transition-all uppercase cursor-pointer ${
+                  lang === l 
+                    ? 'bg-brand-green border-brand-green text-white font-black' 
+                    : 'bg-transparent border-white/20 text-white/60 hover:text-white hover:border-white/40'
+                }`}
+              >
+                {l}
+              </button>
+            ))}
           </div>
 
           <nav className="p-4 space-y-1">
@@ -159,14 +209,15 @@ export default function AdminLayout() {
 
         <div className="p-4 border-t border-white/5 space-y-3">
           <div className="text-xs px-4 text-brand-muted font-bold">
-            Logged in as: <span className="text-white block mt-0.5">{user?.name}</span>
+            {lang === 'hi' ? 'लॉग इन किया है:' : lang === 'mr' ? 'लॉग इन केले आहे:' : 'Logged in as:'}
+            <span className="text-white block mt-0.5 font-extrabold">{user?.name}</span>
           </div>
           <button
             onClick={handleLogout}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm text-red-400 hover:bg-white/5 hover:text-red-300 transition-colors text-left cursor-pointer"
           >
             <LogOut className="w-4 h-4" />
-            <span>Sign Out</span>
+            <span>{lang === 'hi' ? 'लॉग आउट' : lang === 'mr' ? 'लॉग आउट' : 'Sign Out'}</span>
           </button>
         </div>
       </aside>
@@ -194,7 +245,7 @@ export default function AdminLayout() {
                   onClick={() => setLiveAlerts(prev => prev.filter(a => a.id !== alert.id))}
                   className="hover:text-black font-extrabold text-[10px] uppercase ml-4 cursor-pointer"
                 >
-                  Dismiss
+                  {lang === 'hi' ? 'खारिज करें' : lang === 'mr' ? 'काढून टाका' : 'Dismiss'}
                 </button>
               </div>
             ))}

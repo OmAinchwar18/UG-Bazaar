@@ -35,3 +35,14 @@ export function getProductThumbnail(images?: Array<{ url: string; isPrimary: boo
   }
   return typeof first === 'string' ? first : '';
 }
+
+/**
+ * Safe translation resolution helper for product multilingual fields.
+ * If translation is not present, falls back to English, then to the raw field.
+ */
+export function getTranslated(field: any, lang: string): string {
+  if (!field) return '';
+  if (typeof field === 'string') return field;
+  return field[lang] || field.en || field.hi || field.mr || '';
+}
+

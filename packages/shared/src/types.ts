@@ -9,10 +9,38 @@ export interface User {
 
 export interface Product {
   _id: string;
-  name: string;
-  nameHindi?: string;
-  nameMarathi?: string;
-  description?: string;
+  name: {
+    en: string;
+    hi?: string;
+    mr?: string;
+  };
+  description?: {
+    en?: string;
+    hi?: string;
+    mr?: string;
+  };
+  category?: {
+    en?: string;
+    hi?: string;
+    mr?: string;
+  };
+  specifications?: Array<{
+    key: {
+      en: string;
+      hi?: string;
+      mr?: string;
+    };
+    value: {
+      en: string;
+      hi?: string;
+      mr?: string;
+    };
+  }>;
+  features?: Array<{
+    en: string;
+    hi?: string;
+    mr?: string;
+  }>;
   dept: 'Grocery' | 'Agriculture' | 'Building Materials' | 'Hardware Tools' | 'Plumbing' | 'Electrical' | 'Furniture' | 'Home Appliances' | 'Electronics' | 'General Store';
   price: number;
   mrp: number;

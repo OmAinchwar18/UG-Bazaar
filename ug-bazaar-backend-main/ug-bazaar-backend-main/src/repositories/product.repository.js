@@ -39,10 +39,15 @@ class ProductRepository {
       const fallbackFilter = {
         isActive: true,
         $or: [
-          { name: regex },
-          { nameHindi: regex },
-          { nameMarathi: regex },
-          { description: regex }
+          { 'name.en': regex },
+          { 'name.hi': regex },
+          { 'name.mr': regex },
+          { 'description.en': regex },
+          { 'description.hi': regex },
+          { 'description.mr': regex },
+          { 'category.en': regex },
+          { 'category.hi': regex },
+          { 'category.mr': regex }
         ]
       };
       if (dept) fallbackFilter.dept = dept;

@@ -4,7 +4,8 @@ import { useCart, useUpdateCartItem, useClearCart, usePlaceOrder } from '../api/
 import { apiClient } from '../api/apiClient';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { getProductThumbnail } from '@ugbazaar/shared';
+import { getProductThumbnail, getTranslated } from '@ugbazaar/shared';
+import { useTranslation } from '../hooks/useTranslation';
 import { 
   ShoppingBag, Trash2, Tag, Percent, Truck, 
   MapPin, Check, ChevronRight, CreditCard, User, Sparkles,
@@ -14,6 +15,7 @@ import {
 export default function Cart() {
   const navigate = useNavigate();
   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
+  const { currentDict, lang } = useTranslation();
 
   const { data: cartData, isLoading: cartLoading } = useCart();
   const { mutate: updateCartItem } = useUpdateCartItem();
@@ -88,12 +90,12 @@ export default function Cart() {
   // Payment + Checkout logic
   const handleCheckoutSubmit = async () => {
     if (!fullName || !mobileNumber) {
-      alert('Please fill in Name and Mobile Number');
+      alert(lang === 'hi' ? 'कृपया नाम और मोबाइल नंबर भरें' : lang === 'mr' ? 'कृपया नाव आणि मोबाईल नंबर भरा' : 'Please fill in Name and Mobile Number');
       return;
     }
 
     if (deliveryType === 'delivery' && !addressLine) {
-      alert('Please fill in your Delivery Address');
+      alert(lang === 'hi' ? 'कृपया डिलीवरी का पता भरें' : lang === 'mr' ? 'कृपया डिलिव्हरीचा पत्ता भरा' : 'Please fill in your Delivery Address');
       return;
     }
 
@@ -213,12 +215,16 @@ export default function Cart() {
         <div className="bg-brand-light p-5 rounded-full inline-block text-brand-muted">
           <ShoppingBag className="w-12 h-12" />
         </div>
-        <h2 className="font-extrabold text-xl text-brand-dark mt-6">Aapka Cart Khali Hai</h2>
+        <h2 className="font-extrabold text-xl text-brand-dark mt-6">{currentDict.cart.emptyCart}</h2>
         <p className="text-sm text-brand-muted font-semibold mt-1 max-w-xs mx-auto">
-          Essentials add karein aur Swiggy Instamart jaisi delivery ka anubhav karein!
+          {lang === 'hi' 
+            ? 'अपनी पसंद का सामान बास्केट में जोड़ें और सुपरफास्ट होम डिलीवरी का लाभ उठाएं!' 
+            : lang === 'mr' 
+            ? 'तुमचे आवडते साहित्य बास्केटमध्ये जोडा आणि सुपरफास्ट होम डिलिव्हरीचा आनंद घ्या!' 
+            : 'Add items you love to your basket and experience superfast delivery!'}
         </p>
         <Link to="/" className="btn-primary mt-8 inline-flex">
-          Browse Catalog
+          {currentDict.buttons.browseCatalog}
         </Link>
       </div>
     );
@@ -227,9 +233,9 @@ export default function Cart() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 animate-fade-in pb-24">
       <h1 className="font-extrabold text-2xl text-brand-dark mb-8 flex items-center gap-2">
-        <span>Checkout Basket</span>
+        <span>{currentDict.cart.cartTitle}</span>
         <span className="text-xs font-bold bg-brand-green/10 text-brand-green border border-brand-green/20 px-3 py-1 rounded-full">
-          {items.length} Items Selected
+          {items.length} {lang === 'hi' ? 'सामग्री चुनी गई' : lang === 'mr' ? 'वस्तू निवडल्या' : 'Items Selected'}
         </span>
       </h1>
 
@@ -246,7 +252,7 @@ export default function Cart() {
                 activeStep === 1 ? 'border-brand-green text-brand-green' : 'border-transparent text-brand-muted'
               }`}
             >
-              1. Review Items
+              {lang === 'hi' ? '1. सामग्री की समीक्षा' : lang === 'mr' ? '1. वस्तूंचे पुनरावलोकन' : '1. Review Items'}
             </button>
             <button 
               onClick={() => {
@@ -257,7 +263,7 @@ export default function Cart() {
                 activeStep === 2 ? 'border-brand-green text-brand-green' : 'border-transparent text-brand-muted'
               }`}
             >
-              2. Delivery & Payment
+              {lang === 'hi' ? '2. डिलीवरी और भुगतान' : lang === 'mr' ? '2. डिलिव्हरी आणि पेमेंट' : '2. Delivery & Payment'}
             </button>
           </div>
 
@@ -271,13 +277,15 @@ export default function Cart() {
                     <div className="flex items-center gap-4">
                       <span className="text-3xl bg-brand-light p-2.5 rounded-xl border select-none w-14 h-14 flex items-center justify-center overflow-hidden">
                         {getProductThumbnail(item.product?.images) ? (
-                          <img src={getProductThumbnail(item.product?.images)} alt={item.name} className="w-full h-full object-contain" />
+                          <img src={getProductThumbnail(item.product?.images)} alt={getTranslated(item.product?.name, lang) || item.name} className="w-full h-full object-contain" />
                         ) : (
                           '📦'
                         )}
                       </span>
                       <div>
-                        <h4 className="font-extrabold text-sm text-brand-dark leading-snug">{item.name}</h4>
+                        <h4 className="font-extrabold text-sm text-brand-dark leading-snug">
+                          {getTranslated(item.product?.name, lang) || item.name}
+                        </h4>
                         <span className="text-xs text-brand-muted font-bold">₹{item.price} / unit</span>
                       </div>
                     </div>
@@ -315,7 +323,7 @@ export default function Cart() {
                   className="text-xs font-bold text-red-500 flex items-center gap-1 hover:underline"
                 >
                   <Trash2 className="w-4 h-4" />
-                  <span>Clear All Items</span>
+                  <span>{lang === 'hi' ? 'सभी सामान हटाएं' : lang === 'mr' ? 'सर्व वस्तू काढा' : 'Clear All Items'}</span>
                 </button>
                 <button 
                   onClick={() => {
@@ -324,7 +332,7 @@ export default function Cart() {
                   }}
                   className="btn-primary py-2 px-5 text-xs font-bold"
                 >
-                  <span>Set Address & Payment</span>
+                  <span>{lang === 'hi' ? 'पता और भुगतान दर्ज करें' : lang === 'mr' ? 'पत्ता आणि पेमेंट प्रविष्ट करा' : 'Set Address & Payment'}</span>
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
@@ -336,7 +344,9 @@ export default function Cart() {
               
               {/* Delivery Type */}
               <div className="bg-white border border-brand-border/60 rounded-3xl p-6 shadow-sm space-y-4">
-                <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Choose Delivery Type</span>
+                <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+                  {lang === 'hi' ? 'डिलीवरी का प्रकार चुनें' : lang === 'mr' ? 'डिलिव्हरीचा प्रकार निवडा' : 'Choose Delivery Type'}
+                </span>
                 <div className="grid grid-cols-2 gap-4">
                   <button
                     onClick={() => setDeliveryType('delivery')}
@@ -345,7 +355,7 @@ export default function Cart() {
                     }`}
                   >
                     <Truck className="w-5 h-5" />
-                    <span>Home Delivery</span>
+                    <span>{lang === 'hi' ? 'होम डिलीवरी' : lang === 'mr' ? 'होम डिलिव्हरी' : 'Home Delivery'}</span>
                   </button>
                   <button
                     onClick={() => setDeliveryType('pickup')}
@@ -354,28 +364,34 @@ export default function Cart() {
                     }`}
                   >
                     <MapPin className="w-5 h-5" />
-                    <span>Store Pickup</span>
+                    <span>{lang === 'hi' ? 'दुकान से पिकअप' : lang === 'mr' ? 'दुकान पिकअप' : 'Store Pickup'}</span>
                   </button>
                 </div>
               </div>
 
               {/* Delivery Address Form */}
               <div className="bg-white border border-brand-border/60 rounded-3xl p-6 shadow-sm space-y-4">
-                <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Recipient details</span>
+                <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+                  {lang === 'hi' ? 'प्राप्तकर्ता का विवरण' : lang === 'mr' ? 'प्राप्तकर्त्याचा तपशील' : 'Recipient details'}
+                </span>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="text-[10px] font-bold text-brand-muted uppercase">Full Name</label>
+                    <label className="text-[10px] font-bold text-brand-muted uppercase">
+                      {lang === 'hi' ? 'पूरा नाम' : lang === 'mr' ? 'पूर्ण नाव' : 'Full Name'}
+                    </label>
                     <input
                       type="text"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      placeholder="e.g. Uday ji"
+                      placeholder="e.g. Rahul ji"
                       className="w-full bg-brand-light border rounded-xl px-4 py-2.5 text-sm outline-none font-medium"
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[10px] font-bold text-brand-muted uppercase">Mobile Number</label>
+                    <label className="text-[10px] font-bold text-brand-muted uppercase">
+                      {lang === 'hi' ? 'मोबाइल नंबर' : lang === 'mr' ? 'मोबाईल नंबर' : 'Mobile Number'}
+                    </label>
                     <input
                       type="text"
                       value={mobileNumber}
@@ -389,7 +405,9 @@ export default function Cart() {
                 {deliveryType === 'delivery' && (
                   <>
                     <div className="space-y-1">
-                      <label className="text-[10px] font-bold text-brand-muted uppercase">Address Line (Gully/House Number)</label>
+                      <label className="text-[10px] font-bold text-brand-muted uppercase">
+                        {lang === 'hi' ? 'पता (गली/मकान नंबर)' : lang === 'mr' ? 'पत्ता (गल्ली/घर क्रमांक)' : 'Address Line (Gully/House Number)'}
+                      </label>
                       <input
                         type="text"
                         value={addressLine}
@@ -400,7 +418,9 @@ export default function Cart() {
                     </div>
                     <div className="grid grid-cols-3 gap-4">
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold text-brand-muted uppercase">Village</label>
+                        <label className="text-[10px] font-bold text-brand-muted uppercase">
+                          {lang === 'hi' ? 'गाँव' : lang === 'mr' ? 'गाव' : 'Village'}
+                        </label>
                         <input
                           type="text"
                           value={village}
@@ -410,7 +430,9 @@ export default function Cart() {
                         />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold text-brand-muted uppercase">Taluka</label>
+                        <label className="text-[10px] font-bold text-brand-muted uppercase">
+                          {lang === 'hi' ? 'तालुका' : lang === 'mr' ? 'तालुका' : 'Taluka'}
+                        </label>
                         <input
                           type="text"
                           value={taluka}
@@ -420,7 +442,9 @@ export default function Cart() {
                         />
                       </div>
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold text-brand-muted uppercase">Pincode</label>
+                        <label className="text-[10px] font-bold text-brand-muted uppercase">
+                          {lang === 'hi' ? 'पिनकोड' : lang === 'mr' ? 'पिनकोड' : 'Pincode'}
+                        </label>
                         <input
                           type="text"
                           value={pincode}
@@ -436,7 +460,9 @@ export default function Cart() {
 
               {/* Payment Methods */}
               <div className="bg-white border border-brand-border/60 rounded-3xl p-6 shadow-sm space-y-4">
-                <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Choose Payment Option</span>
+                <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+                  {lang === 'hi' ? 'भुगतान विकल्प चुनें' : lang === 'mr' ? 'पेमेंट पर्याय निवडा' : 'Choose Payment Option'}
+                </span>
                 <div className="grid grid-cols-3 gap-4">
                   <button
                     onClick={() => setPaymentMethod('cod')}
@@ -445,7 +471,7 @@ export default function Cart() {
                     }`}
                   >
                     <ShoppingBag className="w-5 h-5" />
-                    <span>Cash / UPI on Del</span>
+                    <span>{lang === 'hi' ? 'कैश/UPI डिलीवरी पर' : lang === 'mr' ? 'कॅश/UPI डिलिव्हरीवर' : 'Cash / UPI on Del'}</span>
                   </button>
                   <button
                     onClick={() => setPaymentMethod('upi')}
@@ -478,19 +504,23 @@ export default function Cart() {
           
           {/* Coupon Code validator */}
           <div className="bg-white border border-brand-border/60 rounded-3xl p-6 shadow-sm space-y-4">
-            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Coupons & Promo Codes</span>
+            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+              {lang === 'hi' ? 'कूपन और प्रोमो कोड' : lang === 'mr' ? 'कूपन आणि प्रोमो कोड' : 'Coupons & Promo Codes'}
+            </span>
             
             {couponApplied ? (
               <div className="bg-brand-green/10 border border-brand-green/30 rounded-2xl p-3.5 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Percent className="w-5 h-5 text-brand-green" />
-                  <span className="font-extrabold text-brand-green text-sm">{couponApplied} Applied!</span>
+                  <span className="font-extrabold text-brand-green text-sm">
+                    {couponApplied} {lang === 'hi' ? 'लागू हुआ!' : lang === 'mr' ? 'लागू केले!' : 'Applied!'}
+                  </span>
                 </div>
                 <button 
                   onClick={handleRemoveCoupon}
                   className="text-xs font-bold text-red-500 hover:underline"
                 >
-                  Remove
+                  {lang === 'hi' ? 'हटाएं' : lang === 'mr' ? 'काढून टाका' : 'Remove'}
                 </button>
               </div>
             ) : (
@@ -499,7 +529,7 @@ export default function Cart() {
                   type="text"
                   value={couponCode}
                   onChange={(e) => setCouponCode(e.target.value)}
-                  placeholder="Enter Coupon (e.g. BAZAAR100)"
+                  placeholder={lang === 'hi' ? 'कूपन कोड डालें' : lang === 'mr' ? 'कूपन कोड टाका' : 'Enter Coupon Code'}
                   className="flex-1 bg-brand-light border rounded-xl px-3.5 py-2.5 text-xs outline-none uppercase font-bold"
                 />
                 <button 
@@ -507,43 +537,47 @@ export default function Cart() {
                   disabled={couponLoading}
                   className="bg-brand-green text-white font-extrabold text-xs px-4 py-2.5 rounded-xl hover:bg-opacity-90 transition-all flex-shrink-0 cursor-pointer"
                 >
-                  {couponLoading ? '...' : 'APPLY'}
+                  {couponLoading ? '...' : lang === 'hi' ? 'लागू करें' : lang === 'mr' ? 'लागू करा' : 'APPLY'}
                 </button>
               </form>
             )}
 
             {couponError && (
-              <p className="text-xs text-red-500 font-bold text-center mt-1">{couponError}</p>
+              <p className="text-xs text-red-500 font-bold text-center mt-1">
+                {lang === 'hi' ? 'अमान्य कूपन कोड' : lang === 'mr' ? 'अवैध कूपन कोड' : couponError}
+              </p>
             )}
           </div>
 
           {/* Pricing Breakdown Card */}
           <div className="bg-white border border-brand-border/60 rounded-3xl p-6 shadow-sm space-y-4">
-            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">Billing Summary</span>
+            <span className="text-xs font-extrabold text-brand-muted uppercase tracking-wider block">
+              {lang === 'hi' ? 'बिल का सारांश' : lang === 'mr' ? 'बिल तपशील' : 'Billing Summary'}
+            </span>
             
             <div className="space-y-3 font-semibold text-sm text-brand-muted">
               <div className="flex justify-between">
-                <span>Items Subtotal</span>
+                <span>{lang === 'hi' ? 'कुल सामग्री मूल्य' : lang === 'mr' ? 'एकूण वस्तू मूल्य' : 'Items Subtotal'}</span>
                 <span className="text-brand-dark font-extrabold">₹{subtotal}</span>
               </div>
               
               {discountAmount > 0 && (
                 <div className="flex justify-between text-brand-green">
-                  <span>Coupon Discounts</span>
+                  <span>{lang === 'hi' ? 'कूपन छूट' : lang === 'mr' ? 'कूपन सवलत' : 'Coupon Discounts'}</span>
                   <span>- ₹{discountAmount}</span>
                 </div>
               )}
 
               <div className="flex justify-between">
-                <span>Delivery Charge</span>
+                <span>{currentDict.cart.deliveryCharge}</span>
                 <span className="text-brand-dark font-extrabold">
-                  {deliveryCharge === 0 ? 'FREE' : `₹${deliveryCharge}`}
+                  {deliveryCharge === 0 ? (lang === 'hi' ? 'मुफ़्त' : lang === 'mr' ? 'मोफत' : 'FREE') : `₹${deliveryCharge}`}
                 </span>
               </div>
             </div>
 
             <div className="border-t border-brand-light pt-4 flex justify-between items-baseline">
-              <span className="font-extrabold text-sm text-brand-dark">Grand Total</span>
+              <span className="font-extrabold text-sm text-brand-dark">{currentDict.cart.total}</span>
               <span className="font-black text-2xl text-brand-green">₹{grandTotal}</span>
             </div>
 
@@ -556,7 +590,7 @@ export default function Cart() {
                 }}
                 className="btn-primary w-full py-3.5 text-sm font-extrabold mt-4"
               >
-                <span>Continue to Checkout</span>
+                <span>{currentDict.buttons.checkout}</span>
                 <ChevronRight className="w-5 h-5" />
               </button>
             ) : (
@@ -565,13 +599,17 @@ export default function Cart() {
                 disabled={isBooking}
                 className="btn-primary w-full py-3.5 text-sm font-extrabold mt-4"
               >
-                <span>{isBooking ? 'Placing Order...' : 'Place Order'}</span>
+                <span>{isBooking ? (lang === 'hi' ? 'ऑर्डर किया जा रहा है...' : lang === 'mr' ? 'ऑर्डर करत आहे...' : 'Placing Order...') : currentDict.cart.placeOrderBtn}</span>
               </button>
             )}
 
             {deliveryType === 'delivery' && subtotal < 500 && (
               <p className="text-[10px] text-brand-muted text-center font-semibold mt-2">
-                Add ₹{500 - subtotal} more items to unlock <span className="text-brand-green font-bold">FREE Delivery</span>!
+                {lang === 'hi' 
+                  ? `मुफ़्त डिलीवरी के लिए ₹${500 - subtotal} का सामान और जोड़ें!` 
+                  : lang === 'mr' 
+                  ? `मोफत डिलिव्हरी मिळवण्यासाठी आणखी ₹${500 - subtotal} चे साहित्य जोडा!` 
+                  : `Add ₹${500 - subtotal} more items to unlock FREE Delivery!`}
               </p>
             )}
 

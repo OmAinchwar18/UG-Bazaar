@@ -6,13 +6,15 @@ import { toggleComparison } from '../store/slices/uiSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { Sparkles, Plus, Minus, ArrowLeftRight, Star, Clock } from 'lucide-react';
-import { getProductThumbnail } from '@ugbazaar/shared';
+import { getProductThumbnail, getTranslated } from '@ugbazaar/shared';
+import { useTranslation } from '../hooks/useTranslation';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const { currentDict, lang } = useTranslation();
   const dispatch = useDispatch();
   const comparisonList = useSelector((state: RootState) => state.ui.comparisonList);
   const isCompared = comparisonList.includes(product._id);
@@ -87,7 +89,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {hasImages && !imageError ? (
           <img 
             src={thumbnail} 
-            alt={product.name}
+            alt={getTranslated(product.name, lang)}
             loading="lazy"
             onError={() => setImageError(true)}
             className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300"
@@ -129,19 +131,16 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div>
           {/* Department & Brand */}
           <div className="flex items-center gap-1.5 justify-between">
-            <span className="text-[9px] font-black tracking-wider uppercase text-brand-muted block">{product.dept}</span>
+            <span className="text-[9px] font-black tracking-wider uppercase text-brand-muted block">
+              {getTranslated(product.category, lang) || product.dept}
+            </span>
             <span className="text-[9px] font-extrabold text-brand-green/80 bg-brand-green/5 px-2 py-0.5 rounded uppercase tracking-wider">{product.brand || 'GENERIC'}</span>
           </div>
 
           {/* Product Title */}
           <h3 className="font-extrabold text-sm text-brand-dark mt-1.5 group-hover:text-[#0c831f] transition-colors leading-tight line-clamp-2 min-h-[2.5rem]">
-            {product.name}
+            {getTranslated(product.name, lang)}
           </h3>
-          {(product.nameHindi || product.nameMarathi) && (
-            <span className="text-xs text-brand-muted font-bold block mt-0.5">
-              {product.nameHindi || product.nameMarathi}
-            </span>
-          )}
 
           {/* Ratings display - Similar to Amazon & Flipkart standards */}
           {product.ratings && product.ratings.count > 0 && (
@@ -166,7 +165,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {product.stock <= 0 ? (
             <span className="text-xs font-bold text-red-500 bg-red-50 border border-red-200 px-3 py-1.5 rounded-xl">
-              Out of Stock
+              {currentDict.product.outOfStock}
             </span>
           ) : cartItem ? (
             <div className="flex items-center bg-brand-green text-white rounded-xl overflow-hidden font-bold text-xs shadow-md">
@@ -193,7 +192,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               className="bg-brand-green/10 hover:bg-brand-green text-brand-green hover:text-white border border-brand-green/20 font-extrabold text-xs px-4 py-2 rounded-xl transition-all duration-150 flex items-center gap-1 active:scale-95 cursor-pointer shadow-sm hover:shadow-md"
             >
               <Plus className="w-3 h-3" />
-              <span>ADD</span>
+              <span>{lang === 'hi' ? 'जोड़ें' : lang === 'mr' ? 'जोडा' : 'ADD'}</span>
             </button>
           )}
         </div>

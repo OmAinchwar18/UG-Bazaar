@@ -6,53 +6,11 @@ import { logout } from '../store/slices/authSlice';
 import { setLanguage } from '../store/slices/uiSlice';
 import { useCart } from '../api/orderQueries';
 import { apiClient } from '../api/apiClient';
-import { getProductThumbnail } from '@ugbazaar/shared';
+import { getProductThumbnail, dict, getTranslated } from '@ugbazaar/shared';
 import { 
   MapPin, Search, ShoppingCart, User, Globe, 
   Sparkles, Bell, Percent, LogOut, ChevronDown, Menu
 } from 'lucide-react';
-
-const dict = {
-  en: {
-    searchPlaceholder: 'Search "rice", "fertilizer", "bulbs", "hammer"...',
-    welcome: 'Namaste',
-    login: 'Login / Sign Up',
-    cart: 'Cart',
-    offers: 'Offers',
-    about: 'About Us',
-    profile: 'My Profile',
-    admin: 'Admin Console',
-    logout: 'Sign Out',
-    lang: 'Language',
-    location: 'Bhangaram, Talodhi'
-  },
-  hi: {
-    searchPlaceholder: 'खोजें "चावल", "खाद", "बल्ब", "हथौड़ा"...',
-    welcome: 'नमस्ते',
-    login: 'लॉगिन / साइन अप',
-    cart: 'कार्ट',
-    offers: 'ऑफ़र्स',
-    about: 'हमारे बारे में',
-    profile: 'मेरी प्रोफ़ाइल',
-    admin: 'एडमिन पैनल',
-    logout: 'लॉग आउट',
-    lang: 'भाषा',
-    location: 'भांगराम, तलोधी'
-  },
-  mr: {
-    searchPlaceholder: 'शोधा "तांदूळ", "खत", "बल्ब", "हातोडा"...',
-    welcome: 'नमस्ते',
-    login: 'लॉगिन / साइन अप',
-    cart: 'कार्ट',
-    offers: 'ऑफर',
-    about: 'आमच्याबद्दल',
-    profile: 'माझी प्रोफाइल',
-    admin: 'अ‍ॅडमिन पॅनेल',
-    logout: 'बाहेर पडा',
-    lang: 'भाषा',
-    location: 'भांगराम, तळोधी'
-  }
-};
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -163,7 +121,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-2 border-l border-brand-border/80 pl-6 py-1">
               <MapPin className="w-5 h-5 text-brand-green" />
               <div className="text-left leading-tight">
-                <span className="font-bold text-sm block text-brand-dark">{currentDict.location}</span>
+                <span className="font-bold text-sm block text-brand-dark">{currentDict.navbar.location}</span>
                 <span className="text-xs text-brand-muted font-medium">Opp. CDCC Bank</span>
               </div>
             </div>
@@ -180,7 +138,7 @@ export default function Navbar() {
                   setShowSuggestions(true);
                 }}
                 onFocus={() => setShowSuggestions(true)}
-                placeholder={currentDict.searchPlaceholder}
+                placeholder={currentDict.navbar.searchPlaceholder}
                 className="w-full pl-11 pr-24 py-3 bg-brand-light border border-brand-border/80 focus:border-brand-green focus:bg-white rounded-2xl outline-none font-medium text-sm transition-all duration-200"
               />
               <Search className="w-5 h-5 text-brand-muted absolute left-4" />
@@ -211,11 +169,11 @@ export default function Navbar() {
                       >
                         <div className="flex items-center gap-3">
                           {getProductThumbnail(p.images) ? (
-                            <img src={getProductThumbnail(p.images)} alt={p.name} className="w-8 h-8 object-contain rounded-lg border bg-brand-light" />
+                            <img src={getProductThumbnail(p.images)} alt={getTranslated(p.name, lang)} className="w-8 h-8 object-contain rounded-lg border bg-brand-light" />
                           ) : (
                             <span className="text-xl bg-brand-light p-1.5 rounded-lg">📦</span>
                           )}
-                          <span className="font-semibold text-brand-dark text-sm">{p.name}</span>
+                          <span className="font-semibold text-brand-dark text-sm">{getTranslated(p.name, lang)}</span>
                         </div>
                         <span className="font-bold text-brand-green text-sm">₹{p.price}</span>
                       </div>
@@ -286,7 +244,7 @@ export default function Navbar() {
             {/* Offers Page */}
             <Link to="/offers" className="hidden lg:flex items-center gap-1.5 text-sm font-bold text-brand-muted hover:text-brand-green transition-all">
               <Percent className="w-4 h-4" />
-              <span>{currentDict.offers}</span>
+              <span>{currentDict.navbar.offers}</span>
             </Link>
 
             {/* Notifications */}
@@ -324,7 +282,7 @@ export default function Navbar() {
                       className="flex items-center gap-2 px-4 py-3 hover:bg-brand-light font-bold text-brand-dark text-sm transition-colors"
                     >
                       <User className="w-4 h-4 text-brand-muted" />
-                      <span>{currentDict.profile}</span>
+                      <span>{currentDict.navbar.profile}</span>
                     </Link>
                     <button
                       onClick={() => {
@@ -335,7 +293,7 @@ export default function Navbar() {
                       className="w-full flex items-center gap-2 px-4 py-3 hover:bg-red-50 text-red-600 font-bold text-sm transition-colors border-t border-brand-border/40"
                     >
                       <LogOut className="w-4 h-4" />
-                      <span>{currentDict.logout}</span>
+                      <span>{currentDict.navbar.logout}</span>
                     </button>
                   </div>
                 )}
@@ -343,7 +301,7 @@ export default function Navbar() {
             ) : (
               <Link to="/auth" className="btn-secondary py-2 px-4 text-sm">
                 <User className="w-4 h-4" />
-                <span>{currentDict.login}</span>
+                <span>{currentDict.navbar.login}</span>
               </Link>
             )}
 
@@ -360,7 +318,7 @@ export default function Navbar() {
                     <span className="font-extrabold text-sm">₹{cartTotalAmount}</span>
                   </div>
                 ) : (
-                  <span className="font-bold text-sm">{currentDict.cart}</span>
+                  <span className="font-bold text-sm">{currentDict.navbar.cart}</span>
                 )}
               </div>
             </Link>

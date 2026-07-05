@@ -152,7 +152,7 @@ exports.adminGetCustomers = catchAsync(async (req, res, next) => {
 
 // CHATBOT
 exports.chatbot = catchAsync(async (req, res, next) => {
-  const { message, system, history } = req.body;
+  const { message, system, history, lang } = req.body;
   const GEMINI_KEY = process.env.GEMINI_API_KEY;
 
   if (!GEMINI_KEY) {
@@ -164,6 +164,12 @@ exports.chatbot = catchAsync(async (req, res, next) => {
 
   let contents = [];
   let systemInstructionText = system || '';
+  if (lang) {
+    const langNames = { en: 'English', hi: 'Hindi', mr: 'Marathi' };
+    const langName = langNames[lang] || 'English';
+    systemInstructionText += `\n\nIMPORTANT: The customer's selected display language is: ${lang}. You MUST write your response ONLY in the language: ${langName} (using native script where appropriate, e.g. Devanagari script for Hindi/Marathi).`;
+  }
+
 
   const isChatbot = !!history || (systemInstructionText && systemInstructionText.toLowerCase().includes("friendly shop assistant"));
 
@@ -277,3 +283,91 @@ exports.adminExportAnalyticsReport = catchAsync(async (req, res, next) => {
     res.download(fullPath, 'analytics-report.pdf');
   }
 });
+
+exports.translateProductDetails = catchAsync(async (req, res, next) => {
+  const { name, description, category, specifications, features } = req.body;
+  const GEMINI_KEY = process.env.GEMINI_API_KEY;
+
+  if (!GEMINI_KEY) {
+    return res.status(500).json({
+      success: false,
+      message: "Gemini API key has not been configured in the environment variables."
+    });
+  }
+
+  const promptText = `You are a translation assistant for a hyperlocal marketplace in Maharashtra, India.
+Translate the following product details into Hindi and Marathi.
+Maintain absolute accuracy, appropriate context, and natural phrasing. Keep units of measurement (e.g., kg, L, watt, mm) in their standard or localized forms.
+Return ONLY a valid JSON object matching the format below. Do not wrap the JSON in markdown blocks (like \`\`\`json) or include any extra text.
+
+Response format:
+{
+  "hi": {
+    "name": "translated name in Hindi",
+    "description": "translated description in Hindi",
+    "category": "translated category in Hindi",
+    "specifications": [{ "key": "translated key", "value": "translated value" }],
+    "features": ["translated feature 1", "translated feature 2"]
+  },
+  "mr": {
+    "name": "translated name in Marathi",
+    "description": "translated description in Marathi",
+    "category": "translated category in Marathi",
+    "specifications": [{ "key": "translated key", "value": "translated value" }],
+    "features": ["translated feature 1", "translated feature 2"]
+  }
+}
+
+Input data to translate:
+${JSON.stringify({ name, description, category, specifications, features }, null, 2)}`;
+
+  const postData = JSON.stringify({
+    contents: [{
+      role: 'user',
+      parts: [{ text: promptText }]
+    }]
+  });
+
+  const options = {
+    hostname: 'generativelanguage.googleapis.com',
+    path: '/v1beta/models/gemini-2.5-flash:generateContent?key=' + GEMINI_KEY,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': Buffer.byteLength(postData)
+    }
+  };
+
+  const reply = await new Promise((resolve, reject) => {
+    const request = https.request(options, (response) => {
+      let data = '';
+      response.on('data', chunk => data += chunk);
+      response.on('end', () => {
+        try {
+          const parsed = JSON.parse(data);
+          if (parsed.error) {
+            logger.error('Gemini API Translation Error details:', parsed.error);
+            reject(new Error(parsed.error.message));
+          } else {
+            let text = parsed.candidates?.[0]?.content?.parts?.[0]?.text || '';
+            // Clean markdown json formatting if any exists
+            text = text.replace(/```json/i, '').replace(/```/g, '').trim();
+            resolve(JSON.parse(text));
+          }
+        } catch(e) {
+          logger.error('Gemini Translation Parse Error:', e, data);
+          reject(new Error('Failed to parse translated content from Gemini AI.'));
+        }
+      });
+    });
+    request.on('error', (err) => {
+      logger.error('Gemini Translation Request Error:', err);
+      reject(err);
+    });
+    request.write(postData);
+    request.end();
+  });
+
+  res.json({ success: true, translations: reply });
+});
+

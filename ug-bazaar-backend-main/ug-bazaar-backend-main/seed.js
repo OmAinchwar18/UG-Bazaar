@@ -60,9 +60,9 @@ const seedDB = async () => {
       
       const chunkPromises = chunk.map(async (p) => {
         // Validation check for required fields
-        if (!p.name || !p.brand || !p.dept || p.price === undefined || p.mrp === undefined || !p.description) {
+        if (!p.name?.en || !p.brand || !p.dept || p.price === undefined || p.mrp === undefined || !p.description?.en) {
           skippedCount++;
-          const reason = 'Missing required field (name, brand, dept, price, mrp, or description)';
+          const reason = 'Missing required field (name.en, brand, dept, price, mrp, or description.en)';
           skipReasons[reason] = (skipReasons[reason] || 0) + 1;
           return null;
         }
